@@ -7,6 +7,7 @@
 ![Version](https://img.shields.io/badge/Version-1.0.0-blue)
 ![License](https://img.shields.io/badge/License-Apache%202.0-green)
 ![Skills](https://img.shields.io/badge/Skills-13-orange)
+![Plugins](https://img.shields.io/badge/Plugins-3-brightgreen)
 
 </div>
 
@@ -96,17 +97,108 @@ stitch-skills/
 ### 知识技能
 *   **`stitch-ued-guide`**: 被其他技能引用的设计指南、视觉词汇和提示词策略。
 
-## 🚀 快速开始
+## ⚡ 快速开始
 
-1.  **安装**: 将此仓库添加为您的 Agent 的技能源。
-2.  **使用**: 只需告诉 Agent:
-    > "使用 Stitch 设计一个赛博朋克风格的登录页面。"
-3.  **观察**: Agent 将自主完成：
-    *   **分析** 风格 (赛博朋克 -> 暗黑/霓虹) - 使用 `stitch-ui-design-spec-generator`。
-    *   **创建** 项目 - 调用 MCP 工具 `create_project`。
-    *   **架构** 详细提示词 - 使用 `stitch-ui-prompt-architect`。
-    *   **生成** 屏幕 - 调用 MCP 工具 `generate_screen_from_text`。
-    *   **返回** 结果。
+### 支持的 Agent
+
+本项目的 Skills 符合 Agent Skills 规范，支持以下环境：
+
+- Claude Code
+- Trae（本仓库在 Trae 环境下已通过 MCP 验收）
+- Cursor
+- Windsurf / Continue / Roo Code / CodeBuddy 等
+
+### 在 Claude Code 中使用（仅 Claude Code 适用）
+
+如果你在 Trae 中使用本仓库，可以跳过本节的 `/plugin ...` 命令。
+
+#### 1) 注册 Marketplace
+
+```bash
+/plugin marketplace add https://github.com/partme-ai/stitch-skills.git
+```
+
+或者简写（如果已发布到官方源）：
+
+```bash
+/plugin marketplace add partme-ai/stitch-skills
+```
+
+删除 Marketplace：
+
+```bash
+/plugin marketplace remove stitch-skills
+```
+
+### 在 Trae 中使用（推荐）
+
+#### 0) 安装 Skills（Trae 的加载方式）
+
+Trae 不使用 Claude Code 的 `/plugin ...` 命令。Trae 会从以下位置加载 skills：
+
+*   项目级：当前项目根目录的 `.trae/skills/`
+*   全局：用户目录下的 `~/.trae/skills/`（或 `~/.trae-cn/skills/`）
+
+你只需要把本仓库的 `stitch-skills/skills/*` 放到上述任一位置即可（项目级优先，便于按项目隔离）。
+
+#### 1) 配置 Stitch MCP Server（必须）
+
+Trae 的 MCP 配置文件路径：
+
+- Trae：`~/Library/Application Support/Trae/User/mcp.json`
+- Trae CN：`~/Library/Application Support/Trae CN/User/mcp.json`
+
+在 `mcpServers` 中添加（或修正）：
+
+```json
+{
+  "mcpServers": {
+    "stitch": {
+      "url": "https://stitch.googleapis.com/mcp",
+      "headers": {
+        "X-Goog-Api-Key": "YOUR_API_KEY"
+      }
+    }
+  }
+}
+```
+
+注意事项：
+
+- `url` 必须是纯字符串，不能包含反引号、前后空格
+- 浏览器直接打开该 URL 出现 405 属于正常现象（该端点不支持 GET）
+- 不要把真实 API Key 提交到仓库或粘贴到公开聊天中
+- 修改 `mcp.json` 后需要重启 Trae 才能生效
+
+#### 2) 使用技能
+
+只需要在对话中显式提到 “Stitch”，并描述你的目标即可，例如：
+
+- “用 Stitch 列出我的项目”
+- “使用 Stitch 实现 登录_PRD.md 文档中的设计”
+
+### 端到端示例：使用 Stitch 实现 登录_PRD.md
+
+示例输入：
+
+> 使用 Stitch 实现 `partme-docs/登录_PRD.md` 文档要求的设计工作（登录页 + 注册页）
+
+预期行为（Agent 会自动编排并调用 MCP 工具）：
+
+1. `create_project`：创建项目（返回 `projects/{id}`）
+2. `generate_screen_from_text`：生成登录页
+3. `generate_screen_from_text`：生成注册页
+4. `list_screens`：列出项目内 screens
+5. `get_screen`：获取截图与 HTML（导出用）
+
+你可以在生成后继续说：
+
+- “用 Stitch 导出登录页 HTML”
+- “用 Stitch 把注册页改成 3 步分步向导”
+
+更多可直接照抄的示例见：
+
+- `skills/stitch-ui-designer/examples/partme_login_prd.md`
 
 ## 🔒 安全与触发
 

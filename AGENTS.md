@@ -49,8 +49,9 @@ Skills are loaded on demand. To reduce context usage:
 
 **Claude Code:**
 ```bash
-/plugin marketplace add partme-ai/stitch-skills
-/plugin install stitch-ui-designer@stitch-skills
+/plugin marketplace add https://github.com/partme-ai/stitch-skills.git
+/plugin install stitch-ui@stitch-skills
+/plugin install stitch-mcp@stitch-skills
 ```
 
 ## MCP Prerequisite (Why tools may not run)

@@ -7,6 +7,7 @@
 ![Version](https://img.shields.io/badge/Version-1.0.0-blue)
 ![License](https://img.shields.io/badge/License-Apache%202.0-green)
 ![Skills](https://img.shields.io/badge/Skills-13-orange)
+![Plugins](https://img.shields.io/badge/Plugins-3-brightgreen)
 
 </div>
 
@@ -98,15 +99,46 @@ stitch-skills/
 
 ## 🚀 Quick Start
 
-1.  **Install**: Add this repository as a skill source to your Agent.
-2.  **Use**: Simply ask the Agent:
-    > "Use Stitch to design a cyberpunk login page."
-3.  **Watch**: The Agent will autonomously:
-    *   **Analyze** style (Cyberpunk -> Dark/Neon) using `stitch-ui-design-spec-generator`.
-    *   **Create** a project by calling the MCP tool `create_project`.
-    *   **Architect** a detailed prompt using `stitch-ui-prompt-architect`.
-    *   **Generate** the screen by calling the MCP tool `generate_screen_from_text`.
-    *   **Return** the result.
+### 1) Install (Claude Code)
+
+Register this repository as a marketplace:
+
+```bash
+/plugin marketplace add https://github.com/partme-ai/stitch-skills.git
+```
+
+### 1b) Install (Trae)
+
+Trae loads skills from either:
+
+- Project-local: `.trae/skills/` in your current workspace
+- Global: `~/.trae/skills/` (or `~/.trae-cn/skills/`)
+
+Copy/link `stitch-skills/skills/*` into one of these locations.
+
+### 2) Configure MCP (Required for real execution)
+
+Make sure your client is configured with the Stitch MCP server and exposes MCP tools like:
+
+- `create_project`
+- `generate_screen_from_text`
+- `list_projects`
+- `list_screens`
+- `get_screen`
+
+### 3) Use
+
+Example:
+
+> "Use stitch to implement 登录_PRD.md UI requirements (Login + Register)."
+
+Expected tool chain:
+
+1. `create_project`
+2. `generate_screen_from_text` (Login)
+3. `generate_screen_from_text` (Register)
+4. `list_screens`
+5. `get_screen`
 
 ## 🔒 Safety & Triggers
 
