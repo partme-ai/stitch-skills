@@ -1,0 +1,34 @@
+{
+  "name": "stitch-skills",
+  "owner": {
+    "name": "PartMeAI",
+    "email": "partmeai@gmail.com"
+  },
+  "metadata": {
+    "description": "Stitch Skills - Agent Skills collection for Stitch UI generation via Stitch MCP.",
+    "version": "1.0.0"
+  },
+  "plugins": [
+    {
+      "name": "stitch-skills",
+      "description": "Stitch UI 生成技能集合（编排器 + Prompt 工程 + Stitch MCP 工具调用规范）。",
+      "source": "./",
+      "strict": false,
+      "skills": [
+        "./skills/stitch-ui-designer",
+        "./skills/stitch-ui-design-spec-generator",
+        "./skills/stitch-ui-prompt-architect",
+        "./skills/stitch-ui-design-variants",
+        "./skills/stitch-ued-guide",
+        "./skills/stitch-mcp-project-create",
+        "./skills/stitch-mcp-project-list",
+        "./skills/stitch-mcp-project-get",
+        "./skills/stitch-mcp-screen-generate",
+        "./skills/stitch-mcp-screen-list",
+        "./skills/stitch-mcp-screen-get",
+        "./skills/stitch-mcp-screen-refine",
+        "./skills/stitch-skill-creator"
+      ]
+    }
+  ]
+}
