@@ -8,7 +8,7 @@
 **Agent Action:**
 ```json
 {
-  "name": "stitch-mcp-project-create",
+  "name": "create_project",
   "arguments": {
     "title": "Travel Blog App"
   }
@@ -26,4 +26,4 @@
 ```
 
 ## 2. Handling Response
-The Agent should save the returned `name` (Project ID) to its context memory as the `current_project_id` for subsequent calls.
+The Agent should save the returned `name` (e.g., `projects/123456789`) and also extract the numeric project ID (`123456789`) for subsequent calls.

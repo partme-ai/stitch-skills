@@ -8,7 +8,7 @@
 **Agent Action:**
 ```json
 {
-  "name": "stitch-mcp-screen-get",
+  "name": "get_screen",
   "arguments": {
     "projectId": "3780309359108792857",
     "screenId": "88805318abe84d16add098fae3add91e"

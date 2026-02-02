@@ -8,7 +8,7 @@
 **Agent Action:**
 ```json
 {
-  "name": "stitch-mcp-project-get",
+  "name": "get_project",
   "arguments": {
     "name": "projects/123"
   }

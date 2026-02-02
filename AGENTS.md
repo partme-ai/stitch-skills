@@ -52,3 +52,10 @@ Skills are loaded on demand. To reduce context usage:
 /plugin marketplace add partme-ai/stitch-skills
 /plugin install stitch-ui-designer@stitch-skills
 ```
+
+## MCP Prerequisite (Why tools may not run)
+
+This repository provides **skills** and **tool schemas** only. If you don't have the Stitch MCP Server configured, the agent will not be able to call tools like `create_project` or `generate_screen_from_text`.
+
+Follow the official MCP setup guide:
+https://stitch.withgoogle.com/docs/mcp/guide/

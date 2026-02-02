@@ -8,7 +8,7 @@
 **Agent Action:**
 ```json
 {
-  "name": "stitch-mcp-project-list",
+  "name": "list_projects",
   "arguments": {
     "filter": "view=owned"
   }
@@ -23,7 +23,7 @@
 **Agent Action:**
 ```json
 {
-  "name": "stitch-mcp-project-list",
+  "name": "list_projects",
   "arguments": {
     "filter": "view=shared"
   }

@@ -8,7 +8,7 @@
 **Agent Action:**
 ```json
 {
-  "name": "stitch-mcp-screen-list",
+  "name": "list_screens",
   "arguments": {
     "projectId": "projects/123456789"
   }

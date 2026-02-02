@@ -26,6 +26,28 @@ Key documentation from the official Stitch team:
 *   **[Controls](https://stitch.withgoogle.com/docs/learn/controls/)**: Using interactive controls to refine designs.
 *   **[MCP Guide](https://stitch.withgoogle.com/docs/mcp/guide/)**: Technical guide for Model Context Protocol integration.
 
+## 🔌 MCP Setup (Required for real execution)
+
+This repository contains **skills and tool schemas**, but it does **not** ship the Stitch MCP Server itself.
+
+To actually create projects and generate screens, you must:
+
+*   Configure Stitch MCP Server using the official guide: https://stitch.withgoogle.com/docs/mcp/guide/
+*   Ensure your client exposes the Stitch MCP tools (tool names in this repo's `docs/*.json`):
+    *   `create_project`
+    *   `list_projects`
+    *   `get_project`
+    *   `generate_screen_from_text`
+    *   `list_screens`
+    *   `get_screen`
+
+In some clients, MCP tools are **namespaced** and may appear as:
+
+*   `mcp__<serverName>__create_project`
+*   `mcp__<serverName>__generate_screen_from_text`
+
+`<serverName>` must match the name you configured in `mcpServers`.
+
 ## 🏗️ Architecture
 
 The skills are organized into logical layers to enable autonomous "Design -> Execute" loops.
@@ -81,9 +103,9 @@ stitch-skills/
     > "Use Stitch to design a cyberpunk login page."
 3.  **Watch**: The Agent will autonomously:
     *   **Analyze** style (Cyberpunk -> Dark/Neon) using `stitch-ui-design-spec-generator`.
-    *   **Create** a project using `stitch-mcp-project-create`.
+    *   **Create** a project by calling the MCP tool `create_project`.
     *   **Architect** a detailed prompt using `stitch-ui-prompt-architect`.
-    *   **Generate** the screen using `stitch-mcp-screen-generate`.
+    *   **Generate** the screen by calling the MCP tool `generate_screen_from_text`.
     *   **Return** the result.
 
 ## 🔒 Safety & Triggers
