@@ -14,6 +14,18 @@
 
 **Stitch Skills** is a collection of Agent Skills designed to empower AI agents (like Claude, Trae) to autonomously design and generate UI screens using the Stitch MCP. It follows the [Agent Skills Specification](https://agentskills.io/) and provides a "Self-Looping" design workflow.
 
+## 🔗 Official Resources
+
+Key documentation from the official Stitch team:
+
+*   **[Overview](https://stitch.withgoogle.com/docs/learn/overview/)**: Introduction to Stitch capabilities.
+*   **[Prompting Guide](https://stitch.withgoogle.com/docs/learn/prompting/)**: Best practices for writing effective design prompts.
+*   **[Device Types](https://stitch.withgoogle.com/docs/learn/device-types/)**: Understanding Mobile, Desktop, and Web layouts.
+*   **[Design Modes](https://stitch.withgoogle.com/docs/learn/design-modes/)**: Standard (Flash) vs Experimental (Pro) modes.
+*   **[Variants](https://stitch.withgoogle.com/docs/learn/variants/)**: Generating and managing design variations.
+*   **[Controls](https://stitch.withgoogle.com/docs/learn/controls/)**: Using interactive controls to refine designs.
+*   **[MCP Guide](https://stitch.withgoogle.com/docs/mcp/guide/)**: Technical guide for Model Context Protocol integration.
+
 ## 🏗️ Architecture
 
 The skills are organized into logical layers to enable autonomous "Design -> Execute" loops.
