@@ -10,8 +10,8 @@
   },
   "plugins": [
     {
-      "name": "stitch-skills",
-      "description": "Stitch UI 生成技能集合（编排器 + Prompt 工程 + Stitch MCP 工具调用规范）。",
+      "name": "stitch-ui",
+      "description": "Stitch UI 设计编排与提示词工程（大脑层）。",
       "source": "./",
       "strict": false,
       "skills": [
@@ -19,14 +19,30 @@
         "./skills/stitch-ui-design-spec-generator",
         "./skills/stitch-ui-prompt-architect",
         "./skills/stitch-ui-design-variants",
-        "./skills/stitch-ued-guide",
+        "./skills/stitch-ued-guide"
+      ]
+    },
+    {
+      "name": "stitch-mcp",
+      "description": "Stitch MCP 执行技能（双手层）。",
+      "source": "./",
+      "strict": false,
+      "skills": [
         "./skills/stitch-mcp-project-create",
         "./skills/stitch-mcp-project-list",
         "./skills/stitch-mcp-project-get",
         "./skills/stitch-mcp-screen-generate",
         "./skills/stitch-mcp-screen-list",
         "./skills/stitch-mcp-screen-get",
-        "./skills/stitch-mcp-screen-refine",
+        "./skills/stitch-mcp-screen-refine"
+      ]
+    },
+    {
+      "name": "stitch-tools",
+      "description": "Stitch 技能开发与生成工具。",
+      "source": "./",
+      "strict": false,
+      "skills": [
         "./skills/stitch-skill-creator"
       ]
     }
