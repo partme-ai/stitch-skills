@@ -7,37 +7,67 @@ description: A knowledge base of UED Interaction Guidelines and Prompt Engineeri
 
 This skill serves as a reference for User Experience Design (UED) guidelines when working with Stitch. It includes interaction principles, visual vocabulary, and prompt engineering strategies.
 
-## Visual Vocabulary
+## Design Modes (Model Selection)
 
-Use these terms when describing UI elements in prompts:
+Stitch operates in two distinct modes, which you should choose based on the user's need for speed vs. fidelity:
 
-### Layout Patterns
-*   **Hero Section**: Top area with main headline/image.
-*   **Split Screen**: Left/Right division (common in Desktop Auth).
-*   **Card Grid**: Grid of content cards.
-*   **Masonry**: Waterfall layout.
-*   **Sidebar Navigation**: Vertical nav on the left.
+*   **Standard Mode (Gemini 2.5 Flash)**
+    *   **Best for**: Rapid iteration, wireframing, exploring multiple layout ideas quickly.
+    *   **Features**: Fast generation, Text-to-UI, Theme editing.
+    *   **Use Case**: "Show me 3 different layout options for a login screen."
 
-### Style Modifiers
-*   **Flat**: No shadows, high saturation.
-*   **Material**: Shadows, layers, paper metaphor.
-*   **Neomorphism**: Soft shadows, extruded shapes.
-*   **Glassmorphism**: Blurred transparency.
-*   **Brutalism**: Raw, bold, high contrast.
-*   **Cyberpunk**: Neon, dark mode, futuristic.
+*   **Experimental Mode (Gemini 2.5 Pro)**
+    *   **Best for**: High-fidelity design, complex logic, visual references.
+    *   **Features**: Image-to-UI (Sketch/Screenshot upload), richer details, smarter component logic.
+    *   **Use Case**: "Turn this napkin sketch into a production-ready dashboard."
 
 ## Prompt Engineering Strategy
 
 A perfect Stitch prompt follows this structure:
 `[Context & Style]` + `[Layout Structure]` + `[Component Details]` + `[Content & Data]`
 
-### Example
-"Mobile screen for a meditation app. Minimalist and Zen aesthetic. Soft pastel colors. (Context & Style)
-Layout consists of a clean header, a mood selector, and a session list. (Layout)
-The mood selector contains circular icons with emojis. The session list uses card components. (Components)
-Use peaceful nature photography for thumbnails. Text should be calming. (Content)"
+### 1. Context & Style
+*   **Context**: "Mobile fitness app for gym goers."
+*   **Style**: "Dark mode with neon green accents (Cyberpunk). Rounded corners."
+*   **Reference**: "Similar to Spotify's dark theme but for fitness."
+
+### 2. Layout Structure
+*   **Mobile**: "Bottom navigation bar, scrollable feed."
+*   **Desktop**: "Left sidebar navigation, top header, main content area with data grid."
+*   **Grid**: "3-column card grid with responsive behavior."
+
+### 3. Component Details
+*   **Don't say**: "A list."
+*   **Do say**: "A vertical list of 'Workout Cards', each containing a map thumbnail, duration (e.g., '30 min'), and a 'Start' button."
+
+### 4. Content & Data
+*   **Realism**: Ask for realistic data. "User 'Alice', 'Morning Yoga', '300 kcal'."
+*   **State**: "Active state for the 'Home' tab."
+
+## Visual Vocabulary
+
+Use these terms to control the look and feel:
+
+### Layout Patterns
+*   **Hero Section**: Top area with main headline/image.
+*   **Split Screen**: Left/Right division (common in Desktop Auth).
+*   **Masonry**: Waterfall layout (Pinterest style).
+*   **Sidebar Navigation**: Vertical nav on the left (SaaS standard).
+
+### Style Modifiers
+*   **Flat**: No shadows, high saturation.
+*   **Material**: Shadows, layers, paper metaphor.
+*   **Neomorphism**: Soft shadows, extruded shapes.
+*   **Glassmorphism**: Blurred transparency, frosted glass.
+*   **Brutalism**: Raw, bold, high contrast, large typography.
 
 ## Device Guidelines
 
-*   **Mobile**: Width ~375px. Focus on thumb-friendly bottom navigation and vertical scrolling.
-*   **Desktop**: Width ~1440px. Use multi-column layouts and sidebar navigation.
+*   **Mobile**: ~375px width. Focus on thumb-friendly bottom navigation. Vertical scrolling is expected.
+*   **Desktop/Web**: ~1440px width. utilize horizontal space. Multi-column layouts.
+*   **Tablet**: Hybrid. often resembles desktop but with touch targets.
+
+## Controls & Variants
+
+*   **Variants**: Stitch generates multiple options. You can ask to "Generate variants for the hero section" to A/B test designs.
+*   **Controls**: Use the **Interactive Chat** to refine designs ("Make the button blue", "Move the logo to the center").

@@ -14,6 +14,18 @@
 
 **Stitch Skills** 是一个 Agent Skills 集合，旨在通过 Stitch MCP 赋能 AI 智能体（如 Claude, Trae）自主设计和生成 UI 界面。它遵循 [Agent Skills 规范](https://agentskills.io/) 并提供了一套 "自循环" 的设计工作流。
 
+## 🔗 官方资源 (Official Resources)
+
+来自 Google Stitch 官方团队的核心文档：
+
+*   **[概览 (Overview)](https://stitch.withgoogle.com/docs/learn/overview/)**: Stitch 能力介绍。
+*   **[提示词指南 (Prompting)](https://stitch.withgoogle.com/docs/learn/prompting/)**: 编写高效设计提示词的最佳实践。
+*   **[设备类型 (Device Types)](https://stitch.withgoogle.com/docs/learn/device-types/)**: 理解移动端、桌面端和 Web 布局。
+*   **[设计模式 (Design Modes)](https://stitch.withgoogle.com/docs/learn/design-modes/)**: 标准模式 (Flash) 与 实验模式 (Pro) 的区别。
+*   **[变体 (Variants)](https://stitch.withgoogle.com/docs/learn/variants/)**: 生成和管理设计变体。
+*   **[控件 (Controls)](https://stitch.withgoogle.com/docs/learn/controls/)**: 使用交互式控件优化设计。
+*   **[MCP 指南 (MCP Guide)](https://stitch.withgoogle.com/docs/mcp/guide/)**: Model Context Protocol 集成技术指南。
+
 ## 🏗️ 架构
 
 技能被组织成逻辑层，以实现自主的 "设计 -> 执行" 循环。
