@@ -1,0 +1,446 @@
+{
+  "name": "list_projects",
+  "description": "Lists all Stitch projects accessible to the user. By default, it lists projects owned by the user.\n\n**Input Requirements:**\n\n1.  **`filter` (string - OPTIONAL):** Filter for projects to list. Defaults to \"view=owned\" if not provided. The enum values are:\n    *   `\"view=owned\"`: To list only projects owned by the user.\n    *   `\"view=shared\"`: To list only projects shared with the user.\n",
+  "arguments": {
+    "type": "object",
+    "properties": {
+      "filter": {
+        "description": "Optional. A filter to apply to the list of projects, following a subset of AIP-160. This service supports filtering on the `view` field. Supported filters: * `view=owned`: Lists only projects owned by the user. This is the default behavior if no filter is specified. * `view=shared`: Lists only projects shared with the user. Example: `view=owned`",
+        "type": "string"
+      }
+    },
+    "description": "Request message for ListProjects."
+  },
+  "outputSchema": {
+    "type": "object",
+    "properties": {
+      "projects": {
+        "description": "The projects for the given user, sorted by update time from the most recent to the least recent. Adding a new session to an existing project is considered as an update to the project.",
+        "items": {
+          "$ref": "#/$defs/Project"
+        },
+        "type": "array"
+      }
+    },
+    "$defs": {
+      "DesignTheme": {
+        "description": "The theme of the design.",
+        "properties": {
+          "backgroundDark": {
+            "description": "Optional. The background color for dark mode (hex format, e.g., \"#1a1a1a\").",
+            "type": "string"
+          },
+          "backgroundLight": {
+            "description": "Optional. The background color for light mode (hex format, e.g., \"#f8f8f8\").",
+            "type": "string"
+          },
+          "colorMode": {
+            "description": "Optional. The mode of appearance of the design.",
+            "enum": [
+              "COLOR_MODE_UNSPECIFIED",
+              "LIGHT",
+              "DARK"
+            ],
+            "type": "string",
+            "x-google-enum-descriptions": [
+              "Unspecified color mode.",
+              "Light mode.",
+              "Dark mode."
+            ]
+          },
+          "customColor": {
+            "description": "Optional. A custom theme primary color.",
+            "type": "string"
+          },
+          "description": {
+            "description": "Optional. A brief description of the theme aesthetic.",
+            "type": "string"
+          },
+          "font": {
+            "description": "Optional. The font of the design.",
+            "enum": [
+              "FONT_UNSPECIFIED",
+              "BE_VIETNAM_PRO",
+              "EPILOGUE",
+              "INTER",
+              "LEXEND",
+              "MANROPE",
+              "NEWSREADER",
+              "NOTO_SERIF",
+              "PLUS_JAKARTA_SANS",
+              "PUBLIC_SANS",
+              "SPACE_GROTESK",
+              "SPLINE_SANS",
+              "WORK_SANS",
+              "DOMINE",
+              "LIBRE_CASLON_TEXT",
+              "EB_GARAMOND",
+              "LITERATA",
+              "SOURCE_SERIF_FOUR",
+              "MONTSERRAT",
+              "METROPOLIS",
+              "SOURCE_SANS_THREE",
+              "NUNITO_SANS",
+              "ARIMO",
+              "HANKEN_GROTESK",
+              "RUBIK",
+              "GEIST",
+              "DM_SANS",
+              "IBM_PLEX_SANS",
+              "SORA"
+            ],
+            "type": "string",
+            "x-google-enum-descriptions": [
+              "Unspecified font.",
+              "Be Vietnam Pro font.",
+              "Epilogue font.",
+              "Inter font.",
+              "Lexend font.",
+              "Manrope font.",
+              "Newsreader font.",
+              "Noto Serif font.",
+              "Plus Jakarta Sans font.",
+              "Public Sans font.",
+              "Space Grotesk font.",
+              "Spline Sans font.",
+              "Work Sans font.",
+              "Domine font.",
+              "Libre Caslon Text font.",
+              "EB Garamond font.",
+              "Literata font.",
+              "Source Serif 4 font.",
+              "Montserrat font.",
+              "Metropolis font.",
+              "Source Sans 3 font.",
+              "Nunito Sans font.",
+              "Arimo font.",
+              "Hanken Grotesk font.",
+              "Rubik font.",
+              "Geist font.",
+              "DM Sans font.",
+              "IBM Plex Sans font.",
+              "Sora font."
+            ]
+          },
+          "preset": {
+            "description": "Optional. The preset color of the design.",
+            "type": "string"
+          },
+          "roundness": {
+            "description": "Optional. The roundness of the design.",
+            "enum": [
+              "ROUNDNESS_UNSPECIFIED",
+              "ROUND_TWO",
+              "ROUND_FOUR",
+              "ROUND_EIGHT",
+              "ROUND_TWELVE",
+              "ROUND_FULL"
+            ],
+            "type": "string",
+            "x-google-enum-deprecated": [
+              false,
+              true,
+              false,
+              false,
+              false,
+              false
+            ],
+            "x-google-enum-descriptions": [
+              "Unspecified roundness.",
+              "Round 2. Unused.",
+              "Round 4.",
+              "Round 8.",
+              "Round 12 or full",
+              "Round full."
+            ]
+          },
+          "saturation": {
+            "description": "Optional. The saturation of the design between 1 and 4.",
+            "format": "int32",
+            "type": "integer"
+          }
+        },
+        "type": "object"
+      },
+      "File": {
+        "description": "A File resource.",
+        "properties": {
+          "downloadUrl": {
+            "description": "Optional. The URL of the file for download. For image files, this would be FIFE base URLs.",
+            "type": "string"
+          },
+          "name": {
+            "description": "Identifier. The resource name of the file. Format: projects/{project}/files/{file}",
+            "type": "string",
+            "x-google-identifier": true
+          },
+          "uploadBlobId": {
+            "description": "Optional. The BlobId from Scotty/contrib service file upload. This points to a temporary blobstore location of the file.",
+            "type": "string"
+          },
+          "userFeedback": {
+            "$ref": "#/$defs/UserFeedback",
+            "description": "Output only. The latest feedback submitted for the file.",
+            "readOnly": true
+          }
+        },
+        "type": "object"
+      },
+      "Project": {
+        "description": "A project is a single app.",
+        "properties": {
+          "backgroundTheme": {
+            "description": "Optional. The background theme of the project.",
+            "type": "string"
+          },
+          "createTime": {
+            "description": "Output only. The time when the project was created.",
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          },
+          "designTheme": {
+            "$ref": "#/$defs/DesignTheme",
+            "description": "Output only. The theme used to generate the first design in the project.",
+            "readOnly": true
+          },
+          "deviceType": {
+            "description": "Output only. The device type of the project.",
+            "enum": [
+              "DEVICE_TYPE_UNSPECIFIED",
+              "MOBILE",
+              "DESKTOP",
+              "TABLET",
+              "AGNOSTIC"
+            ],
+            "readOnly": true,
+            "type": "string",
+            "x-google-enum-descriptions": [
+              "Unspecified device type.",
+              "A design for a mobile device.",
+              "A design for a desktop device.",
+              "A design for a tablet device.",
+              "A design that is not tied to a specific device."
+            ]
+          },
+          "metadata": {
+            "$ref": "#/$defs/ProjectMetadata",
+            "description": "Metadata of the project."
+          },
+          "name": {
+            "description": "Identifier. The resource name of the project. Format: projects/{project}",
+            "type": "string",
+            "x-google-identifier": true
+          },
+          "origin": {
+            "description": "Output only. The origin of the project.",
+            "enum": [
+              "ORIGIN_UNSPECIFIED",
+              "STITCH",
+              "IMPORTED_FROM_GALILEO"
+            ],
+            "readOnly": true,
+            "type": "string",
+            "x-google-enum-descriptions": [
+              "Unspecified origin. By default, the project is created from Stitch.",
+              "The project is created from Stitch.",
+              "The project is imported from Galileo."
+            ]
+          },
+          "projectType": {
+            "description": "Optional. The type of the project. If not specified, the project is a text to UI project.",
+            "enum": [
+              "PROJECT_TYPE_UNSPECIFIED",
+              "TEXT_TO_UI",
+              "TEXT_TO_UI_PRO",
+              "TEXT_TO_UI_PRO_IMAGE_SPACE",
+              "IMAGE_TO_UI",
+              "IMAGE_TO_UI_PRO",
+              "PROJECT_DESIGN"
+            ],
+            "type": "string",
+            "x-google-enum-descriptions": [
+              "Unspecified project type. By default, the project is a text to UI project.",
+              "A text to UI project.",
+              "Pro version of text to UI project.",
+              "Deprecated. Pro version of text to UI project using image space for edits.",
+              "An image to UI project.",
+              "Deprecated.",
+              "A new design project."
+            ]
+          },
+          "readTime": {
+            "description": "Output only. The time the project was last read. Populated only when listing recently viewed projects.",
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          },
+          "screenInstances": {
+            "description": "Output only. The screen instances on this project.",
+            "items": {
+              "$ref": "#/$defs/ScreenInstance"
+            },
+            "readOnly": true,
+            "type": "array"
+          },
+          "thumbnailScreenshot": {
+            "$ref": "#/$defs/File",
+            "description": "Optional. The screenshot to be used as the thumbnail for the project. Same as normal design screenshots, this contains the FIFE serving_base_url which requires additional FIFE URL options to be set for sizing."
+          },
+          "title": {
+            "description": "Optional. The title of the project.",
+            "type": "string"
+          },
+          "updateTime": {
+            "description": "Output only. The time when the project was last updated.",
+            "format": "date-time",
+            "readOnly": true,
+            "type": "string"
+          },
+          "visibility": {
+            "description": "Optional. The visibility setting of the project.",
+            "enum": [
+              "VISIBILITY_UNSPECIFIED",
+              "PUBLIC",
+              "PRIVATE"
+            ],
+            "type": "string",
+            "x-google-enum-descriptions": [
+              "Unspecified visibility. By default, the project is private.",
+              "The project is visible to all users, and may be featured in the feed.",
+              "The project is visible to only the creator."
+            ]
+          }
+        },
+        "type": "object"
+      },
+      "ProjectMetadata": {
+        "description": "Metadata relating to the project.",
+        "properties": {
+          "isRemixed": {
+            "description": "Whether this project was remixed or not. This allows the frontend to avoid polling for sessions since none will exist for a remixed project.",
+            "type": "boolean"
+          },
+          "userRole": {
+            "description": "The Role of the user accessing the project.",
+            "enum": [
+              "ROLE_UNSPECIFIED",
+              "OWNER",
+              "READER"
+            ],
+            "type": "string",
+            "x-google-enum-descriptions": [
+              "go/protodosdonts#unspecified-enum",
+              "Represents the project owner (whose user_id is part of the primary key for Spanner)",
+              "Represents users with permission to view the project and its assets"
+            ]
+          }
+        },
+        "type": "object"
+      },
+      "ScreenInstance": {
+        "description": "An instance of a screen on the project.",
+        "properties": {
+          "groupId": {
+            "description": "Optional. Group identifier for Genie Agent output grouping. Screens with the same groupId are rendered and interact as a group.",
+            "type": "string"
+          },
+          "groupName": {
+            "description": "Optional. Human-readable name for the group (e.g., \"Warm Minimalism\", \"Ethereal Glow\").",
+            "type": "string"
+          },
+          "height": {
+            "description": "Optional. The screen height.",
+            "format": "int32",
+            "type": "integer"
+          },
+          "hidden": {
+            "description": "Optional. User driven action hiding screen from the canvas.",
+            "type": "boolean"
+          },
+          "id": {
+            "description": "Optional. The screen instance id.",
+            "type": "string"
+          },
+          "label": {
+            "description": "Optional. The screen label.",
+            "type": "string"
+          },
+          "sourceScreen": {
+            "description": "Optional. The resource name of the source screen. Format: projects/{project}/screens/{screen}",
+            "type": "string"
+          },
+          "variantScreenInstance": {
+            "$ref": "#/$defs/ScreenInstance",
+            "description": "Optional. The variant Screen Instance."
+          },
+          "width": {
+            "description": "Optional. The screen width.",
+            "format": "int32",
+            "type": "integer"
+          },
+          "x": {
+            "description": "Optional. The x position of the screen.",
+            "format": "int32",
+            "type": "integer"
+          },
+          "y": {
+            "description": "Optional. The y position of the screen.",
+            "format": "int32",
+            "type": "integer"
+          }
+        },
+        "type": "object"
+      },
+      "UserFeedback": {
+        "description": "User feedback for a given interaction.",
+        "properties": {
+          "comment": {
+            "description": "Optional. Additional comment for the rating.",
+            "type": "string"
+          },
+          "designFeedbackReason": {
+            "description": "Optional. The reason for the feedback for a design, if the rating is negative.",
+            "enum": [
+              "DESIGN_FEEDBACK_REASON_UNSPECIFIED",
+              "DESIGN_DOESNT_MATCH_PROMPT",
+              "EDIT_DOESNT_MATCH_PROMPT",
+              "DESCRIPTION_DOESNT_MATCH",
+              "COMPONENT_ISSUE",
+              "INCORRECT_THEME",
+              "FIGMA_EXPORT_FAILED",
+              "OTHER"
+            ],
+            "type": "string",
+            "x-google-enum-descriptions": [
+              "Unspecified reason.",
+              "The design does not match the prompt.",
+              "The edit does not match the prompt.",
+              "The description does not match the design.",
+              "There is an issue with a component in the design.",
+              "The theme is incorrect.",
+              "The Figma export failed.",
+              "Other reason."
+            ]
+          },
+          "rating": {
+            "description": "Optional. The user rating of the interaction.",
+            "enum": [
+              "RATING_UNSPECIFIED",
+              "POSITIVE",
+              "NEGATIVE"
+            ],
+            "type": "string",
+            "x-google-enum-descriptions": [
+              "Unspecified rating.",
+              "Positive rating.",
+              "Negative rating."
+            ]
+          }
+        },
+        "type": "object"
+      }
+    },
+    "description": "Response message for ListProjects."
+  }
+}

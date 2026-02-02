@@ -1,0 +1,54 @@
+# AGENTS.md
+
+This document provides guidance for AI coding agents (Claude Code, Cursor, Copilot, etc.) working within this repository.
+
+## Repository Overview
+
+A collection of Agent Skills for Stitch UI Generation. Skills are packaged instructions and scripts that extend Claude's capabilities.
+
+## Skill Structure
+
+```
+skills/
+  {skill-name}/           # kebab-case directory name
+    SKILL.md              # Required: skill definition
+    examples/             # Required: usage examples
+      usage.md
+    LICENSE.txt           # Required: license file
+```
+
+## SKILL.md Format
+
+```markdown
+---
+name: {skill-name}
+description: {One sentence describing when to use this skill.}
+---
+
+# {Skill Title}
+
+{Brief description of what the skill does.}
+
+## Tools
+
+{List of MCP tools wrapped by this skill, if any}
+
+## Usage Patterns
+
+{How to use this skill effectively}
+```
+
+## Context Efficiency Best Practices
+
+Skills are loaded on demand. To reduce context usage:
+- **Keep SKILL.md under 500 lines**.
+- **Write specific descriptions** to help the agent decide when to activate.
+- **Progressive disclosure**: Reference supporting files, read only when needed.
+
+## Installing for End Users
+
+**Claude Code:**
+```bash
+/plugin marketplace add partme-ai/stitch-skills
+/plugin install stitch-ui-designer@stitch-skills
+```
