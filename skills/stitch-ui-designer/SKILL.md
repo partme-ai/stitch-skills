@@ -12,79 +12,70 @@ This is the entry point for all UI design tasks. It acts as the **"Orchestrator 
 
 **CRITICAL PREREQUISITE:**
 **You must ONLY use this skill when the user EXPLICITLY mentions "Stitch" in their request.**
-*   ✅ "Use Stitch to design a login page"
-*   ✅ "Help me design a dashboard with Stitch"
-*   ❌ "Design a login page" (Ignore, unless previous context established Stitch)
 
 **Use this skill when:**
 - The user asks to "Design a UI", "Create a screen", "Make an app page" **using Stitch**.
 - The user provides a high-level design request (e.g., "I need a dashboard for my SaaS") **and mentions Stitch**.
-- You want to execute the full "Think -> Plan -> Execute" design loop.
-- You are unsure which specific atomic skill to call first.
 
 **Trigger phrases include:**
 - "Use Stitch to design..." (使用 Stitch 设计...)
 - "Stitch me a UI for..." (用 Stitch 帮我生成 UI)
-- "Create a Stitch project" (创建一个 Stitch 项目)
-- "Stitch generate screen" (Stitch 生成页面)
 
 ## How to use this skill (SOP)
 
-When the user asks to design a UI, follow this **Self-Looping Process** immediately. **Do not stop to ask for confirmation.**
-
 ### Step 1: Design Analysis & Strategy
 1.  **Analyze Intent**: Is this a generic screen or a specific scenario?
-    *   *Check for Specialized Skills*: Search for available `stitch-ui-*-designer` skills that match the request (e.g., Music, Login).
-    *   *If Match Found* -> Use the specialized skill.
-    *   *If No Match* -> Proceed to Step 2 (General Flow).
-2.  **Consult Guidelines (Implicit)**: Apply principles from `stitch-ued-guide` (e.g., mobile-first, visual hierarchy).
+2.  **Consult Guidelines (Implicit)**: Apply principles from `stitch-ued-guide`.
 
 ### Step 2: Specification Generation (The "Brain")
-*If a specific Scenario Skill was selected in Step 1, skip to Step 3.*
-
 1.  **Invoke `stitch-ui-design-spec-generator`**:
     *   Input: User's raw request.
     *   Output: Structured `Design Spec` JSON (Theme, Device, Style, Mode).
-    *   *Reasoning*: This ensures we have concrete parameters (e.g., "Dark Mode", "Mobile") before writing the prompt.
 
 ### Step 3: Prompt Architecture (The "Pen")
-1.  **If Scenario Skill Selected**:
-    *   **Invoke Scenario Skill** (e.g., `stitch-ui-music-designer`).
-    *   Input: User request + inferred style.
-    *   Output: A highly specialized, battle-tested Stitch Prompt.
-2.  **If General Flow**:
-    *   **Invoke `stitch-ui-prompt-architect`**.
-    *   Input: User request + `Design Spec` from Step 2.
-    *   Output: A structured Stitch Prompt following the `[Context] [Layout] [Components]` formula.
+1.  **Generate Prompt**:
+    *   Use `stitch-ui-prompt-architect` or specialized scenario skills.
+    *   **Output**: A structured Stitch Prompt following the `[Context] [Layout] [Components]` formula.
 
-### Step 4: Project Context (The "Canvas")
-1.  **Check Context**: Do we have an active `projectId` in conversation history?
-2.  **If No**: Invoke `stitch-mcp-project-create`.
-    *   Title: Derived from user request (e.g., "Cyberpunk Auth App").
-    *   *Action*: Store the returned `name` (Project ID).
-3.  **If Yes**: Use existing ID.
+### Step 4: Execution Strategy (The "Hand") - CRITICAL CHECK
 
-### Step 5: Execution (The "Hand")
-1.  **Invoke `stitch-mcp-screen-generate`**:
-    *   `projectId`: From Step 4.
-    *   `prompt`: The **Final Prompt** from Step 3.
-    *   `deviceType`: From Design Spec or Scenario Default.
-    *   `modelId`: `GEMINI_3_PRO` (Always use Pro for design tasks).
+**Check your available tools (MCP tools, not skill names):**
 
-### Step 6: Presentation
-1.  **Show Result**: Present the generated screen screenshot.
-2.  **Self-Correction (Optional)**: If the result looks wrong (e.g., text overlap), internally trigger `stitch-mcp-screen-refine` before showing to user (Advanced).
+Look for Stitch MCP tool names defined in `docs/*.json`:
 
-## Best Practices
+*   `create_project`
+*   `generate_screen_from_text`
 
-1.  **Bias for Action**: Don't ask "Should I create a project?". Just create it. Don't ask "What style?". Infer it or use `stitch-ui-design-spec-generator`.
-2.  **Self-Correction**: If a tool call fails (e.g., invalid ID), try to list projects to find the correct ID, or create a new one.
-3.  **Show, Don't Just Tell**: Always display the visual result (Screenshot URL).
+Some clients namespace MCP tools and may expose them as:
+
+*   `mcp__<serverName>__create_project`
+*   `mcp__<serverName>__generate_screen_from_text`
+
+#### Scenario A: Tools ARE Available (Happy Path)
+1.  **Create Project**: Invoke `create_project` (or `mcp__<serverName>__create_project`).
+    *   Store both:
+        *   Project resource name: `projects/{id}` (for `list_screens`)
+        *   Numeric project id: `{id}` (for `generate_screen_from_text` and `get_screen`)
+2.  **Generate Screen**: Invoke `generate_screen_from_text` (or `mcp__<serverName>__generate_screen_from_text`).
+    *   Pass the **Prompt** from Step 3.
+    *   **DO NOT** ask for confirmation. Execute immediately.
+3.  **Retrieve Screens**: Invoke `list_screens` with `projectId` in `projects/{id}` format.
+4.  **Get Screen**: Pick the latest/target `screenId` and invoke `get_screen` to retrieve screenshot and HTML assets.
+
+#### Scenario B: Tools ARE NOT Available (Fallback Mode)
+**STOP! Do not fake the execution.**
+1.  **Inform the User**: "Stitch MCP tools are not detected in this environment."
+2.  **Output the Prompt**: Display the generated Prompt in a **Code Block** so the user can copy-paste it into the Stitch Website.
+    ```text
+    [Paste Prompt Here]
+    ```
+3.  **End Turn**: Do not try to run `uniappx` or other scripts.
+
+## Anti-Patterns (Strict Prohibitions)
+*   ⛔ **NO FAKE SUCCESS**: If you didn't get a real API response, do not say "Project Created".
+*   ⛔ **NO APP SCAFFOLDING**: Do not invoke any external project scaffolding skills (e.g., `uniappx-project-creator`, `flutter-project-creater`, `react-native-project-creater`) and do not run scripts to create codebases.
+*   ⛔ **NO CODING**: Do not write Vue/React/HTML code in this flow. This skill is for **Design Generation** only.
+*   ⛔ **NO CONFUSION**: A "Stitch Project" is a design workspace, NOT a code repository.
 
 ## Keywords
-
-**English keywords:**
-orchestrator, design agent, ui designer, master skill, design flow, automated design, stitch pilot
-
-**Chinese keywords (中文关键词):**
-设计编排, UI代理, 设计助手, 全流程设计, 自动设计, 界面生成向导
+orchestrator, design agent, ui designer, master skill, design flow, stitch pilot

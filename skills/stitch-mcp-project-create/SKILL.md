@@ -26,7 +26,8 @@ license: Complete terms in LICENSE.txt
     *   *User*: "Design a cyberpunk blog." -> *Title*: "Cyberpunk Blog"
     *   *User*: "Make a login page." -> *Title*: "Login Page Project" (Generic)
 
-2.  **Call the Tool**: Invoke `stitch-mcp-project-create` with the `title`.
+2.  **Call the MCP Tool**: Invoke `create_project` with the `title`.
+    *   If your client namespaces MCP tools, call `mcp__<serverName>__create_project`.
 
 3.  **Handle the Output (CRITICAL)**:
     *   The tool returns a `name` field (e.g., `projects/123456`).
@@ -34,8 +35,8 @@ license: Complete terms in LICENSE.txt
     *   *Example*: `projects/123456` -> `123456`.
     *   Store **BOTH** the full name (`projects/123...`) and the numeric ID (`123...`) in your context.
     *   **Usage Rule**:
-        *   Use **Numeric ID** (`123...`) for `stitch-mcp-screen-generate` and `stitch-mcp-screen-get`.
-        *   Use **Full Name** (`projects/123...`) for `stitch-mcp-screen-list` and `stitch-mcp-project-get`.
+    *   Use **Numeric ID** (`123...`) for `generate_screen_from_text` and `get_screen`.
+    *   Use **Full Name** (`projects/123...`) for `list_screens` and `get_project`.
 
 ## Best Practices
 

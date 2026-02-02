@@ -4,6 +4,14 @@ description: Generates high-fidelity UI screens or wireframes from text descript
 license: Complete terms in LICENSE.txt
 ---
 
+## Tools
+
+This skill is designed to call the Stitch MCP tool:
+
+*   `generate_screen_from_text`
+
+If your client namespaces MCP tools, it may appear as `mcp__<serverName>__generate_screen_from_text`.
+
 ## When to use this skill
 
 **CRITICAL PREREQUISITE:**
@@ -14,6 +22,7 @@ license: Complete terms in LICENSE.txt
 - Asks to "Design", "Generate", "Create", or "Make" a screen **using Stitch**.
 - Provides specific visual requirements ("Dark mode", "Blue button") for a Stitch generation.
 - Wants to visualize a wireframe or concept **via Stitch**.
+- Is in the **Step 5** of the `stitch-ui-designer` SOP workflow.
 
 **Trigger phrases include:**
 - "Use Stitch to design a screen" (用 Stitch 设计一个页面)
@@ -32,6 +41,15 @@ The skill expects you to extract the following information from the user request
     *   Values: `GEMINI_3_PRO` (Recommended for quality), `GEMINI_3_FLASH` (Speed).
 
 ## How to use this skill
+
+### 0. Call the MCP Tool
+
+Invoke `generate_screen_from_text` with:
+
+*   `projectId` (pure numeric string, no `projects/`)
+*   `prompt`
+*   `deviceType` (optional)
+*   `modelId` (optional)
 
 ### 1. Constructing the Prompt (The Art of Prompting)
 The `prompt` argument is the most critical factor for quality. Do not just pass the user's raw input. You **MUST** enrich it using the **Structure Strategy**:
@@ -59,12 +77,16 @@ The `prompt` argument is the most critical factor for quality. Do not just pass 
 2.  **Color Precision**: Mention specific colors (e.g., "Emerald Green", "#FF5733") if the user specifies them.
 3.  **Content Realism**: Ask for realistic text placeholders (e.g., "Welcome back, Alice" instead of "Lorem Ipsum").
 4.  **Device Alignment**: Ensure the `prompt` description matches the `deviceType` (e.g., don't ask for a "Sidebar" on `MOBILE`).
+5.  **No Code Generation**: This skill generates **Visual Designs**, not implementation code. Do not confuse with coding skills (like `uniappx-project-creator`).
 
 ## Output Handling
 
-Returns a `design` object. You should:
-1.  **Present the Screenshot**: Use the `screenshot.downloadUrl` to show the user the result.
-2.  **Offer Code**: Mention that HTML/Figma exports are available via `stitch-mcp-screen-get`.
+`generate_screen_from_text` returns session info (e.g., `sessionId` and `outputComponents`). It may not return a screenshot directly.
+
+After the generation completes, retrieve the resulting screen(s) via:
+
+1.  `list_screens` with `projectId` in the format `projects/{id}`.
+2.  `get_screen` with the selected `screenId` to fetch screenshot / html assets.
 
 ## Keywords
 
