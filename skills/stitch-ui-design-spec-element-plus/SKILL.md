@@ -1,61 +1,95 @@
-# Element Plus Design Specification (Stitch Integration)
+---
+name: stitch-ui-design-spec-element-plus
+description: Element Plus design spec tool for Stitch (Vue 3 / Desktop): outputs hard-constraints prefix or selector JSON + assembled prompt.
+---
 
-## 1. Skill Identity
+# Element Plus Design Spec (Element Plus / Vue 3)
 
-- **Name**: `stitch-ui-design-spec-element-plus`
-- **Description**: Provides design constraints and style tokens for Element Plus (Vue 3) to ensure generated UIs are consistent with the Element Plus design system.
-- **Trigger**: User mentions "Element Plus", "Element", "el-plus", "Element UI".
-- **Role**: `Spec Provider` (Passive). This skill does not execute actions but provides `[Context]` to the prompt.
+**Constraint**: Only use this skill when the user explicitly mentions "Stitch".
 
-## 2. Trigger Logic
+## Purpose
 
-- **Pattern**: `(Stitch) + (Element Plus | Element | el-plus | Element UI)`
-- **Mapping**: `element`, `element-plus`, `el-plus`, `element-ui` -> use `stitch-ui-design-spec-element-plus`
+This skill makes the Element Plus design spec executable in two modes:
 
-## 3. Output Behavior
+1) **Prefix mode**: output a paste-ready **Hard constraints prefix** for Stitch `[Context]`.
+2) **Selector mode**: output `CONTRACT_SELECTION_JSON_V1` and then an assembled Stitch prompt that injects only the required component/state snippets.
 
-### Prefix mode (Default)
-When the user asks to "Design a screen using Element Plus style", this skill injects a **Hard Constraint Block** at the beginning of the prompt.
+## Trigger Keywords
 
-**Return exactly one code block:**
+Prefer this skill when the user request includes any of:
 
-```markdown
-[Context: Design System Constraints]
-- **Framework**: Element Plus (Vue 3).
-- **Design Tokens**:
-  - **Colors**: Primary=#409EFF (Brand Blue), Success=#67C23A, Warning=#E6A23C, Danger=#F56C6C, Info=#909399.
-  - **Typography**: Font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", Arial, sans-serif.
-  - **Spacing**: Default layout spacing 20px. Use `<el-space>` or padding/margin utilities.
-  - **Radius**: Base=4px, Small=2px, Round=20px.
-  - **Shadows**: `var(--el-box-shadow-light)`, `var(--el-box-shadow)`.
-- **Component Contracts**:
-  - **Buttons**: Use `<el-button type="...">`.
-  - **Grid**: Use `<el-row :gutter="20">` and `<el-col :span="...">`.
-  - **Forms**: Use `<el-form>`, `<el-form-item>`, `<el-input>`, `<el-select>`.
-  - **Cards**: Use `<el-card shadow="hover">` with `#header`.
-  - **Icons**: Use `@element-plus/icons-vue`. Usage: `<el-icon><Plus /></el-icon>`.
-- **Layout Invariants**:
-  - Always use `el-container`, `el-header`, `el-aside`, `el-main`, `el-footer` for full-page layouts.
-  - Use `el-row` / `el-col` for responsive grids (24-column system).
+- `element`, `element-plus`, `el-plus`, `element-ui`
+
+Chinese trigger keywords (only for triggering):
+
+- `element 风格`
+- `饿了么组件库`
+- `后台管理系统` (if context implies Element Plus)
+
+## Source of Truth
+
+- `references/contract.md`
+- `references/examples.md`
+- `references/official.md`
+
+## Output (STRICT)
+
+Decide the mode by the user intent:
+
+- If the user asks for **beautify/polish/refine an existing screen**, or asks for **selector / JSON / contracts.include / states.include** → use **Selector mode**.
+- Otherwise → use **Prefix mode**.
+
+### Prefix mode
+
+Return exactly one code block:
+
+```text
+[Hard constraints prefix]
+- Framework: Element Plus (Vue 3).
+- Design Tokens:
+  - Colors: Primary=#409EFF (Blue), Success=#67C23A, Warning=#E6A23C, Danger=#F56C6C, Info=#909399.
+  - Typography: Font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", Arial, sans-serif.
+  - Radius: Small=2px, Base=4px, Round=20px.
+- Component Contracts:
+  - Layout: Use <el-row :gutter="20"> and <el-col :span="...">. Container: <el-container>, <el-header>, <el-main>.
+  - Buttons: Use <el-button type="primary" plain/round>.
+  - Forms: Use <el-form>, <el-form-item>, <el-input>, <el-select>, <el-switch>, <el-checkbox>.
+  - Data: <el-table>, <el-descriptions>, <el-timeline>, <el-carousel>, <el-empty>.
+  - Cards: Use <el-card shadow="hover"> with #header slot.
+  - Icons: Use <el-icon><Edit /></el-icon> (from @element-plus/icons-vue).
+  - Navigation: <el-menu>, <el-breadcrumb>, <el-tabs>, <el-steps>.
+  - Feedback: Use ElMessage.success() for JS feedback, <el-alert>, <el-dialog>, <el-drawer>.
+- Layout Invariants:
+  - Always use 24-column grid system.
+  - Use el-space for inline spacing.
 ```
 
-### Selector mode (Refinement)
-When the user asks to "Fix the button style" or "Make it more Element-like", inject specific component rules.
+### Selector mode
 
-**Return JSON:**
+Return exactly two code blocks, in this order, with no extra prose:
+
+1) Contract selection JSON:
+
 ```json
 {
-  "target_component": "el-button",
-  "rules": [
-    "Use 'type' prop (primary, success, danger) for coloring",
-    "Use 'plain' prop for outlined style",
-    "Use 'round' or 'circle' for shape"
-  ]
+  "version": "CONTRACT_SELECTION_JSON_V1",
+  "designSystem": "element-plus",
+  "mode": "selector",
+  "contracts": { "include": [] },
+  "states": { "include": [] }
 }
 ```
 
-## 4. References
+2) Final Stitch prompt:
 
-- [Contract Definitions](./references/contract.md)
-- [Official Documentation](./references/official.md)
-- [Usage Examples](./references/examples.md)
+```text
+[Context]
+(Paste Hard Constraints Prefix here)
+(Add "Layout Invariants" from contract.md if beautifying)
+
+[Layout]
+(Describe the macro layout structure, e.g., "Admin Dashboard Layout with Sidebar")
+
+[Components]
+(Inject component snippets matching the JSON selection above)
+```

@@ -130,6 +130,15 @@ Table (layui-table style):
 - Text: 14px #666.
 ```
 
+### Other Components
+```text
+- PageHeader: <lay-page-header content="Detail" @back="onBack" />
+- Result: <lay-result status="success" title="Success" describe="Check details" />
+- Skeleton: <lay-skeleton :rows="4" />
+- Timeline: <lay-timeline><lay-timeline-item title="Step 1">...</lay-timeline-item></lay-timeline>
+- Space: <lay-space direction="vertical" size="md">...</lay-space> (For layout gaps)
+```
+
 ---
 
 ## Stitch Prompt Prefix (paste-ready)

@@ -49,10 +49,18 @@
 ### Navigation
 - **Navbar**: `<up-navbar title="Home" @leftClick="leftClick" :autoBack="true">`
 - **Tabs**: `<up-tabs :list="list1" @click="click"></up-tabs>`
+- **IndexList**: `<up-index-list :indexList="indexList">...</up-index-list>` (Contact list style)
+
+### List & Data
+- **SwipeAction**: `<up-swipe-action><up-swipe-action-item ...>...</up-swipe-action-item></up-swipe-action>`
+- **List**: `<up-list @scrolltolower="scrolltolower">...</up-list>` (Load more)
+- **Grid Menu**: `<up-grid :col="3">...</up-grid>`
+- **Waterfall**: `<up-waterfall v-model="flowList">...</up-waterfall>` (Masonry layout)
 
 ### Feedback
 - **Toast**: `<up-toast ref="uToast"></up-toast>`
 - **JS Usage**: `uni.$u.toast('Hello')` (Note: uView Pro hangs tools on `uni.$u`)
+- **Code**: `<up-code :seconds="60" @end="end"></up-code>` (SMS verification countdown)
 
 ## 3. Icons
 - **Tag**: `<up-icon name="photo" color="#2979ff" size="28"></up-icon>`

@@ -43,7 +43,25 @@ Decide the mode by the user intent:
 Return exactly one code block:
 
 ```text
-[Hard constraints prefix...]
+[Hard constraints prefix]
+- Framework: Vant 4 (Vue 3 / Mobile).
+- Design Tokens:
+  - Colors: Primary=#1989fa (Blue), Success=#07c160, Warning=#ff976a, Danger=#ee0a24.
+  - Background: Page=#f7f8fa, Card=#ffffff.
+  - Typography: Base 14px.
+  - Radius: sm=2px, md=4px, lg=8px.
+- Component Contracts:
+  - Layout: Use <van-row>, <van-col span="...">. Container: <van-config-provider>.
+  - List/Card: Use <van-cell-group inset> for card style groups.
+  - Buttons: Use <van-button type="primary" round block>.
+  - Forms: Use <van-form>, <van-field>, <van-search>, <van-picker>, <van-date-picker>.
+  - Business: <van-card> (Product), <van-submit-bar>, <van-address-list>, <van-coupon-list>.
+  - Navigation: <van-nav-bar>, <van-tabbar>, <van-sidebar>, <van-tabs>.
+  - Feedback: <van-action-sheet>, <van-swipe-cell>, <van-empty>.
+- Layout Invariants:
+  - Mobile First (375px base).
+  - Use Flexbox for alignment.
+  - Respect Safe Area.
 ```
 
 ### Selector mode
@@ -53,18 +71,25 @@ Return exactly two code blocks, in this order, with no extra prose:
 1) Contract selection JSON:
 
 ```json
-{ ... }
+{
+  "version": "CONTRACT_SELECTION_JSON_V1",
+  "designSystem": "vant4",
+  "mode": "selector",
+  "contracts": { "include": [] },
+  "states": { "include": [] }
+}
 ```
 
 2) Final Stitch prompt:
 
 ```text
 [Context]
-...
+(Paste Hard Constraints Prefix here)
+(Add "Layout Invariants" from contract.md if beautifying)
 
 [Layout]
-...
+(Describe the macro layout structure, e.g., "Mobile Column Layout with Navbar")
 
 [Components]
-...
+(Inject component snippets matching the JSON selection above)
 ```

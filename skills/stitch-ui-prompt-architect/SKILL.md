@@ -41,7 +41,12 @@ If the user request includes a named style constraint (e.g., "uview 风格"), pr
 
 Mapping:
 
-*   `uview`, `uview2`, `uview2.0`, `u-view` -> use `stitch-ui-design-spec-uview` output as prefix
+*   `uview-pro`, `uviewpro` -> use `stitch-ui-design-spec-uviewpro` output as prefix
+*   `uview`, `uview2` -> use `stitch-ui-design-spec-uview` output as prefix
+*   `element`, `element-plus` -> use `stitch-ui-design-spec-element-plus` output as prefix
+*   `vant`, `vant4` -> use `stitch-ui-design-spec-vant` output as prefix
+*   `layui`, `layui-vue` -> use `stitch-ui-design-spec-layui` output as prefix
+*   `bootstrap`, `bs-vue` -> use `stitch-ui-design-spec-bootstrap` output as prefix
 
 ### 1.6 Contract Selection JSON (Components + States)
 

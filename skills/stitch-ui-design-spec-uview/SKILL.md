@@ -46,7 +46,24 @@ Decide the mode by the user intent:
 Return exactly one code block:
 
 ```text
-[Hard constraints prefix...]
+[Hard constraints prefix]
+- Framework: uView 2.0 (uni-app / Vue 2).
+- Design Tokens:
+  - Colors: Primary=#3c9cff, Success=#5ac725, Warning=#f9ae3d, Error=#f56c6c, Info=#909399.
+  - Background: #f3f4f6. Border: #dadbde.
+  - Spacing: 4, 8, 12, 16, 20, 24, 32, 40 (px).
+  - Radius: 8, 12, 999 (px).
+- Component Contracts:
+  - Layout: Use <u-row> and <u-col span="...">.
+  - Forms: Use <u--form> (note double dash), <u--input border="surround">.
+  - Buttons: Use <u-button type="primary">.
+  - Navbar: Use <u-navbar title="..." :autoBack="true">.
+  - List: <u-swipe-action>, <u-index-list>, <u-waterfall>.
+  - Feedback: Use this.$refs.uToast.show({...}), <u-code> (SMS).
+- Layout Invariants:
+  - No gradients as default style.
+  - Minimal shadows.
+  - Transitions: 200ms ease-out.
 ```
 
 ### Selector mode
@@ -56,18 +73,25 @@ Return exactly two code blocks, in this order, with no extra prose:
 1) Contract selection JSON:
 
 ```json
-{ ... }
+{
+  "version": "CONTRACT_SELECTION_JSON_V1",
+  "designSystem": "uview2",
+  "mode": "selector",
+  "contracts": { "include": [] },
+  "states": { "include": [] }
+}
 ```
 
 2) Final Stitch prompt:
 
 ```text
 [Context]
-...
+(Paste Hard Constraints Prefix here)
+(Add "Layout Invariants" from contract.md if beautifying)
 
 [Layout]
-...
+(Describe the macro layout structure, e.g., "Mobile Column Layout with Navbar")
 
 [Components]
-...
+(Inject component snippets matching the JSON selection above)
 ```

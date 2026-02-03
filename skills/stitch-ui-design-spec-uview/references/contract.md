@@ -112,12 +112,20 @@ Forbidden:
 - **Input**: `<u--input>` or `<u-input>` with `border="surround"`.
 - **Button**: `<u-button type="primary" text="Submit"></u-button>`.
 
+### Navigation
+- **Navbar**: `<u-navbar title="Title" @leftClick="leftClick" :autoBack="true">`.
+- **Tabs**: `<u-tabs :list="list1"></u-tabs>`.
+- **Steps**: `<u-steps :current="1">...</u-steps>`.
+
+### List & Data
+- **SwipeAction**: `<u-swipe-action><u-swipe-action-item ...>...</u-swipe-action-item></u-swipe-action>`.
+- **IndexList**: `<u-index-list :indexList="indexList">...</u-index-list>`.
+- **Waterfall**: `<u-waterfall v-model="flowList">...</u-waterfall>`.
+
 ### Feedback
 - **Toast**: Use `this.$refs.uToast.show({...})`.
 - **Modal**: `<u-modal :show="show" ...>`.
-
-### Navigation
-- **Navbar**: `<u-navbar title="Title" @leftClick="leftClick" :autoBack="true">`.
+- **Code**: `<u-code :seconds="60" ref="uCode" @change="codeChange"></u-code>`.
 
 ---
 

@@ -38,13 +38,26 @@
       ]
     },
     {
+      "name": "stitch-specs",
+      "description": "Stitch UI 框架设计规范与约束（规范层）。",
+      "source": "./",
+      "strict": false,
+      "skills": [
+        "./skills/stitch-ui-design-spec-uview",
+        "./skills/stitch-ui-design-spec-uviewpro",
+        "./skills/stitch-ui-design-spec-layui",
+        "./skills/stitch-ui-design-spec-bootstrap",
+        "./skills/stitch-ui-design-spec-element-plus",
+        "./skills/stitch-ui-design-spec-vant"
+      ]
+    },
+    {
       "name": "stitch-tools",
       "description": "Stitch 技能开发与生成工具。",
       "source": "./",
       "strict": false,
       "skills": [
-        "./skills/stitch-skill-creator",
-        "./skills/stitch-ui-design-spec-uview"
+        "./skills/stitch-skill-creator"
       ]
     }
   ]

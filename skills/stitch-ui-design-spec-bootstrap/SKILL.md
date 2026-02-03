@@ -1,62 +1,92 @@
-# Bootstrap-Vue Design Specification (Stitch Integration)
+---
+name: stitch-ui-design-spec-bootstrap
+description: Bootstrap-Vue design spec tool for Stitch (Bootstrap 5 / Vue): outputs hard-constraints prefix or selector JSON + assembled prompt.
+---
 
-## 1. Skill Identity
+# Bootstrap Design Spec (Bootstrap 5 / Vue)
 
-- **Name**: `stitch-ui-design-spec-bootstrap`
-- **Description**: Provides design constraints and style tokens for BootstrapVue (Vue 3 + Bootstrap 5/4 style) to ensure generated UIs are consistent with the Bootstrap design system.
-- **Trigger**: User mentions "Bootstrap", "BootstrapVue", "bs-vue".
-- **Role**: `Spec Provider` (Passive). This skill does not execute actions but provides `[Context]` to the prompt.
+**Constraint**: Only use this skill when the user explicitly mentions "Stitch".
 
-## 2. Trigger Logic
+## Purpose
 
-- **Pattern**: `(Stitch) + (Bootstrap | BootstrapVue | bs-vue)`
-- **Mapping**: `layui`, `layui-vue`, `layui vue` -> use `stitch-ui-design-spec-layui`
-- **Mapping**: `bootstrap`, `bootstrap-vue`, `bs-vue` -> use `stitch-ui-design-spec-bootstrap`
+This skill makes the Bootstrap design spec executable in two modes:
 
-## 3. Output Behavior
+1) **Prefix mode**: output a paste-ready **Hard constraints prefix** for Stitch `[Context]`.
+2) **Selector mode**: output `CONTRACT_SELECTION_JSON_V1` and then an assembled Stitch prompt that injects only the required component/state snippets.
 
-### Prefix mode (Default)
-When the user asks to "Design a screen using Bootstrap style", this skill injects a **Hard Constraint Block** at the beginning of the prompt.
+## Trigger Keywords
 
-**Return exactly one code block:**
+Prefer this skill when the user request includes any of:
 
-```markdown
-[Context: Design System Constraints]
-- **Framework**: BootstrapVue (Vue 3 compatible).
-- **Design Tokens**:
-  - **Colors**: Primary=#0d6efd (Bootstrap Blue), Secondary=#6c757d, Success=#198754, Danger=#dc3545, Warning=#ffc107, Info=#0dcaf0.
-  - **Typography**: Font-family: system-ui, -apple-system, "Segoe UI", Roboto. Base size: 16px (1rem).
-  - **Spacing**: STRICTLY use Bootstrap utility classes (m-*, p-*, gap-*). Scale: 0.25rem (4px) per unit.
-  - **Radius**: $border-radius: 0.375rem (6px). Use `rounded`, `rounded-3`.
-  - **Shadows**: `shadow-sm`, `shadow`, `shadow-lg`.
-- **Component Contracts**:
-  - **Buttons**: Use `<b-button variant="...">`. DO NOT use raw `<button class="btn ...">`.
-  - **Grid**: Use `<b-container>`, `<b-row>`, `<b-col>`. DO NOT use raw `div.container`.
-  - **Forms**: Use `<b-form-group>`, `<b-form-input>`, `<b-form-select>`.
-  - **Cards**: Use `<b-card>`, `<b-card-header>`, `<b-card-body>`.
-  - **Icons**: Use Bootstrap Icons via `<b-icon icon="...">`.
-- **Layout Invariants**:
-  - Always use the Grid system for layout structure.
-  - Mobile-first responsive classes (e.g., `col-12 col-md-6`).
+- `bootstrap`, `bootstrap-vue`, `bs-vue`, `bs5`
+
+Chinese trigger keywords (only for triggering):
+
+- `bootstrap 风格`
+- `响应式布局` (if context implies Bootstrap)
+
+## Source of Truth
+
+- `references/contract.md`
+- `references/examples.md`
+- `references/official.md`
+
+## Output (STRICT)
+
+Decide the mode by the user intent:
+
+- If the user asks for **beautify/polish/refine an existing screen**, or asks for **selector / JSON / contracts.include / states.include** → use **Selector mode**.
+- Otherwise → use **Prefix mode**.
+
+### Prefix mode
+
+Return exactly one code block:
+
+```text
+[Hard constraints prefix]
+- Framework: BootstrapVue (Vue 3 compatible / Bootstrap 5).
+- Design Tokens:
+  - Colors: Primary=#0d6efd, Secondary=#6c757d, Success=#198754, Danger=#dc3545, Warning=#ffc107, Info=#0dcaf0.
+  - Spacing: STRICTLY use utility classes (m-*, p-*, gap-*). Scale: 1=0.25rem, 2=0.5rem, 3=1rem (default), 4=1.5rem, 5=3rem.
+  - Radius: rounded (0.25rem), rounded-pill, rounded-circle.
+  - Shadows: shadow-sm, shadow, shadow-lg.
+- Component Contracts:
+  - Layout: Use <b-container>, <b-row>, <b-col cols="..." md="...">. NO raw CSS grid.
+  - Buttons: Use <b-button variant="primary" size="sm/lg">. NO <button class="btn">.
+  - Forms: Use <b-form-group>, <b-form-input>, <b-form-select>.
+  - Cards: Use <b-card title="..." img-src="...">.
+  - Tables: Use <b-table striped hover :items="...">.
+- Layout Invariants:
+  - Mobile-first responsive classes (e.g., col-12 col-md-6).
+  - Use d-flex utilities for alignment.
 ```
 
-### Selector mode (Refinement)
-When the user asks to "Fix the button style" or "Make it more Bootstrap-like", inject specific component rules.
+### Selector mode
 
-**Return JSON:**
+Return exactly two code blocks, in this order, with no extra prose:
+
+1) Contract selection JSON:
+
 ```json
 {
-  "target_component": "b-button",
-  "rules": [
-    "Use 'variant' prop instead of style attribute",
-    "Use 'size' prop (sm, lg) for scaling",
-    "Avoid custom CSS if utility classes can achieve the look"
-  ]
+  "version": "CONTRACT_SELECTION_JSON_V1",
+  "designSystem": "bootstrap-vue",
+  "mode": "selector",
+  "contracts": { "include": [] },
+  "states": { "include": [] }
 }
 ```
 
-## 4. References
+2) Final Stitch prompt:
 
-- [Contract Definitions](./references/contract.md)
-- [Official Documentation](./references/official.md)
-- [Usage Examples](./references/examples.md)
+```text
+[Context]
+(Paste Hard Constraints Prefix here)
+(Add "Layout Invariants" from contract.md if beautifying)
+
+[Layout]
+(Describe the macro layout structure, e.g., "Responsive Grid System with Container")
+
+[Components]
+(Inject component snippets matching the JSON selection above)
+```

@@ -20,3 +20,32 @@
 1. This skill outputs uView Pro hard constraints prefix (tokens/primary=#3c9cff/up- prefix, etc.).
 2. The orchestrator appends it as `[Context]` prefix to the Stitch Prompt.
 3. Subsequent generation uses `up-*` components, `uni.$u` utilities, and `rpx` units.
+
+## Scenario 1: E-commerce Home Page
+
+**User Input:**
+> 使用 Stitch 和 uView Pro 风格设计一个电商首页
+
+**Skill Output (Contract):**
+
+```text
+[Context]
+Design System: uView Pro (Vue 3)
+Constraint Level: Strict
+
+# Design Tokens
+- Colors: Primary=#3c9cff, Price=#f56c6c
+- Unit: rpx
+
+# Component Contract
+- Search: <up-search placeholder="Search products">.
+- Banner: <up-swiper :list="bannerList" height="300">.
+- Grid Nav: <up-grid :col="4"><up-grid-item>...</up-grid-item></up-grid>.
+- Product List: <up-waterfall v-model="flowList">.
+  - Card: Custom <view class="demo-warter"> using <up-image> and <up-text>.
+
+# Layout Rules
+- Use <up-sticky> for search bar.
+- Use <up-loadmore> at bottom.
+- Use <up-back-top> for long lists.
+```

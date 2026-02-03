@@ -55,11 +55,26 @@
 ### Data Display
 - **Table**: `<el-table :data="tableData" style="width: 100%">`
   - Column: `<el-table-column prop="date" label="Date" width="180" />`
-- **Card**: `<el-card class="box-card">`
+- **Descriptions**: `<el-descriptions title="Info" :column="3" border>` (Key-value display)
+  - Item: `<el-descriptions-item label="Username">kooriookami</el-descriptions-item>`
+- **Card**: `<el-card class="box-card" shadow="hover">`
   - Header slot: `<template #header><div class="card-header">...</div></template>`
 - **Tag**: `<el-tag type="success">Tag 2</el-tag>`
+- **Timeline**: `<el-timeline><el-timeline-item timestamp="2023/4/12" placement="top">...</el-timeline-item></el-timeline>`
+- **Empty**: `<el-empty description="No Data" />`
+- **Carousel**: `<el-carousel height="150px"><el-carousel-item v-for="item in 4" :key="item">...</el-carousel-item></el-carousel>`
+
+### Navigation
+- **Menu**: `<el-menu mode="horizontal" :default-active="activeIndex">`
+  - SubMenu: `<el-sub-menu index="1"><template #title>Workspace</template>...</el-sub-menu>`
+  - Item: `<el-menu-item index="1">Processing Center</el-menu-item>`
+- **Breadcrumb**: `<el-breadcrumb separator="/"><el-breadcrumb-item>Home</el-breadcrumb-item>...</el-breadcrumb>`
+- **Tabs**: `<el-tabs v-model="activeName"><el-tab-pane label="User" name="first">...</el-tab-pane></el-tabs>`
+- **Steps**: `<el-steps :active="1"><el-step title="Step 1" /></el-steps>`
 
 ### Feedback
+- **Dialog**: `<el-dialog v-model="visible" title="Tips">...</el-dialog>`
+- **Drawer**: `<el-drawer v-model="drawer" title="I am the title">...</el-drawer>`
 - **Alert**: `<el-alert title="Info alert" type="info" />`
 - **Message**: `ElMessage.success('Congrats, this is a success message.')` (JS usage)
 - **Notification**: `ElNotification(...)`

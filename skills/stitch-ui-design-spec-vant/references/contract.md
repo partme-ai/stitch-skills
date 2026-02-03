@@ -69,11 +69,22 @@ Use this contract when the request mentions **Stitch** and any of the following 
 - **Field**: `<van-field v-model="value" label="Label" placeholder="Placeholder" :rules="[{ required: true }]" />`
 - **Search**: `<van-search v-model="value" placeholder="Search..." />`
 - **Checkbox/Radio**: `<van-checkbox v-model="checked">Label</van-checkbox>`
+- **Picker**: `<van-picker :columns="columns" />` (or `<van-popup position="bottom"><van-picker ... /></van-popup>`)
+- **Date/Time**: `<van-date-picker>` / `<van-time-picker>`.
+
+### Business Components (E-commerce)
+- **Product Card**: `<van-card num="2" price="2.00" desc="Desc" title="Title" thumb="..." />`
+- **Submit Bar**: `<van-submit-bar :price="3050" button-text="Submit" @submit="onSubmit" />`
+- **Address**: `<van-address-list v-model="chosenAddressId" :list="list" />` / `<van-address-edit ... />`
+- **Coupon**: `<van-coupon-list ... />`
+- **Cart**: Use `<van-swipe-cell>` wrapping `<van-card>` for delete actions.
 
 ### Feedback & Navigation
 - **NavBar**: `<van-nav-bar title="Title" left-text="Back" left-arrow />`
 - **Tabbar**: `<van-tabbar v-model="active"><van-tabbar-item icon="home-o">Home</van-tabbar-item></van-tabbar>`
-- **Toast/Dialog**: (Imperative calls usually, but can be represented in template if needed).
+- **Sidebar**: `<van-sidebar v-model="active"><van-sidebar-item title="Label" /></van-sidebar>` (Category pages)
+- **Tabs**: `<van-tabs v-model="active"><van-tab title="Tab 1">...</van-tab></van-tabs>`
+- **ActionSheet**: `<van-action-sheet v-model:show="show" :actions="actions" />`
 - **Empty**: `<van-empty description="No Data" />`
 
 ---

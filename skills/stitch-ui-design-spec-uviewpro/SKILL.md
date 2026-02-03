@@ -1,63 +1,92 @@
-# uView Pro Design Specification (Stitch Integration)
+---
+name: stitch-ui-design-spec-uviewpro
+description: uView Pro design spec tool for Stitch (uni-app / Vue3): outputs hard-constraints prefix or selector JSON + assembled prompt.
+---
 
-## 1. Skill Identity
+# uView Pro Design Spec (uView Pro / Vue 3)
 
-- **Name**: `stitch-ui-design-spec-uviewpro`
-- **Description**: Provides design constraints and style tokens for uView Pro (Vue 3 / uni-app) to ensure generated UIs are consistent with the uView Pro design system.
-- **Trigger**: User mentions "uView Pro", "uview-pro", "uviewpro".
-- **Role**: `Spec Provider` (Passive). This skill does not execute actions but provides `[Context]` to the prompt.
+**Constraint**: Only use this skill when the user explicitly mentions "Stitch".
 
-## 2. Trigger Logic
+## Purpose
 
-- **Pattern**: `(Stitch) + (uView Pro | uview-pro | uviewpro)`
-- **Mapping**: `uview-pro`, `uviewpro`, `uview pro` -> use `stitch-ui-design-spec-uviewpro`
+This skill makes the uView Pro design spec executable in two modes:
 
-## 3. Output Behavior
+1) **Prefix mode**: output a paste-ready **Hard constraints prefix** for Stitch `[Context]`.
+2) **Selector mode**: output `CONTRACT_SELECTION_JSON_V1` and then an assembled Stitch prompt that injects only the required component/state snippets.
 
-### Prefix mode (Default)
-When the user asks to "Design a screen using uView Pro style", this skill injects a **Hard Constraint Block** at the beginning of the prompt.
+## Trigger Keywords
 
-**Return exactly one code block:**
+Prefer this skill when the user request includes any of:
 
-```markdown
-[Context: Design System Constraints]
-- **Framework**: uView Pro (Vue 3 / uni-app).
-- **Design Tokens**:
-  - **Colors**: Primary=#3c9cff, Success=#5ac725, Warning=#f9ae3d, Danger=#f56c6c, Info=#909399.
-  - **Typography**: Base size 28rpx (14px). Font weights: 400 (normal), 700 (bold).
-  - **Spacing**: Use `u-margin-*`, `u-padding-*` classes or `gap` prop.
-  - **Radius**: Base=8rpx (4px), Large=16rpx (8px), Circle=9999px.
-  - **Shadows**: Minimal usage.
-- **Component Contracts**:
-  - **Buttons**: Use `<up-button type="primary">`. Note the `up-` prefix.
-  - **Grid**: Use `<up-row>` and `<up-col>`.
-  - **Forms**: Use `<up-form>`, `<up-form-item>`, `<up-input>`, `<up-upload>`.
-  - **Navigation**: Use `<up-navbar>`, `<up-tabbar>`.
-  - **Feedback**: Use `<up-toast>`, `<up-modal>`, `<up-popup>`.
-  - **Icons**: Use `<up-icon name="photo">`.
-- **Layout Invariants**:
-  - Use `rpx` for responsive sizing on mobile.
-  - Always wrap pages in a root `<view>` or `<up-page>` if available.
-  - Use `uni.$u.xxx` for JS utilities (e.g., `uni.$u.toast()`).
+- `uview-pro`, `uviewpro`, `uview pro`
+
+Chinese trigger keywords (only for triggering):
+
+- `uview pro`
+- `uview 3.0`
+
+## Source of Truth
+
+- `references/contract.md`
+- `references/examples.md`
+- `references/official.md`
+
+## Output (STRICT)
+
+Decide the mode by the user intent:
+
+- If the user asks for **beautify/polish/refine an existing screen**, or asks for **selector / JSON / contracts.include / states.include** → use **Selector mode**.
+- Otherwise → use **Prefix mode**.
+
+### Prefix mode
+
+Return exactly one code block:
+
+```text
+[Hard constraints prefix]
+- Framework: uView Pro (uni-app / Vue 3).
+- Design Tokens:
+  - Colors: Primary=#3c9cff, Success=#5ac725, Warning=#f9ae3d, Danger=#f56c6c, Info=#909399.
+  - Typography: Unit rpx. Main Title 32rpx. Content 28rpx.
+  - Radius: Base 8rpx, Card 16rpx, Circle 9999px.
+- Component Contracts (Prefix: up-):
+  - Buttons: <up-button type="primary" shape="circle">.
+  - Layout: <up-row>, <up-col span="...">, <up-gap>.
+  - Forms: <up-form :model="form">, <up-form-item>, <up-input border="none">, <up-code>.
+  - Navbar: <up-navbar title="..." :autoBack="true">.
+  - List: <up-swipe-action>, <up-index-list>, <up-waterfall>, <up-list>, <up-grid>.
+  - Icons: <up-icon name="photo">.
+- JS Utilities:
+  - Use uni.$u.toast(), uni.$u.route(), uni.$u.http.post().
+  - Use <script setup lang="ts">.
 ```
 
-### Selector mode (Refinement)
-When the user asks to "Fix the button style" or "Make it more uView Pro-like", inject specific component rules.
+### Selector mode
 
-**Return JSON:**
+Return exactly two code blocks, in this order, with no extra prose:
+
+1) Contract selection JSON:
+
 ```json
 {
-  "target_component": "up-button",
-  "rules": [
-    "Use 'type' prop (primary, success, etc.)",
-    "Use 'shape' prop (circle, square)",
-    "Use 'size' prop (large, normal, small, mini)"
-  ]
+  "version": "CONTRACT_SELECTION_JSON_V1",
+  "designSystem": "uview-pro",
+  "mode": "selector",
+  "contracts": { "include": [] },
+  "states": { "include": [] }
 }
 ```
 
-## 4. References
+2) Final Stitch prompt:
 
-- [Contract Definitions](./references/contract.md)
-- [Official Documentation](./references/official.md)
-- [Usage Examples](./references/examples.md)
+```text
+[Context]
+(Paste Hard Constraints Prefix here)
+(Add "Layout Invariants" from contract.md if beautifying)
+
+[Layout]
+(Describe the macro layout structure, e.g., "Mobile Column Layout with Navbar")
+
+[Components]
+(Inject component snippets matching the JSON selection above)
+```
