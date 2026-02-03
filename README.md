@@ -91,8 +91,14 @@ stitch-skills/
 *   **`stitch-mcp-screen-get`**: Export screen code/assets.
 *   **`stitch-mcp-screen-refine`**: Refine or edit an existing screen.
 
-### Meta Skills (Tooling)
-*   **`stitch-skill-creator`**: A utility to generate new **Scenario Skills** (e.g., `stitch-ui-music-designer`) from a "Golden Template". Enforces SOP compliance.
+### Atomic Tools
+*   **`stitch-skill-creator`**: An atomic tool for generating new **Scenario Skills** (e.g., `stitch-ui-music-designer`) from a "Golden Template". Enforces SOP compliance.
+*   **`stitch-ui-design-spec-uview`**: uView 2.0 (uni-app / Vue2) design spec tool.
+*   **`stitch-ui-design-spec-uviewpro`**: uView Pro (uni-app / Vue3) design spec tool.
+*   **`stitch-ui-design-spec-layui`**: Layui-Vue (Vue 3.0) design spec tool.
+*   **`stitch-ui-design-spec-bootstrap`**: Bootstrap-Vue (Bootstrap 5) design spec tool.
+*   **`stitch-ui-design-spec-element-plus`**: Element Plus (Vue 3) design spec tool.
+*   **`stitch-ui-design-spec-vant`**: Vant 4 (Vue 3 / Mobile) design spec tool.
 
 ### Knowledge Skills
 *   **`stitch-ued-guide`**: Design guidelines, visual vocabulary, and prompt strategies used by other skills.
@@ -131,6 +137,10 @@ Make sure your client is configured with the Stitch MCP server and exposes MCP t
 Example:
 
 > "Use stitch to implement 登录_PRD.md UI requirements (Login + Register)."
+> "Use Stitch and Layui style to design a dashboard for an admin system."
+> "Use Stitch and Bootstrap style to design a landing page."
+> "Use Stitch and Element Plus style to design a CRM dashboard."
+> "Use Stitch and uView Pro style to design a mobile app home screen."
 
 Expected tool chain:
 

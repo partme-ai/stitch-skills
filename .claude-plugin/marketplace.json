@@ -43,7 +43,8 @@
       "source": "./",
       "strict": false,
       "skills": [
-        "./skills/stitch-skill-creator"
+        "./skills/stitch-skill-creator",
+        "./skills/stitch-ui-design-spec-uview"
       ]
     }
   ]

@@ -25,18 +25,19 @@ This skill helps you construct high-quality prompts for Music App flows (Player,
 ## Prompt Template
 
 ```text
-[Device] music player screen for [App Name]. [Style] aesthetic.
-Background: [Blurred Album Art / Gradient].
-Layout: Vertical stack.
-Header: "Now Playing" title, Down arrow (collapse).
-Hero: Large Album Art (Square/Rounded) with shadow.
-Track Info: Song Title (Bold), Artist Name (Subtle).
-Controls:
-- Scrubbing Bar (Progress).
-- Play/Pause (Large, Centered).
-- Previous/Next buttons.
-- Shuffle/Repeat toggles.
-Footer: Lyrics / Up Next queue.
+[Context]
+Mobile high-fidelity Music Player screen for [App Name]. [Style] aesthetic.
+
+[Layout]
+Header: Title + back icon.
+Body: Album art -> track info -> progress -> controls -> up-next.
+Footer: optional lyrics entry.
+
+[Components]
+- Album cover (square with radius 12)
+- Track title + artist (type scale aligned)
+- Scrubber + time labels
+- Primary play/pause + secondary controls
 ```
 ```
 
@@ -47,9 +48,42 @@ Footer: Lyrics / Up Next queue.
 
 ## 1. Spotify-like Player
 **User**: "Dark mode player like Spotify."
-**Output**: "Mobile music player screen... Dark mode... Black background... Green accent controls..."
+**Output**:
+```text
+[Context]
+Mobile music player screen. Dark mode. Minimalist controls. Emphasis on album art and progress.
+
+[Layout]
+Top bar: back + title.
+Main: album art -> track info -> progress -> controls.
+
+[Components]
+- Primary play/pause button (large)
+- Previous/next, shuffle/repeat toggles
+- Progress bar with time labels
+```
+
+## 2. Desktop Library + Player
+**User**: "Design a desktop music library with a mini player."
+**Output**:
+```text
+[Context]
+Desktop music library screen with a persistent mini player. Clean, data-first layout.
+
+[Layout]
+Left: sidebar navigation.
+Center: library table/grid.
+Bottom: mini player bar (always visible).
+
+[Components]
+- Sidebar items (Library / Playlists / Artists)
+- Search input + filter chips
+- Track list table with actions
+- Mini player with play/pause and scrubber
+```
 ```
 
 5.  **Validation**:
     *   Does it have the Stitch Constraint? Yes.
-    *   Does it separate design from execution? Yes (it returns a prompt template).
+    *   Does it separate design from execution? Yes (it returns a prompt only).
+    *   Does it follow strict output pattern? Yes (`[Context] [Layout] [Components]`, single code block per response).

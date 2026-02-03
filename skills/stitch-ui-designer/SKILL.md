@@ -21,55 +21,118 @@ This is the entry point for all UI design tasks. It acts as the **"Orchestrator 
 - "Use Stitch to design..." (使用 Stitch 设计...)
 - "Stitch me a UI for..." (用 Stitch 帮我生成 UI)
 
-## How to use this skill (SOP)
+## Workflow (Flow-first, copy-pastable)
 
-### Step 1: Design Analysis & Strategy
-1.  **Analyze Intent**: Is this a generic screen or a specific scenario?
-2.  **Consult Guidelines (Implicit)**: Apply principles from `stitch-ued-guide`.
+This skill must follow this workflow end-to-end. Do not skip steps.
 
-### Step 2: Specification Generation (The "Brain")
-1.  **Invoke `stitch-ui-design-spec-generator`**:
-    *   Input: User's raw request.
-    *   Output: Structured `Design Spec` JSON (Theme, Device, Style, Mode).
+### 0) Preflight (Tool Availability)
 
-### Step 3: Prompt Architecture (The "Pen")
-1.  **Generate Prompt**:
-    *   Use `stitch-ui-prompt-architect` or specialized scenario skills.
-    *   **Output**: A structured Stitch Prompt following the `[Context] [Layout] [Components]` formula.
+1. Detect whether Stitch MCP tools are available.
+2. If tools are available, follow the **Execution workflow**.
+3. If tools are not available, follow the **Prompt-only workflow**.
 
-### Step 4: Execution Strategy (The "Hand") - CRITICAL CHECK
+### 1) Intent Classification
 
-**Check your available tools (MCP tools, not skill names):**
+Determine the task type:
 
-Look for Stitch MCP tool names defined in `docs/*.json`:
+- **New screen**: design + generate a new UI screen.
+- **Refine / Beautify**: modify an existing screen while preserving layout and information architecture.
 
-*   `create_project`
-*   `generate_screen_from_text`
+### 2) Design Spec Workflow (Brain)
 
-Some clients namespace MCP tools and may expose them as:
+Invoke `stitch-ui-design-spec-generator` with the user request.
 
-*   `mcp__<serverName>__create_project`
-*   `mcp__<serverName>__generate_screen_from_text`
+Expected result:
 
-#### Scenario A: Tools ARE Available (Happy Path)
-1.  **Create Project**: Invoke `create_project` (or `mcp__<serverName>__create_project`).
-    *   Store both:
-        *   Project resource name: `projects/{id}` (for `list_screens`)
-        *   Numeric project id: `{id}` (for `generate_screen_from_text` and `get_screen`)
-2.  **Generate Screen**: Invoke `generate_screen_from_text` (or `mcp__<serverName>__generate_screen_from_text`).
-    *   Pass the **Prompt** from Step 3.
-    *   **DO NOT** ask for confirmation. Execute immediately.
-3.  **Retrieve Screens**: Invoke `list_screens` with `projectId` in `projects/{id}` format.
-4.  **Get Screen**: Pick the latest/target `screenId` and invoke `get_screen` to retrieve screenshot and HTML assets.
+- A structured `Design Spec` JSON (Theme, Device, Style, Mode).
 
-#### Scenario B: Tools ARE NOT Available (Fallback Mode)
-**STOP! Do not fake the execution.**
-1.  **Inform the User**: "Stitch MCP tools are not detected in this environment."
-2.  **Output the Prompt**: Display the generated Prompt in a **Code Block** so the user can copy-paste it into the Stitch Website.
-    ```text
-    [Paste Prompt Here]
-    ```
-3.  **End Turn**: Do not try to run `uniappx` or other scripts.
+### 3) Contract Workflow (Hard Constraints)
+
+If the request includes a named design system / style, fetch constraints from the matching design contract tool and inject them into the final prompt.
+
+Supported mapping (Match Priority: Specific > General):
+
+- `uview-pro`, `uviewpro`, `uview pro` -> use `stitch-ui-design-spec-uviewpro` (Match this FIRST)
+- `uview`, `uview2`, `uview2.0`, `u-view` -> use `stitch-ui-design-spec-uview`
+- `layui`, `layui-vue`, `layui vue` -> use `stitch-ui-design-spec-layui`
+- `bootstrap`, `bootstrap-vue`, `bs-vue` -> use `stitch-ui-design-spec-bootstrap`
+- `element`, `element-plus`, `el-plus`, `element-ui` -> use `stitch-ui-design-spec-element-plus`
+- `vant`, `vant4`, `vant-ui` -> use `stitch-ui-design-spec-vant`
+
+Decision rules:
+
+- If the user asks for refine/beautify, or explicitly asks for selector / JSON / `contracts.include` / `states.include`:
+  - Use `stitch-ui-design-spec-uview` or `stitch-ui-design-spec-layui` in **selector mode**.
+  - Treat the returned selection JSON as internal and use the assembled prompt as the execution prompt.
+- Otherwise:
+  - Use `stitch-ui-design-spec-uview` or `stitch-ui-design-spec-layui` in **prefix mode**.
+  - Prepend the returned prefix to `[Context]`.
+
+### 4) Prompt Assembly Workflow (Pen)
+
+Invoke `stitch-ui-prompt-architect` and output a Stitch-ready prompt using this strict structure:
+
+```text
+[Context]
+...
+
+[Layout]
+...
+
+[Components]
+...
+```
+
+### 5) Execution Workflow (Hand) — Tools Available
+
+ALWAYS execute immediately (no confirmation loop):
+
+1. Create project: `create_project`
+2. Generate screen: `generate_screen_from_text`
+3. List screens: `list_screens`
+4. Get the target screen: `get_screen` (export screenshot + HTML assets)
+
+### 6) Prompt-only Workflow — Tools Not Available
+
+STOP execution. Do not fake results. Output only a copy-paste prompt for the user to run in Stitch.
+
+## Output Patterns (Strict Templates)
+
+Use these templates to keep outputs consistent.
+
+### Template A — Tools Available (Execution Report)
+
+ALWAYS use this exact template:
+
+```markdown
+# Stitch 设计交付
+
+## 执行结果
+- Project: projects/{id}
+- Screen: {screenId}
+
+## 资产导出
+- Screenshot: {from get_screen output}
+- HTML: {from get_screen output}
+
+## 说明
+- Prompt: 已按 `[Context] [Layout] [Components]` 结构执行（含必要约束与布局不变式）。
+```
+
+### Template B — Tools Not Available (Prompt Only)
+
+ALWAYS use this exact template:
+
+```text
+[Context]
+...
+
+[Layout]
+...
+
+[Components]
+...
+```
 
 ## Anti-Patterns (Strict Prohibitions)
 *   ⛔ **NO FAKE SUCCESS**: If you didn't get a real API response, do not say "Project Created".
