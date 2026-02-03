@@ -91,8 +91,16 @@ stitch-skills/
 *   **`stitch-mcp-screen-get`**: 导出屏幕代码/资产。
 *   **`stitch-mcp-screen-refine`**: 优化或编辑现有屏幕。
 
-### 元技能 (工具)
-*   **`stitch-skill-creator`**: 一个用于生成新 **场景技能**（如 `stitch-ui-music-designer`）的实用工具。基于 "黄金模板" 生成，强制符合 SOP 规范。
+### 原子工具
+*   **`stitch-skill-creator`**: 一个用于生成新 **场景技能**（如 `stitch-ui-music-designer`）的原子工具。基于 "黄金模板" 生成，强制符合 SOP 规范。
+
+### 设计规格工具 (约束)
+*   **`stitch-ui-design-spec-uview`**: uView 2.0（uni-app / Vue2）设计规格工具：可输出 Hard constraints 前缀，或输出选择器 JSON + 拼装后的 Stitch Prompt（按需注入组件/状态约束）。
+*   **`stitch-ui-design-spec-uviewpro`**: uView Pro（uni-app / Vue3）设计规格工具：支持输出硬约束前缀或组件选择器 JSON。
+*   **`stitch-ui-design-spec-layui`**: Layui-Vue（Vue 3.0）设计规格工具：支持输出硬约束前缀或组件选择器 JSON。
+*   **`stitch-ui-design-spec-bootstrap`**: Bootstrap 5（Vue）设计规格工具：响应式设计，支持输出硬约束前缀或组件选择器 JSON。
+*   **`stitch-ui-design-spec-element-plus`**: Element Plus（Vue 3）设计规格工具：桌面端组件库，支持输出硬约束前缀或组件选择器 JSON。
+*   **`stitch-ui-design-spec-vant`**: Vant 4（Mobile Vue）设计规格工具：移动端电商风格，支持输出硬约束前缀或组件选择器 JSON。
 
 ### 知识技能
 *   **`stitch-ued-guide`**: 被其他技能引用的设计指南、视觉词汇和提示词策略。
@@ -176,12 +184,17 @@ Trae 的 MCP 配置文件路径：
 
 - “用 Stitch 列出我的项目”
 - “使用 Stitch 实现 登录_PRD.md 文档中的设计”
+- “使用 Stitch 和 uView 风格 实现 登录_PRD.md 文档要求的设计工作”
+- “使用 Stitch 和 Layui 风格设计一个后台管理系统的仪表盘”
+- “使用 Stitch 和 Bootstrap 风格设计一个响应式的登录页”
+- “使用 Stitch 和 Element Plus 风格设计一个企业级后台管理系统”
+- “使用 Stitch 和 uView Pro 风格设计一个电商首页”
 
 ### 端到端示例：使用 Stitch 实现 登录_PRD.md
 
 示例输入：
 
-> 使用 Stitch 实现 `partme-docs/登录_PRD.md` 文档要求的设计工作（登录页 + 注册页）
+> 使用 Stitch 实现 `docs/登录_PRD.md` 文档要求的设计工作（登录页 + 注册页）
 
 预期行为（Agent 会自动编排并调用 MCP 工具）：
 

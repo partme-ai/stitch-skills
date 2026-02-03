@@ -13,10 +13,17 @@ This skill guides the creation of new **Stitch Scenario Skills**. A Scenario Ski
 All Stitch Skills created by this creator **MUST** adhere to the **Stitch Design SOP**:
 
 1.  **Trigger Safety**: The skill must ONLY trigger when the user explicitly mentions "Stitch".
-2.  **Design First**: Never call `stitch-mcp-screen-generate` immediately. First, construct a high-quality prompt.
+2.  **Design First**: Never execute. Always construct a high-quality prompt first.
 3.  **Self-Contained**: The skill should act as a specialized "Prompt Template" that encapsulates domain knowledge (e.g., a Music App needs a "Play Button", "Cover Art").
 
-## Skill Creation Workflow
+## Workflow (Progressive Disclosure)
+
+Keep this file concise. Use bundled references when you need full details:
+
+- Workflow: `references/workflows.md`
+- Output patterns: `references/output-patterns.md`
+
+## Quick start (Automated Creation)
 
 ### Option A: Automated Creation (Recommended)
 
@@ -32,7 +39,9 @@ This will automatically:
 2.  Populate `SKILL.md` with the required SOP and Templates.
 3.  Create `examples/usage.md`.
 
-### Option B: Manual Creation
+### Option B: Manual Creation (Only if needed)
+
+Follow: `references/workflows.md` -> Manual creation.
 
 ### Step 1: Define the Scenario
 Identify the domain and name the skill following the strict naming convention: `stitch-ui-<scenario>-designer`.
@@ -59,33 +68,52 @@ description: Specialized prompt architect for <Scenario> screens.
 
 **Constraint**: Only use this skill when the user explicitly mentions "Stitch" or when orchestrating a Stitch design task.
 
-This skill helps you construct high-quality prompts for <Scenario> flows to be used with `stitch-mcp-screen-generate`.
+This skill helps you construct high-quality prompts for <Scenario> flows to be used by the Stitch Orchestrator.
 
 ## Functionality
 It encapsulates best practices for <Scenario> UI design and translates user intent into a structured Stitch prompt.
 
 ## Integration with Stitch Designer SOP
 This skill is part of the **Stitch UI Orchestration** flow.
-1.  **Orchestrator**: `stitch-ui-designer` calls this skill in Step 3.
+1.  **Orchestrator**: `stitch-ui-designer` calls this skill when a scenario-specific prompt is needed.
 2.  **Guidelines**: You MUST apply principles from `stitch-ued-guide` (e.g., visual vocabulary, device constraints).
-3.  **Output**: You do NOT execute the generation. You return a **Prompt String**.
+3.  **Output**: You do NOT execute. You return a prompt only.
 
 ## Prompt Template
 
-When the user asks for a <Scenario> screen, use this template to construct the `prompt` argument for `stitch-mcp-screen-generate`:
+When the user asks for a <Scenario> screen, use this template to construct the prompt:
 
 ```text
+[Context]
 [Device] <Scenario> screen for [App Name]. [Style] aesthetic.
-Layout: [Specific Layout for Scenario].
-Header: [Scenario Header Components].
-Main Content:
-- [Component 1]
-- [Component 2]
-Footer: [Scenario Footer Components].
+
+[Layout]
+Header: [...]
+Body: [...]
+Footer: [...]
+
+[Components]
+- [...]
+- [...]
+```
+
+## Output Format (STRICT)
+
+Return exactly one code block and no extra prose:
+
+```text
+[Context]
+...
+
+[Layout]
+...
+
+[Components]
+...
 ```
 
 ## Usage in Orchestrator
-This skill is designed to be called by `stitch-ui-designer` (Step 3). It does NOT execute the generation itself; it returns the **Prompt String** to the Orchestrator or User.
+This skill is designed to be called by `stitch-ui-designer`. It does NOT execute; it returns a prompt only.
 ````
 
 ### Step 4: Write `examples/usage.md`
@@ -97,4 +125,4 @@ Provide at least 2 distinct examples of how this skill transforms a vague reques
     *   *Bad*: "A page with text."
     *   *Good (Music)*: "A player view with a scrubbing bar, album art, and waveform visualization."
 2.  **Device Awareness**: Ensure the template supports Mobile (default) and Desktop.
-3.  **No Direct Execution**: The Scenario Skill should **NOT** call `stitch-mcp-screen-generate` directly. It produces the *prompt* that `stitch-ui-designer` uses. This ensures the "Design First" separation of concerns.
+3.  **No Direct Execution**: The Scenario Skill must not call any MCP tool. It produces the prompt that the Orchestrator uses.
