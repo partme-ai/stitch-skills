@@ -29,41 +29,41 @@
 
 ## 2. Component Contracts
 
-**IMPORTANT**: uView Pro components typically use the `up-` prefix (e.g., `<up-button>`).
+**IMPORTANT**: uView Pro components use the `u-` prefix (same as uView 2; package is `uview-pro`, easycom: `^u-(.*)` → `uview-pro/components/u-$1`). Example: `<u-button>`.
 
 ### Layout
-- **Flex Grid**: `<up-row>` and `<up-col span="6">`.
-- **Gap**: `<up-gap height="20" bgColor="#f3f4f6"></up-gap>` for vertical spacing.
-- **Divider**: `<up-divider text="End"></up-divider>`.
+- **Flex Grid**: `<u-row>` and `<u-col span="6">`.
+- **Gap**: `<u-gap height="20" bgColor="#f3f4f6"></u-gap>` for vertical spacing.
+- **Divider**: `<u-divider text="End"></u-divider>`.
 
 ### Buttons
-- **Tag**: `<up-button>`
+- **Tag**: `<u-button>`
 - **Props**: `type="primary"`, `shape="circle"`, `size="normal"`, `plain`.
 
 ### Forms
-- **Wrapper**: `<up-form :model="form" ref="uForm">`
-- **Item**: `<up-form-item label="Name" prop="name" borderBottom>`
-- **Input**: `<up-input v-model="form.name" border="none" placeholder="Please input"></up-input>`
-- **Upload**: `<up-upload :fileList="fileList1" @afterRead="afterRead" ...></up-upload>`
+- **Wrapper**: `<u-form :model="form" ref="uForm">`
+- **Item**: `<u-form-item label="Name" prop="name" borderBottom>`
+- **Input**: `<u-input v-model="form.name" border="none" placeholder="Please input"></u-input>`
+- **Upload**: `<u-upload :fileList="fileList1" @afterRead="afterRead" ...></u-upload>`
 
 ### Navigation
-- **Navbar**: `<up-navbar title="Home" @leftClick="leftClick" :autoBack="true">`
-- **Tabs**: `<up-tabs :list="list1" @click="click"></up-tabs>`
-- **IndexList**: `<up-index-list :indexList="indexList">...</up-index-list>` (Contact list style)
+- **Navbar**: `<u-navbar title="Home" @leftClick="leftClick" :autoBack="true">`
+- **Tabs**: `<u-tabs :list="list1" @click="click"></u-tabs>`
+- **IndexList**: `<u-index-list :indexList="indexList">...</u-index-list>` (Contact list style)
 
 ### List & Data
-- **SwipeAction**: `<up-swipe-action><up-swipe-action-item ...>...</up-swipe-action-item></up-swipe-action>`
-- **List**: `<up-list @scrolltolower="scrolltolower">...</up-list>` (Load more)
-- **Grid Menu**: `<up-grid :col="3">...</up-grid>`
-- **Waterfall**: `<up-waterfall v-model="flowList">...</up-waterfall>` (Masonry layout)
+- **SwipeAction**: `<u-swipe-action><u-swipe-action-item ...>...</u-swipe-action-item></u-swipe-action>`
+- **List**: `<u-list @scrolltolower="scrolltolower">...</u-list>` (Load more)
+- **Grid Menu**: `<u-grid :col="3">...</u-grid>`
+- **Waterfall**: `<u-waterfall v-model="flowList">...</u-waterfall>` (Masonry layout)
 
 ### Feedback
-- **Toast**: `<up-toast ref="uToast"></up-toast>`
+- **Toast**: `<u-toast ref="uToast"></u-toast>`
 - **JS Usage**: `uni.$u.toast('Hello')` (Note: uView Pro hangs tools on `uni.$u`)
-- **Code**: `<up-code :seconds="60" @end="end"></up-code>` (SMS verification countdown)
+- **Code**: `<u-code :seconds="60" @end="end"></u-code>` (SMS verification countdown)
 
 ## 3. Icons
-- **Tag**: `<up-icon name="photo" color="#2979ff" size="28"></up-icon>`
+- **Tag**: `<u-icon name="photo" color="#2979ff" size="28"></u-icon>`
 - **Library**: Built-in uView Pro icons.
 
 ## 4. JS Utilities (`uni.$u`)

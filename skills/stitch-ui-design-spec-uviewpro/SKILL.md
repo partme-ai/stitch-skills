@@ -49,13 +49,13 @@ Return exactly one code block:
   - Colors: Primary=#3c9cff, Success=#5ac725, Warning=#f9ae3d, Danger=#f56c6c, Info=#909399.
   - Typography: Unit rpx. Main Title 32rpx. Content 28rpx.
   - Radius: Base 8rpx, Card 16rpx, Circle 9999px.
-- Component Contracts (Prefix: up-):
-  - Buttons: <up-button type="primary" shape="circle">.
-  - Layout: <up-row>, <up-col span="...">, <up-gap>.
-  - Forms: <up-form :model="form">, <up-form-item>, <up-input border="none">, <up-code>.
-  - Navbar: <up-navbar title="..." :autoBack="true">.
-  - List: <up-swipe-action>, <up-index-list>, <up-waterfall>, <up-list>, <up-grid>.
-  - Icons: <up-icon name="photo">.
+- Component Contracts (Prefix: u-; uView Pro uses same tag prefix as uView 2, package uview-pro):
+  - Buttons: <u-button type="primary" shape="circle">.
+  - Layout: <u-row>, <u-col span="...">, <u-gap>.
+  - Forms: <u-form :model="form">, <u-form-item>, <u-input border="none">, <u-code>.
+  - Navbar: <u-navbar title="..." :autoBack="true">.
+  - List: <u-swipe-action>, <u-index-list>, <u-waterfall>, <u-list>, <u-grid>.
+  - Icons: <u-icon name="photo">.
 - JS Utilities:
   - Use uni.$u.toast(), uni.$u.route(), uni.$u.http.post().
   - Use <script setup lang="ts">.

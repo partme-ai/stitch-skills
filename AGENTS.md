@@ -2,20 +2,31 @@
 
 This document provides guidance for AI coding agents (Claude Code, Cursor, Copilot, etc.) working within this repository.
 
+## Recommended Agent
+
+For Stitch-based UI generation (text-to-UI, design specs, MCP workflows), use the **stitch-ui-designer** agent. Agent file: [agents/stitch-ui-designer.md](agents/stitch-ui-designer.md) (same format as [fullstack-engineer](https://github.com/anthropics/claude-usage/blob/main/agents/fullstack-engineer.md)).
+
 ## Repository Overview
 
-A collection of Agent Skills for Stitch UI Generation. Skills are packaged instructions and scripts that extend Claude's capabilities.
+A collection of Agent Skills for Stitch UI Generation. Skills are packaged instructions and scripts that extend Claude's capabilities. This repo **subsumes and strengthens** [google-labs-code/stitch-skills](https://github.com/google-labs-code/stitch-skills): every official skill (design-md, enhance-prompt, stitch-loop, react-components, remotion, shadcn-ui) has a local equivalent that is better or equal and integrated with stitch-mcp-* and framework design specs. See [docs/related-upstream.md](docs/related-upstream.md).
 
 ## Skill Structure
 
+Each skill directory follows the Agent Skills standard (see [spec/agent-skills-spec.md](spec/agent-skills-spec.md)):
+
 ```
-skills/
-  {skill-name}/           # kebab-case directory name
-    SKILL.md              # Required: skill definition
-    examples/             # Required: usage examples
-      usage.md
-    LICENSE.txt           # Required: license file
+skills/{skill-name}/      # kebab-case directory name
+├── SKILL.md              # Required: skill definition (Mission Control)
+├── examples/             # Required: usage examples (gold-standard reference)
+│   └── usage.md
+├── references/          # Optional: contracts, style guides, checklists
+├── scripts/              # Optional: validation, fetch, or codegen scripts
+└── LICENSE.txt           # Required: license file
 ```
+
+- **SKILL.md**: Frontmatter (`name`, `description`); optional `allowed-tools` to restrict tools when this skill is active.
+- **examples/**: Syntactically valid references for few-shot use.
+- **references/** / **scripts/**: Load on demand to keep context small.
 
 ## SKILL.md Format
 
