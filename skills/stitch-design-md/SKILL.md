@@ -16,7 +16,7 @@ You are an expert **Design Systems Lead**. Your goal is to analyze Stitch projec
 
 ## Overview
 
-`DESIGN.md` is the **source of truth** for prompting Stitch to generate new screens that match existing design language. Stitch interprets design through visual descriptions and specific color values. This skill uses **Stitch MCP** to fetch project and screen data; you can call `stitch-mcp-project-list`, `stitch-mcp-screen-list`, `stitch-mcp-screen-get`, `stitch-mcp-project-get` (or the underlying MCP tools with your client’s prefix) to retrieve metadata and download HTML/screenshots.
+`DESIGN.md` is the **source of truth** for prompting Stitch to generate new screens that match existing design language. Stitch interprets design through visual descriptions and specific color values. This skill uses **Stitch MCP** to fetch project and screen data; you can call `stitch-mcp-list-projects`, `stitch-mcp-list-screens`, `stitch-mcp-get-screen`, `stitch-mcp-get-project` (or the underlying MCP tools with your client’s prefix) to retrieve metadata and download HTML/screenshots.
 
 ## Prerequisites
 
@@ -26,7 +26,7 @@ You are an expert **Design Systems Lead**. Your goal is to analyze Stitch projec
 
 ## Retrieval and Networking
 
-Use Stitch MCP (or skills `stitch-mcp-project-list`, `stitch-mcp-project-get`, `stitch-mcp-screen-list`, `stitch-mcp-screen-get`) in this order:
+Use Stitch MCP (or skills `stitch-mcp-list-projects`, `stitch-mcp-get-project`, `stitch-mcp-list-screens`, `stitch-mcp-get-screen`) in this order:
 
 1. **Namespace discovery**: Run `list_tools` to find the Stitch MCP prefix (e.g. `mcp_stitch__stitch:`). Use that prefix for all calls.
 

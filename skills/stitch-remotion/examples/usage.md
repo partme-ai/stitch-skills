@@ -7,8 +7,8 @@
 
 ## Steps
 
-1. List Stitch projects (stitch-mcp-project-list or MCP list_projects); get projectId.
-2. List screens (stitch-mcp-screen-list or MCP list_screens); get screenIds.
+1. List Stitch projects (stitch-mcp-list-projects or MCP list_projects); get projectId.
+2. List screens (stitch-mcp-list-screens or MCP list_screens); get screenIds.
 3. For each screen call get_screen; download screenshot from screenshot.downloadUrl; save to assets/screens/.
 4. Create screens.json manifest (see examples/screens.json).
 5. Create Remotion project (or use existing); add ScreenSlide and WalkthroughComposition; use @remotion/transitions (fade/slide).

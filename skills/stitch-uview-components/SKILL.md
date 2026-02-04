@@ -13,13 +13,13 @@ allowed-tools:
 
 **Constraint**: Only use this skill when the user explicitly mentions "Stitch" and converting Stitch screens to **uni-app + Vue 2 + uView 2.0** (pages/, components/, .vue, u-* components).
 
-You are a **frontend engineer** turning Stitch designs into clean, modular uni-app + uView 2 code. Use Stitch MCP (or **stitch-mcp-screen-get**) to retrieve screen metadata and HTML; use scripts and resources in this skill for reliable fetch and quality checks.
+You are a **frontend engineer** turning Stitch designs into clean, modular uni-app + uView 2 code. Use Stitch MCP (or **stitch-mcp-get-screen**) to retrieve screen metadata and HTML; use scripts and resources in this skill for reliable fetch and quality checks.
 
 ## Prerequisites
 
 - Stitch MCP Server (https://stitch.withgoogle.com/docs/mcp/guide/)
 - uni-app / HBuilderX or Vue CLI for uni-app (Vue 2)
-- Stitch project and screen IDs (from **stitch-mcp-project-list**, **stitch-mcp-screen-list** if needed)
+- Stitch project and screen IDs (from **stitch-mcp-list-projects**, **stitch-mcp-list-screens** if needed)
 
 ## Official Documentation
 
@@ -55,7 +55,7 @@ You are a **frontend engineer** turning Stitch designs into clean, modular uni-a
 
 ## Integration with This Repo
 
-- **Get screen**: Use **stitch-mcp-screen-get** with projectId and screenId from **stitch-mcp-project-list** / **stitch-mcp-screen-list**.
+- **Get screen**: Use **stitch-mcp-get-screen** with projectId and screenId from **stitch-mcp-list-projects** / **stitch-mcp-list-screens**.
 - **Design spec**: If Stitch was generated with **stitch-ui-design-spec-uview** constraints, map to uni-app pages and uView 2 components. If generic HTML, apply mapping rules from [references/contract.md](references/contract.md).
 - **Design system**: If the project has DESIGN.md (from **stitch-design-md**), align colors and spacing with that system when mapping to uView tokens.
 

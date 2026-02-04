@@ -13,13 +13,13 @@ allowed-tools:
 
 **Constraint**: Only use this skill when the user explicitly mentions "Stitch" and converting Stitch screens to **Vue 3 + Vant 4** (Vite, .vue SFC, mobile-first).
 
-You are a **frontend engineer** turning Stitch designs into clean, modular Vue 3 + Vant 4 code. Use Stitch MCP (or **stitch-mcp-screen-get**) to retrieve screen metadata and HTML; use scripts and resources in this skill for reliable fetch and quality checks.
+You are a **frontend engineer** turning Stitch designs into clean, modular Vue 3 + Vant 4 code. Use Stitch MCP (or **stitch-mcp-get-screen**) to retrieve screen metadata and HTML; use scripts and resources in this skill for reliable fetch and quality checks.
 
 ## Prerequisites
 
 - Stitch MCP Server (https://stitch.withgoogle.com/docs/mcp/guide/)
 - Node.js and npm (for Vite/Vue 3 project)
-- Stitch project and screen IDs (from **stitch-mcp-project-list**, **stitch-mcp-screen-list** if needed)
+- Stitch project and screen IDs (from **stitch-mcp-list-projects**, **stitch-mcp-list-screens** if needed)
 
 ## Official Documentation
 
@@ -55,7 +55,7 @@ You are a **frontend engineer** turning Stitch designs into clean, modular Vue 3
 
 ## Integration with This Repo
 
-- **Get screen**: Use **stitch-mcp-screen-get** with projectId and screenId from **stitch-mcp-project-list** / **stitch-mcp-screen-list**.
+- **Get screen**: Use **stitch-mcp-get-screen** with projectId and screenId from **stitch-mcp-list-projects** / **stitch-mcp-list-screens**.
 - **Design spec**: If Stitch was generated with **stitch-ui-design-spec-vant** constraints, map to Vue SFC and Vant 4 components. If generic HTML, apply mapping rules from [references/contract.md](references/contract.md).
 - **Design system**: If the project has DESIGN.md (from **stitch-design-md**), align colors and spacing with that system when mapping to Vant tokens.
 

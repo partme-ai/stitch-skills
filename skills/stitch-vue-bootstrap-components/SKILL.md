@@ -13,13 +13,13 @@ allowed-tools:
 
 **Constraint**: Only use this skill when the user explicitly mentions "Stitch" and converting Stitch screens to **Vue 3 + Bootstrap** (Vite, .vue SFC, [BootstrapVue Vue 3](https://bootstrap-vue.org/vue3) or BootstrapVueNext).
 
-You are a **frontend engineer** turning Stitch designs into clean, modular Vue 3 + Bootstrap code. Use Stitch MCP (or **stitch-mcp-screen-get**) to retrieve screen metadata and HTML; use scripts and resources in this skill for reliable fetch and quality checks. Target stack: Vue 3 + [BootstrapVue Vue.js 3 Support](https://bootstrap-vue.org/vue3) (@vue/compat) or BootstrapVueNext (Bootstrap 5 + Vue 3).
+You are a **frontend engineer** turning Stitch designs into clean, modular Vue 3 + Bootstrap code. Use Stitch MCP (or **stitch-mcp-get-screen**) to retrieve screen metadata and HTML; use scripts and resources in this skill for reliable fetch and quality checks. Target stack: Vue 3 + [BootstrapVue Vue.js 3 Support](https://bootstrap-vue.org/vue3) (@vue/compat) or BootstrapVueNext (Bootstrap 5 + Vue 3).
 
 ## Prerequisites
 
 - Stitch MCP Server (https://stitch.withgoogle.com/docs/mcp/guide/)
 - Node.js and npm (for Vite/Vue 3 project)
-- Stitch project and screen IDs (from **stitch-mcp-project-list**, **stitch-mcp-screen-list** if needed)
+- Stitch project and screen IDs (from **stitch-mcp-list-projects**, **stitch-mcp-list-screens** if needed)
 
 ## Official Documentation
 
@@ -55,7 +55,7 @@ You are a **frontend engineer** turning Stitch designs into clean, modular Vue 3
 
 ## Integration with This Repo
 
-- **Get screen**: Use **stitch-mcp-screen-get** with projectId and screenId from **stitch-mcp-project-list** / **stitch-mcp-screen-list**.
+- **Get screen**: Use **stitch-mcp-get-screen** with projectId and screenId from **stitch-mcp-list-projects** / **stitch-mcp-list-screens**.
 - **Design spec**: If Stitch was generated with **stitch-ui-design-spec-bootstrap** constraints, map to Vue SFC and Bootstrap Vue components. If generic HTML, apply mapping rules from [references/contract.md](references/contract.md).
 - **Design system**: If the project has DESIGN.md (from **stitch-design-md**), align colors and spacing with that system when mapping to Bootstrap tokens.
 

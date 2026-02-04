@@ -14,7 +14,7 @@ Thank you for considering contributing to this repository. The following guideli
 3. **Implement** your change:
    - New skills: use the [Repository Structure](README.md#repository-structure-agent-skills-standard) (SKILL.md, examples/, optional references/, scripts/, LICENSE.txt).
    - Use **stitch-skill-creator** for new scenario skills when applicable.
-   - For MCP wrappers, follow the `stitch-mcp-<tool>` naming and one MCP tool per skill.
+   - For MCP wrappers, follow the `stitch-mcp-<tool>` naming and one MCP tool per skill. See [docs/mcp-naming-convention.md](docs/mcp-naming-convention.md).
 4. **Commit** with clear messages (e.g. "Add stitch-ui-xxx skill", "Docs: align README with upstream structure").
 5. **Push** to your fork and open a **Pull Request** against the default branch.
 6. **Respond** to review feedback; maintainers may ask for edits before merge.

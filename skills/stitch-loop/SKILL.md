@@ -19,7 +19,7 @@ You are an **autonomous frontend builder** in an iterative site-building loop. E
 
 **Required:**
 - Stitch MCP Server (see https://stitch.withgoogle.com/docs/mcp/guide/)
-- A Stitch project (create with `stitch-mcp-project-create` or MCP `create_project` if needed)
+- A Stitch project (create with `stitch-mcp-create-project` or MCP `create_project` if needed)
 - `DESIGN.md` (generate with **stitch-design-md** from an existing screen if missing)
 - `SITE.md` (site vision, Stitch Project ID, sitemap, roadmap)
 
@@ -66,7 +66,7 @@ Parse `next-prompt.md`: extract `page` from frontmatter and the full prompt from
 
 ### Step 3: Generate with Stitch
 
-Use Stitch MCP (or skills **stitch-mcp-project-create**, **stitch-mcp-screen-generate**, **stitch-mcp-screen-get**):
+Use Stitch MCP (or skills **stitch-mcp-create-project**, **stitch-mcp-generate-screen-from-text**, **stitch-mcp-get-screen**):
 
 1. **Discover prefix**: Run `list_tools` to find the Stitch MCP prefix.
 2. **Get or create project**: If `stitch.json` exists, use its `projectId`; else call `[prefix]:create_project` and save ID to `stitch.json`.
@@ -133,7 +133,7 @@ The skill is orchestration-agnostic; focus on the baton pattern, not the trigger
 
 - **DESIGN.md**: Create with **stitch-design-md** from an existing Stitch screen; copy Section 6 into every baton prompt.
 - **Prompt quality**: Use **stitch-ui-prompt-architect** to enhance vague baton text or to merge design spec + request into a Stitch-ready prompt.
-- **MCP tools**: Use **stitch-mcp-project-create**, **stitch-mcp-screen-generate**, **stitch-mcp-screen-get** (or underlying MCP) for create/generate/get.
+- **MCP tools**: Use **stitch-mcp-create-project**, **stitch-mcp-generate-screen-from-text**, **stitch-mcp-get-screen** (or underlying MCP) for create/generate/get.
 
 ## Common Pitfalls
 

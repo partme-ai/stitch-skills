@@ -7,8 +7,8 @@
 
 ## Steps
 
-1. **Get project and screen IDs** using Stitch MCP (or skills `stitch-mcp-project-list`, `stitch-mcp-screen-list`).
-2. **Fetch screen and project metadata** with `stitch-mcp-screen-get` and `stitch-mcp-project-get`; download HTML/screenshot from returned URLs.
+1. **Get project and screen IDs** using Stitch MCP (or skills `stitch-mcp-list-projects`, `stitch-mcp-list-screens`).
+2. **Fetch screen and project metadata** with `stitch-mcp-get-screen` and `stitch-mcp-get-project`; download HTML/screenshot from returned URLs.
 3. **Analyze** colors, typography, components, layout from HTML and screenshot.
 4. **Write DESIGN.md** in the project root following the skill’s output format (Visual Theme, Color Palette, Typography, Component Stylings, Layout, Section 6 for Stitch prompts).
 5. **Optional:** Use with `stitch-ui-prompt-architect` (inject Section 6 into prompts) and `stitch-loop` (baton file includes DESIGN SYSTEM block from DESIGN.md).

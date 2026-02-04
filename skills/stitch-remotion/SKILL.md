@@ -14,7 +14,7 @@ allowed-tools:
 
 **Constraint**: Only use this skill when the user explicitly mentions "Stitch" and walkthrough video or Remotion.
 
-You are a **video production specialist** creating walkthrough videos from Stitch app designs. Combine Stitch MCP (or **stitch-mcp-project-list**, **stitch-mcp-screen-list**, **stitch-mcp-screen-get**) to get screens with Remotion for programmatic video: transitions, zoom, text overlays.
+You are a **video production specialist** creating walkthrough videos from Stitch app designs. Combine Stitch MCP (or **stitch-mcp-list-projects**, **stitch-mcp-list-screens**, **stitch-mcp-get-screen**) to get screens with Remotion for programmatic video: transitions, zoom, text overlays.
 
 ## Prerequisites
 
@@ -59,7 +59,7 @@ Use Remotion `spring()` for zoom; use `@remotion/transitions` (fade, slide) betw
 
 ## Integration with This Repo
 
-- **Stitch screens**: Use **stitch-mcp-project-list**, **stitch-mcp-screen-list**, **stitch-mcp-screen-get** to resolve projectId/screenId and get download URLs.
+- **Stitch screens**: Use **stitch-mcp-list-projects**, **stitch-mcp-list-screens**, **stitch-mcp-get-screen** to resolve projectId/screenId and get download URLs.
 - **Design consistency**: If DESIGN.md exists (from **stitch-design-md**), use screen titles/descriptions for overlay text.
 
 ## File Structure

@@ -28,13 +28,12 @@
       "source": "./",
       "strict": false,
       "skills": [
-        "./skills/stitch-mcp-project-create",
-        "./skills/stitch-mcp-project-list",
-        "./skills/stitch-mcp-project-get",
-        "./skills/stitch-mcp-screen-generate",
-        "./skills/stitch-mcp-screen-list",
-        "./skills/stitch-mcp-screen-get",
-        "./skills/stitch-mcp-screen-refine"
+        "./skills/stitch-mcp-create-project",
+        "./skills/stitch-mcp-list-projects",
+        "./skills/stitch-mcp-get-project",
+        "./skills/stitch-mcp-generate-screen-from-text",
+        "./skills/stitch-mcp-list-screens",
+        "./skills/stitch-mcp-get-screen"
       ]
     },
     {

@@ -7,7 +7,7 @@
 
 ## Steps
 
-1. Get projectId and screenId (e.g. via stitch-mcp-project-list, stitch-mcp-screen-list).
+1. Get projectId and screenId (e.g. via stitch-mcp-list-projects, stitch-mcp-list-screens).
 2. Call Stitch MCP get_screen; get `htmlCode.downloadUrl`.
 3. Run `bash scripts/fetch-stitch.sh "<url>" temp/source.html`.
 4. Parse HTML; map to uView 2 components per references/contract.md; create pages using resources/page-template.vue and data/mockData.js.

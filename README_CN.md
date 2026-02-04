@@ -6,7 +6,7 @@
 
 ![Version](https://img.shields.io/badge/Version-1.0.0-blue)
 ![License](https://img.shields.io/badge/License-Apache%202.0-green)
-![Skills](https://img.shields.io/badge/Skills-13-orange)
+![Skills](https://img.shields.io/badge/Skills-25-orange)
 ![Plugins](https://img.shields.io/badge/Plugins-3-brightgreen)
 
 </div>
@@ -14,6 +14,8 @@
 ## 📖 简介
 
 **Stitch Skills** 是一个 Agent Skills 集合，旨在通过 Stitch MCP 赋能 AI 智能体（如 Claude, Trae）自主设计和生成 UI 界面。它遵循 [Agent Skills 规范](https://agentskills.io/) 并提供了一套 "自循环" 的设计工作流。
+
+**English:** [README.md](README.md)
 
 ## 🔗 官方资源 (Official Resources)
 
@@ -26,6 +28,39 @@
 *   **[变体 (Variants)](https://stitch.withgoogle.com/docs/learn/variants/)**: 生成和管理设计变体。
 *   **[控件 (Controls)](https://stitch.withgoogle.com/docs/learn/controls/)**: 使用交互式控件优化设计。
 *   **[MCP 指南 (MCP Guide)](https://stitch.withgoogle.com/docs/mcp/guide/)**: Model Context Protocol 集成技术指南。
+
+## 与官方 Stitch Skills 的对照与差异
+
+本仓库 **包含并强化** [google-labs-code/stitch-skills](https://github.com/google-labs-code/stitch-skills)：每个官方 skill 都有 **能力不低于官方** 的本地等价物。
+
+### 对照表：官方 vs 本仓库
+
+| 官方 | 本仓库（本地） | 差异说明（为何本地更强） |
+|----------|-------------------|--------------------------------------|
+| **design-md** | **stitch-design-md** | DESIGN.md 包含 **Section 6**（Design System Notes for Stitch Generation）；官方仅 1–5 节。显式使用 stitch-mcp-* 命名；与 stitch-ui-prompt-architect、stitch-loop 集成；引用框架设计规范。 |
+| **enhance-prompt** | **stitch-ui-prompt-architect** | 双路径：(1) 模糊 → 增强提示（与官方一致）；(2) Design Spec + 请求 → 分段 Stitch 提示。另含框架契约前缀（uView、Element、Layui、Bootstrap、Vant）、KEYWORDS.md、以及 stitch-loop 的 next-prompt.md。 |
+| **stitch-loop** | **stitch-loop** | 相同 baton/SITE.md；**Step 4.5** 可选 Chrome DevTools MCP 视觉校验；**编排方式**（CI/CD、人工介入、Agent 链、手动）；显式 stitch-mcp-* 命名；DESIGN.md Section 6；通过 stitch-ui-prompt-architect 提升提示质量。 |
+| **react-components** | **stitch-react-components** | 相同拉取 + fetch 脚本 + 架构清单 + 组件模板；引用 stitch-mcp-* 做项目/屏幕发现；可选 DESIGN.md 对齐（stitch-design-md）。 |
+| **remotion** | **stitch-remotion** | 相同走查流程；**常用模式**（幻灯片、功能高亮、用户流）；**旁白**与**动态文案提取**；**Remotion Skills** 与 **Remotion MCP** 链接；stitch-mcp-* 命名；DESIGN.md 用于叠加文案。 |
+| **shadcn-ui** | **stitch-shadcn-ui** | 相同发现、安装、定制、blocks；**init 样式**（Vega、Nova、Maia、Lyra、Mira）；**自定义 registry**（get_project_registries、list_items_in_registries）；**校验与质量**清单；与 stitch-react-components、DESIGN.md 集成。 |
+
+### 本仓库在官方基础上的新增
+
+- **stitch-mcp-***：每个 MCP 工具对应一个 skill；技能名 = MCP 工具名下划线改为连字符（如 generate_screen_from_text → stitch-mcp-generate-screen-from-text）。完整映射：[docs/mcp-naming-convention.md](docs/mcp-naming-convention.md)。
+- **stitch-ui-design-spec-***：面向 Stitch 提示的框架设计契约（Bootstrap、Element Plus、Layui、uView、uView Pro、Vant）。
+- **stitch-ui-designer**：端到端设计任务的主编排技能。
+- **stitch-ui-design-spec-generator**：从模糊需求生成结构化规范（主题、设备、风格）。
+- **stitch-skill-creator**：新场景技能的工厂。
+- **stitch-ued-guide**：UED 指南与视觉词汇。
+- **Stitch → 框架组件**：六个转换技能（Vue 3 + Element/Bootstrap/Layui/Vant，uni-app + uView/uView Pro），将 Stitch 屏幕转为可运行项目。
+- **agents/stitch-ui-designer.md**：Stitch UI 工作流专用 agent。
+
+### 何时用哪个
+
+- **所有 Stitch 流程**：优先使用本仓库的 skills（stitch-*）。它们互相引用且共用同一 MCP；本地 prompt-architect 在双路径与框架契约上强于官方 enhance-prompt。
+- **仅作参考**：需要额外示例或脚本时（如 react-components validate.js、remotion 模板），可查阅官方 [google-labs-code/stitch-skills](https://github.com/google-labs-code/stitch-skills)。
+
+完整说明：[docs/related-upstream.md](docs/related-upstream.md)。
 
 ## 🔌 MCP 配置（想要真实执行必须做）
 
@@ -41,6 +76,7 @@
     *   `generate_screen_from_text`
     *   `list_screens`
     *   `get_screen`
+*   技能名遵循 MCP 工具名：stitch-mcp-<tool>（如 get_screen → stitch-mcp-get-screen）。完整映射：[docs/mcp-naming-convention.md](docs/mcp-naming-convention.md)。
 
 在部分客户端中，MCP 工具名可能带命名空间前缀，例如：
 
@@ -62,8 +98,8 @@ stitch-skills/
 │   ├── stitch-ui-designer/          # [编排器] 主技能
 │   ├── stitch-ui-design-spec-generator/ # [逻辑] 风格与规范逻辑
 │   ├── stitch-ui-prompt-architect/      # [逻辑] 提示词工程
-│   ├── stitch-mcp-project-create/   # [执行] 创建项目
-│   ├── stitch-mcp-screen-generate/  # [执行] 生成 UI
+│   ├── stitch-mcp-create-project/   # [执行] 创建项目
+│   ├── stitch-mcp-generate-screen-from-text/  # [执行] 生成 UI
 │   ├── stitch-skill-creator/        # [元工具] 创建新技能
 │   └── ...
 ├── docs/                            # API 规范
@@ -79,17 +115,17 @@ stitch-skills/
 
 ### 逻辑与设计技能 (大脑)
 *   **`stitch-ui-design-spec-generator`**: 分析模糊的用户请求，输出结构化的设计规范（主题、设备、风格）。
-*   **`stitch-ui-prompt-architect`**: 将规范转换为详细、高质量的 Stitch Prompt，遵循最佳实践。
+*   **`stitch-ui-prompt-architect`**: **双路径**：(1) 模糊 UI 想法 → 增强 Stitch 提示（关键词、DESIGN.md、结构）；(2) Design Spec + 请求 → 分段 [Context]/[Layout]/[Components] 提示。支持框架契约前缀（uView、Element、Layui 等）及 stitch-loop 的 next-prompt。
 *   **`stitch-ui-design-variants`**: 为给定的屏幕概念生成设计变体（A/B 测试想法）。
+*   **`stitch-design-md`**: 分析 Stitch 项目并综合为 DESIGN.md 语义设计系统；使用 stitch-mcp-* 拉取；与 stitch-loop、stitch-ui-prompt-architect 集成。
 
 ### 执行技能 (双手 - MCP)
-*   **`stitch-mcp-project-create`**: 创建新的 Stitch 项目。
-*   **`stitch-mcp-project-list`**: 列出现有项目。
-*   **`stitch-mcp-project-get`**: 获取项目详情。
-*   **`stitch-mcp-screen-generate`**: **核心** 文本到 UI 生成。
-*   **`stitch-mcp-screen-list`**: 列出生成的屏幕。
-*   **`stitch-mcp-screen-get`**: 导出屏幕代码/资产。
-*   **`stitch-mcp-screen-refine`**: 优化或编辑现有屏幕。
+*   **`stitch-mcp-create-project`**: 创建新的 Stitch 项目。
+*   **`stitch-mcp-list-projects`**: 列出现有项目。
+*   **`stitch-mcp-get-project`**: 获取项目详情。
+*   **`stitch-mcp-generate-screen-from-text`**: **核心** 文本到 UI 生成。
+*   **`stitch-mcp-list-screens`**: 列出生成的屏幕。
+*   **`stitch-mcp-get-screen`**: 导出屏幕代码/资产。
 
 ### 原子工具
 *   **`stitch-skill-creator`**: 一个用于生成新 **场景技能**（如 `stitch-ui-music-designer`）的原子工具。基于 "黄金模板" 生成，强制符合 SOP 规范。
@@ -101,6 +137,20 @@ stitch-skills/
 *   **`stitch-ui-design-spec-bootstrap`**: Bootstrap 5（Vue）设计规格工具：响应式设计，支持输出硬约束前缀或组件选择器 JSON。
 *   **`stitch-ui-design-spec-element-plus`**: Element Plus（Vue 3）设计规格工具：桌面端组件库，支持输出硬约束前缀或组件选择器 JSON。
 *   **`stitch-ui-design-spec-vant`**: Vant 4（Mobile Vue）设计规格工具：移动端电商风格，支持输出硬约束前缀或组件选择器 JSON。
+
+### 循环、React、视频与 UI 集成
+*   **`stitch-loop`**: 多页站点迭代构建：baton（next-prompt.md）、Stitch MCP 生成/获取、集成到站点、更新 SITE.md 与下一 baton。与 stitch-design-md 配合使用。
+*   **`stitch-react-components`**: 将 Stitch 屏幕转为模块化 React（Vite/TS），含校验与设计 token 一致性；高可靠 fetch 脚本。
+*   **`stitch-remotion`**: 用 Remotion 从 Stitch 项目生成走查视频（转场、叠加）；使用 stitch-mcp-* 获取屏幕。
+*   **`stitch-shadcn-ui`**: shadcn/ui 的发现、安装、定制、blocks 专家指引；与 stitch-react-components 配合使用。
+
+### Stitch → 框架组件（Vue / uni-app）
+*   **`stitch-vue-element-components`**: 将 Stitch 屏幕转为 Vue 3 + Element Plus（Vite、.vue SFC）；契约与 fetch 脚本。
+*   **`stitch-vue-bootstrap-components`**: 将 Stitch 屏幕转为 Vue 3 + BootstrapVue/BootstrapVueNext（Vite、.vue SFC）。
+*   **`stitch-vue-layui-components`**: 将 Stitch 屏幕转为 Vue 3 + Layui-Vue（Vite、.vue SFC）。
+*   **`stitch-vue-vant-components`**: 将 Stitch 屏幕转为 Vue 3 + Vant 4（Vite、.vue SFC、移动优先）。
+*   **`stitch-uview-components`**: 将 Stitch 屏幕转为 uni-app + Vue 2 + uView 2.0（pages/、u-* 组件）。
+*   **`stitch-uviewpro-components`**: 将 Stitch 屏幕转为 uni-app + Vue 3 + uView Pro（pages/、u-* 组件、rpx）。
 
 ### 知识技能
 *   **`stitch-ued-guide`**: 被其他技能引用的设计指南、视觉词汇和提示词策略。
@@ -216,6 +266,33 @@ Trae 的 MCP 配置文件路径：
 ## 🔒 安全与触发
 
 所有执行技能 (`stitch-mcp-*`) 和主编排器 (`stitch-ui-designer`) 都受 **关键先决条件 (Critical Prerequisite)** 保护：只有当用户 **显式提及 "Stitch"** 时，它们才会触发。这防止了在正常对话中意外调用昂贵的 API。
+
+## 添加新技能
+
+新技能应遵循本仓库的 [架构](#-架构) 与 [Agent Skills 规范](https://agentskills.io/specification)。
+
+### 适合的新技能方向
+
+- **校验**：将 Stitch HTML 转为其他 UI 框架并校验语法的技能。
+- **数据解耦**：将静态设计内容移到外部 mock 数据文件的技能。
+- **生成设计**：从给定数据集或规范生成新 Stitch 屏幕的技能。
+- **框架规格**：更多 UI 框架的 `stitch-ui-design-spec-*` 技能（如 Ant Design、Naive UI）。
+
+使用 **stitch-skill-creator** 创建场景技能；MCP 封装请沿用现有 `stitch-mcp-*` 命名与「一工具一技能」模式。详见 [CONTRIBUTING.md](CONTRIBUTING.md)。
+
+## 📚 相关文档
+
+| 文档 | 说明 |
+|------|------|
+| [docs/related-upstream.zh-CN.md](docs/related-upstream.zh-CN.md) | 官方与本地技能对照及如何保持领先。English: [related-upstream.md](docs/related-upstream.md). |
+| [docs/mcp-naming-convention.zh-CN.md](docs/mcp-naming-convention.zh-CN.md) | MCP 工具名 → 技能名（如 get_screen → stitch-mcp-get-screen）。English: [mcp-naming-convention.md](docs/mcp-naming-convention.md). |
+| [docs/skills-compare-design-spec-and-react.zh-CN.md](docs/skills-compare-design-spec-and-react.zh-CN.md) | Design Spec 系与组件转换技能对比（角色、输入、输出）。English: [skills-compare-design-spec-and-react.md](docs/skills-compare-design-spec-and-react.md). |
+| [AGENTS.md](AGENTS.md) | 面向 AI 编码智能体的 Agent 指引与技能结构。 |
+| [spec/agent-skills-spec.md](spec/agent-skills-spec.md) | 本仓库采用的 Agent Skills 规范。 |
+| [CONTRIBUTING.md](CONTRIBUTING.md) | 如何新增/更新技能与提交 PR。 |
+| [docs/xx.md](docs/xx.md) | 将现有前端体系变为 Stitch 约束的推荐路径（进阶）。 |
+| [SELF_ARGUMENTATION.md](SELF_ARGUMENTATION.md) | 项目自我论证（目标、架构、扩展性）。 |
+| [docs/README.md](docs/README.md) | docs/ 目录下文档索引。 |
 
 ## 📄 许可证
 

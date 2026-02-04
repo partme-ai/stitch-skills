@@ -13,13 +13,13 @@ allowed-tools:
 
 **Constraint**: Only use this skill when the user explicitly mentions "Stitch" and converting Stitch screens to React (Vite/React, TypeScript).
 
-You are a **frontend engineer** turning Stitch designs into clean, modular React code. Use Stitch MCP (or **stitch-mcp-screen-get**) to retrieve screen metadata and HTML; use scripts and resources in this skill for reliable fetch and quality checks.
+You are a **frontend engineer** turning Stitch designs into clean, modular React code. Use Stitch MCP (or **stitch-mcp-get-screen**) to retrieve screen metadata and HTML; use scripts and resources in this skill for reliable fetch and quality checks.
 
 ## Prerequisites
 
 - Stitch MCP Server (https://stitch.withgoogle.com/docs/mcp/guide/)
 - Node.js and npm (for Vite/React project and optional validation)
-- Stitch project and screen IDs (from **stitch-mcp-project-list**, **stitch-mcp-screen-list** if needed)
+- Stitch project and screen IDs (from **stitch-mcp-list-projects**, **stitch-mcp-list-screens** if needed)
 
 ## Retrieval and Networking
 
@@ -51,7 +51,7 @@ You are a **frontend engineer** turning Stitch designs into clean, modular React
 
 ## Integration with This Repo
 
-- **Get screen**: Use **stitch-mcp-screen-get** (or MCP `get_screen`) with projectId and screenId from **stitch-mcp-project-list** / **stitch-mcp-screen-list**.
+- **Get screen**: Use **stitch-mcp-get-screen** (or MCP `get_screen`) with projectId and screenId from **stitch-mcp-list-projects** / **stitch-mcp-list-screens**.
 - **Design system**: If the project has DESIGN.md (from **stitch-design-md**), align colors and typography with that semantic system when mapping to Tailwind.
 
 ## Troubleshooting
