@@ -17,9 +17,9 @@
 
 ## Expected Behavior
 
-1. This skill outputs uView Pro hard constraints prefix (tokens/primary=#3c9cff/up- prefix, etc.).
+1. This skill outputs uView Pro hard constraints prefix (tokens/primary=#3c9cff/u- prefix, etc.).
 2. The orchestrator appends it as `[Context]` prefix to the Stitch Prompt.
-3. Subsequent generation uses `up-*` components, `uni.$u` utilities, and `rpx` units.
+3. Subsequent generation uses `u-*` components (same prefix as uView 2; package uview-pro), `uni.$u` utilities, and `rpx` units.
 
 ## Scenario 1: E-commerce Home Page
 
@@ -38,14 +38,14 @@ Constraint Level: Strict
 - Unit: rpx
 
 # Component Contract
-- Search: <up-search placeholder="Search products">.
-- Banner: <up-swiper :list="bannerList" height="300">.
-- Grid Nav: <up-grid :col="4"><up-grid-item>...</up-grid-item></up-grid>.
-- Product List: <up-waterfall v-model="flowList">.
-  - Card: Custom <view class="demo-warter"> using <up-image> and <up-text>.
+- Search: <u-search placeholder="Search products">.
+- Banner: <u-swiper :list="bannerList" height="300">.
+- Grid Nav: <u-grid :col="4"><u-grid-item>...</u-grid-item></u-grid>.
+- Product List: <u-waterfall v-model="flowList">.
+  - Card: Custom <view class="demo-warter"> using <u-image> and <u-text>.
 
 # Layout Rules
-- Use <up-sticky> for search bar.
-- Use <up-loadmore> at bottom.
-- Use <up-back-top> for long lists.
+- Use <u-sticky> for search bar.
+- Use <u-loadmore> at bottom.
+- Use <u-back-top> for long lists.
 ```

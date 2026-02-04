@@ -1,0 +1,27 @@
+# Validate that each skill has required structure (SKILL.md).
+# Aligned with google-labs-code/stitch-skills validation approach.
+name: Validate Skills
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+
+jobs:
+  validate-structure:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check each skill has SKILL.md
+        run: |
+          missing=0
+          for dir in skills/*/; do
+            if [ ! -f "${dir}SKILL.md" ]; then
+              echo "::error::Missing SKILL.md in ${dir}"
+              missing=1
+            fi
+          done
+          [ "$missing" -eq 0 ] || exit 1
+          echo "All skill directories contain SKILL.md."
