@@ -1,11 +1,21 @@
 ---
 name: stitch-ued-guide
-description: A knowledge base of UED Interaction Guidelines and Prompt Engineering best practices for Stitch.
+description: UED guidelines, visual vocabulary, and prompt structure for Stitch. Use when the user asks about layout/style terms, device constraints, or when structuring/improving Stitch prompts; combine with stitch-ui-prompt-architect for vague→concrete prompts.
 ---
 
 # Stitch UED Guidelines
 
 This skill serves as a reference for User Experience Design (UED) guidelines when working with Stitch. It includes interaction principles, visual vocabulary, and prompt engineering strategies.
+
+## When to use this skill
+
+Use this skill when:
+
+*   The user asks about **layout or style terms** (e.g. Masonry, Glassmorphism, Sidebar) or **device constraints** (mobile vs desktop width, touch targets).
+*   You need to **structure or improve a Stitch prompt** (Context → Layout → Component → Content) or ensure consistent UED wording.
+*   You are coordinating with **stitch-ui-designer** and need UED/accessibility/design-system alignment alongside Stitch generation.
+
+For **transforming vague ideas into a full Stitch prompt**, use **stitch-ui-prompt-architect**; combine both when you want structure + vocabulary (this skill) and concrete prompt output (prompt-architect).
 
 ## Design Modes (Model Selection)
 
@@ -44,6 +54,13 @@ A perfect Stitch prompt follows this structure:
 *   **Realism**: Ask for realistic data. "User 'Alice', 'Morning Yoga', '300 kcal'."
 *   **State**: "Active state for the 'Home' tab."
 
+**Quick checklist (before calling generate_screen_from_text):**
+
+*   [ ] **Context & style** defined? (device, app type, theme)
+*   [ ] **Layout** defined? (nav position, main area structure)
+*   [ ] **Key components** specific? (avoid "a list"; use e.g. "Workout Cards with map thumbnail, duration, Start button")
+*   [ ] **Sample content / state** included? (real copy, active state)
+
 ## Visual Vocabulary
 
 Use these terms to control the look and feel:
@@ -64,8 +81,15 @@ Use these terms to control the look and feel:
 ## Device Guidelines
 
 *   **Mobile**: ~375px width. Focus on thumb-friendly bottom navigation. Vertical scrolling is expected.
-*   **Desktop/Web**: ~1440px width. utilize horizontal space. Multi-column layouts.
-*   **Tablet**: Hybrid. often resembles desktop but with touch targets.
+*   **Desktop/Web**: ~1440px width. Use horizontal space. Multi-column layouts.
+*   **Tablet**: Hybrid. Often resembles desktop but with touch targets.
+
+## Accessibility & Inclusive Design
+
+*   **Contrast & readability**: Prefer sufficient contrast (dark/light); avoid low-contrast text. In prompts, you can add "high contrast" or "clear text hierarchy."
+*   **Touch targets**: For mobile/tablet, ask for touch-friendly controls (e.g. "buttons at least 44px tap area"). In Context or Component details, add "touch-friendly" when relevant.
+*   **Focus & keyboard**: For desktop, mention "clear focus states" or "keyboard-navigable" when the design should support accessibility.
+*   **In prompts**: Add phrases like "high contrast," "clear focus states," "touch-friendly buttons" in Context/Style or Component Details when UED or accessibility alignment is needed.
 
 ## Controls & Variants
 
@@ -75,5 +99,6 @@ Use these terms to control the look and feel:
 ## Related resources
 
 - **Stitch Effective Prompting Guide**: https://stitch.withgoogle.com/docs/learn/prompting/ — official best practices; consult for up-to-date recommendations.
+- **Division of labor**: **stitch-ued-guide** = structure and vocabulary (how to phrase, what terms to use). **stitch-ui-prompt-architect** = transform vague ideas into a full, executable Stitch prompt (with DESIGN.md, framework contracts). Use both when you need consistent UED wording and concrete prompt output.
 - **Vague → enhanced prompt**: Use **stitch-ui-prompt-architect** (Path A: enhance vague UI ideas with specificity, UI/UX keywords, DESIGN.md context). Use with **stitch-design-md** for DESIGN.md and **stitch-ui-design-spec-generator** for full flow.
 - **Stitch skills in this repo** (prefer these over official): design-md → **stitch-design-md**; enhance-prompt → **stitch-ui-prompt-architect** (two paths + framework contracts); react-components → **stitch-react-components**; stitch-loop → **stitch-loop**; remotion → **stitch-remotion**; shadcn-ui → **stitch-shadcn-ui**. Plus **stitch-mcp-*** (one skill per MCP tool: create-project, get-project, list-projects, generate-screen-from-text, get-screen, list-screens), **stitch-ui-design-spec-*** (Bootstrap, Element Plus, Layui, uView, uView Pro, Vant), **stitch-ui-designer** (orchestrator), and six Stitch→framework conversion skills (Vue + Element/Bootstrap/Layui/Vant, uni-app + uView/uView Pro). These skills reference each other and the same MCP; use stitch-mcp-<tool> names (e.g. get_screen → stitch-mcp-get-screen).
