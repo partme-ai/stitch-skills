@@ -118,3 +118,7 @@ More ready-to-use prompts: see [docs/color-prompt-guide.md](../../docs/color-pro
 - **Division of labor**: **stitch-ued-guide** = structure and vocabulary (how to phrase, what terms to use). **stitch-ui-prompt-architect** = transform vague ideas into a full, executable Stitch prompt (with DESIGN.md, framework contracts). Use both when you need consistent UED wording and concrete prompt output.
 - **Vague → enhanced prompt**: Use **stitch-ui-prompt-architect** (Path A: enhance vague UI ideas with specificity, UI/UX keywords, DESIGN.md context). Use with **stitch-design-md** for DESIGN.md and **stitch-ui-design-spec-generator** for full flow.
 - **Stitch skills in this repo** (prefer these over official): design-md → **stitch-design-md**; enhance-prompt → **stitch-ui-prompt-architect** (two paths + framework contracts); react-components → **stitch-react-components**; stitch-loop → **stitch-loop**; remotion → **stitch-remotion**; shadcn-ui → **stitch-shadcn-ui**. Plus **stitch-mcp-*** (one skill per MCP tool: create-project, get-project, list-projects, generate-screen-from-text, get-screen, list-screens), **stitch-ui-design-spec-*** (Bootstrap, Element Plus, Layui, uView, uView Pro, Vant), **stitch-ui-designer** (orchestrator), and six Stitch→framework conversion skills (Vue + Element/Bootstrap/Layui/Vant, uni-app + uView/uView Pro). These skills reference each other and the same MCP; use stitch-mcp-<tool> names (e.g. get_screen → stitch-mcp-get-screen).
+
+## References
+
+- [Examples](examples/usage.md)

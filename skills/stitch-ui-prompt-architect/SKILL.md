@@ -207,3 +207,8 @@ A clean, trustworthy login page with a centered form and subtle branding.
 
 - [KEYWORDS](references/KEYWORDS.md) — UI/UX keyword palettes for Path A.
 - [Official documentation (by framework)](#official-documentation-by-framework) — Authoritative docs for BootstrapVue, Element Plus, Layui-Vue, Vant, uView 2, uView Pro.
+
+## References
+
+- [Examples](examples/usage.md)
+- [Keywords](references/KEYWORDS.md)

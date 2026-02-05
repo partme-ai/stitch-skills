@@ -71,6 +71,8 @@ You are a **frontend engineer** turning Stitch designs into clean, modular Vue 3
 
 ## References
 
+- [Examples](examples/usage.md)
+- [Scripts](scripts/fetch-stitch.sh)
 - [Component index (per-component doc links)](references/component-index.md)
 - [Tailwind → Vant 4](references/tailwind-to-vant.md) — Tailwind utility → px/theme when converting Stitch HTML.
 - [Contract (Vant 4 mapping)](references/contract.md)

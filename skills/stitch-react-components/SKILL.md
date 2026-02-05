@@ -66,7 +66,10 @@ You are a **frontend engineer** turning Stitch designs into clean, modular React
 
 ## References
 
-- [Tailwind → React](references/tailwind-to-react.md) — Theme-mapped Tailwind when converting Stitch HTML; keep Tailwind classes, sync Stitch tokens to tailwind.config.
-- [Architecture checklist](resources/architecture-checklist.md)
-- [Component template](resources/component-template.tsx)
+- **Examples**: [examples/usage.md](examples/usage.md)
+- **Style Mapping**: [references/tailwind-to-react.md](references/tailwind-to-react.md) — Theme-mapped Tailwind when converting Stitch HTML; keep Tailwind classes, sync Stitch tokens to tailwind.config.
+- **Resources**:
+    - [resources/architecture-checklist.md](resources/architecture-checklist.md)
+    - [resources/component-template.tsx](resources/component-template.tsx)
+- **Scripts**: [scripts/fetch-stitch.sh](scripts/fetch-stitch.sh)
 - [Stitch API / MCP](https://stitch.withgoogle.com/docs/mcp/guide/)

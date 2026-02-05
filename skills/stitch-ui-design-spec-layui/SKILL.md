@@ -91,3 +91,9 @@ Return exactly two code blocks, in this order, with no extra prose:
 [Components]
 (Inject component snippets matching the JSON selection above)
 ```
+
+## References
+
+- [Contract](references/contract.md)
+- [Examples](references/examples.md)
+- [Official Docs](references/official.md)

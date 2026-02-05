@@ -71,6 +71,8 @@ You are a **frontend engineer** turning Stitch designs into clean, modular Vue 3
 
 ## References
 
+- [Examples](examples/usage.md)
+- [Scripts](scripts/fetch-stitch.sh)
 - [Component index (per-component doc links)](references/component-index.md)
 - [Tailwind → Bootstrap Vue](references/tailwind-to-bootstrap.md) — Tailwind utility → Bootstrap when converting Stitch HTML.
 - [Contract (Bootstrap mapping)](references/contract.md)

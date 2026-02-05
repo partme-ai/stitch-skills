@@ -98,6 +98,7 @@ Components use Radix primitives: keyboard navigation, ARIA, focus management. Wh
 
 ## References
 
+- [Examples](examples/usage.md)
 - [Tailwind → shadcn/ui](references/tailwind-to-shadcn.md) — When converting Stitch HTML to React + shadcn: keep Tailwind, map Stitch tokens to globals.css (--primary, --background, etc.); use shadcn components (Button, Card, Input) with className/cn().
 - [shadcn/ui docs](https://ui.shadcn.com/docs)
 - [Radix UI](https://www.radix-ui.com/)

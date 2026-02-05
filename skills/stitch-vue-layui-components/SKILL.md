@@ -71,6 +71,8 @@ You are a **frontend engineer** turning Stitch designs into clean, modular Vue 3
 
 ## References
 
+- [Examples](examples/usage.md)
+- [Scripts](scripts/fetch-stitch.sh)
 - [Component index (per-component doc links)](references/component-index.md)
 - [Tailwind → Layui-Vue](references/tailwind-to-layui.md) — Tailwind utility → px/theme (2px/4px radius) when converting Stitch HTML.
 - [Contract (Layui-Vue mapping)](references/contract.md)

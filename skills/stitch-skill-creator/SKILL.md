@@ -126,3 +126,10 @@ Provide at least 2 distinct examples of how this skill transforms a vague reques
     *   *Good (Music)*: "A player view with a scrubbing bar, album art, and waveform visualization."
 2.  **Device Awareness**: Ensure the template supports Mobile (default) and Desktop.
 3.  **No Direct Execution**: The Scenario Skill must not call any MCP tool. It produces the prompt that the Orchestrator uses.
+
+## References
+
+- [Examples](examples/usage.md)
+- [Workflows](references/workflows.md)
+- [Output Patterns](references/output-patterns.md)
+- [Init Script](scripts/init_stitch_skill.py)

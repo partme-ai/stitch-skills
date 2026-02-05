@@ -51,3 +51,7 @@ create project, new project, start app, initialize, setup, workspace, container,
 
 **Chinese keywords (中文关键词):**
 创建项目, 新建项目, 开始设计, 初始化, 建立工程, 新应用, 项目ID, 启动项目
+
+## References
+
+- [Examples](examples/usage.md)

@@ -95,3 +95,10 @@ generate screen, design ui, create interface, make page, draw wireframe, text to
 
 **Chinese keywords (中文关键词):**
 生成页面, 设计UI, 创建界面, 画图, 制作网页, 文本生成UI, 界面设计, 移动端设计, 桌面端设计, 仪表盘, 登录页, 线框图, 生成代码
+
+## References
+
+- [Examples](examples/usage.md)
+- [Desktop Dashboard Example](examples/desktop_dashboard.md)
+- [Mobile App Example](examples/mobile_app.md)
+- [Wireframe Example](examples/wireframe.md)

@@ -36,3 +36,7 @@ User Input: "Show me my existing projects."
 Agent Action:
 1.  Identify the user wants to list projects.
 2.  Call `list_projects` tool with arguments `{"filter": "view=owned"}`.
+
+## References
+
+- [Examples](examples/usage.md)

@@ -145,5 +145,6 @@ Shadows and layers: "Flat," "Whisper-soft diffused shadows," "Heavy drop shadows
 
 ## References
 
+- [Examples](examples/usage.md)
 - [Example DESIGN.md](examples/DESIGN.md) — Full sample output
 - [Stitch Prompting Guide](https://stitch.withgoogle.com/docs/learn/prompting/)

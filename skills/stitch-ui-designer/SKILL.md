@@ -142,3 +142,8 @@ ALWAYS use this exact template:
 
 ## Keywords
 orchestrator, design agent, ui designer, master skill, design flow, stitch pilot
+
+## References
+
+- [Workflow End-to-End](examples/workflow_end_to_end.md)
+- [Workflows Reference](references/workflows.md)

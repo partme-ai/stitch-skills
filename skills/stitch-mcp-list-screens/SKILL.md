@@ -34,3 +34,7 @@ User Input: "Show me all screens in this project."
 Agent Action:
 1.  Extract project ID.
 2.  Call `list_screens` tool with arguments `{"projectId": "projects/123456"}`.
+
+## References
+
+- [Examples](examples/usage.md)

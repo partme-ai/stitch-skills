@@ -98,6 +98,19 @@ Testing is triggered by user instruction, not by calling MCP directly. Flow: use
 
 ## References
 
+- **Component API**: [api/component-api.md](api/component-api.md)
+- **Examples**: [examples/usage.md](examples/usage.md)
+- **Contract & Patterns**:
+    - [references/contract.md](references/contract.md) (Core mapping rules)
+    - [references/official.md](references/official.md) (Official docs links)
+    - [references/stitch-html-patterns.md](references/stitch-html-patterns.md) (HTML structure handling)
+    - [references/tailwind-to-uviewpro.md](references/tailwind-to-uviewpro.md) (Style conversion)
+    - [references/component-index.md](references/component-index.md) (Component list)
+- **Resources**:
+    - [resources/architecture-checklist.md](resources/architecture-checklist.md) (QA Checklist)
+- **Scripts**:
+    - [scripts/fetch-stitch.sh](scripts/fetch-stitch.sh) (High-reliability fetcher)
+
 - **[Component index (must read)](references/component-index.md)** — Full uView Pro component list (80+) with minimal usage; consult when generating so you use u-modal, u-popup, u-action-sheet, u-empty, u-avatar, u-picker, u-tabbar, etc., instead of raw HTML.
 - [Stitch HTML patterns](references/stitch-html-patterns.md) — Stitch HTML → uView Pro (page structure, forms); use when converting from get_screen htmlCode.
 - [Tailwind → uView Pro](references/tailwind-to-uviewpro.md) — Tailwind utility classes → rpx / theme (spacing, typography, colors, borders, shadows); use so output is framework-native, not raw Tailwind.
