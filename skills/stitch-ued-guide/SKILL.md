@@ -78,6 +78,22 @@ Use these terms to control the look and feel:
 *   **Glassmorphism**: Blurred transparency, frosted glass.
 *   **Brutalism**: Raw, bold, high contrast, large typography.
 
+## Color & Theme Prompts
+
+When describing **Context & Style**, use a clear color structure so Stitch produces consistent palettes. A strong pattern (inspired by [AI配色提示词-UI配色指南](https://mp.weixin.qq.com/s/1SDFd7ZOPkbhpvHsmTJQjQ)):
+
+**Structure**: `[App type]` + `[Background hex]` + `[Primary hex]` + `[Secondary hex]` + `[Accent hex]` + `[Design system]` + `[Mood]`. Optionally add **semantic colors**: success green, alert red, warning yellow.
+
+**Example — Dark productivity:**
+> Modern productivity app dark theme, charcoal grey background #1a1a1a, primary blue #4A90E2, secondary teal #26D0CE, neutral greys #2d2d2d to #f5f5f5, accent orange #FF6B35 for CTAs, Material Design 3 inspired, high contrast for readability, professional and focused atmosphere.
+
+**Example — Bright desktop tool:**
+> Project management app bright theme, clean white background #FFFFFF, primary royal blue #2563EB, secondary purple #7C3AED, soft grey cards #F9FAFB, green success #22C55E, red alerts #DC2626, yellow warnings #F59E0B, minimal design with subtle shadows, organized and efficient visual hierarchy.
+
+**Quick color checklist**: Background defined? Primary/secondary/accent with hex? Semantic colors (success/alert/warning) if needed? Design system (Material 3, Fluent) or style (glassmorphism, minimal) mentioned?
+
+More ready-to-use prompts: see [docs/color-prompt-guide.md](../../docs/color-prompt-guide.md) in this repo, or the [original article](https://mp.weixin.qq.com/s/1SDFd7ZOPkbhpvHsmTJQjQ) for 20 curated prompts.
+
 ## Device Guidelines
 
 *   **Mobile**: ~375px width. Focus on thumb-friendly bottom navigation. Vertical scrolling is expected.
@@ -102,3 +118,7 @@ Use these terms to control the look and feel:
 - **Division of labor**: **stitch-ued-guide** = structure and vocabulary (how to phrase, what terms to use). **stitch-ui-prompt-architect** = transform vague ideas into a full, executable Stitch prompt (with DESIGN.md, framework contracts). Use both when you need consistent UED wording and concrete prompt output.
 - **Vague → enhanced prompt**: Use **stitch-ui-prompt-architect** (Path A: enhance vague UI ideas with specificity, UI/UX keywords, DESIGN.md context). Use with **stitch-design-md** for DESIGN.md and **stitch-ui-design-spec-generator** for full flow.
 - **Stitch skills in this repo** (prefer these over official): design-md → **stitch-design-md**; enhance-prompt → **stitch-ui-prompt-architect** (two paths + framework contracts); react-components → **stitch-react-components**; stitch-loop → **stitch-loop**; remotion → **stitch-remotion**; shadcn-ui → **stitch-shadcn-ui**. Plus **stitch-mcp-*** (one skill per MCP tool: create-project, get-project, list-projects, generate-screen-from-text, get-screen, list-screens), **stitch-ui-design-spec-*** (Bootstrap, Element Plus, Layui, uView, uView Pro, Vant), **stitch-ui-designer** (orchestrator), and six Stitch→framework conversion skills (Vue + Element/Bootstrap/Layui/Vant, uni-app + uView/uView Pro). These skills reference each other and the same MCP; use stitch-mcp-<tool> names (e.g. get_screen → stitch-mcp-get-screen).
+
+## References
+
+- [Examples](examples/usage.md)

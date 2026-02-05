@@ -99,4 +99,6 @@ project/
 - [Remotion Skills](https://github.com/remotion-dev/remotion/tree/main/packages/skills) — animation, composition patterns, performance; install with `npx skills add remotion-dev/skills`.
 - [Remotion MCP](https://www.remotion.dev/docs/ai/mcp) — programmatic render and preview.
 - [Stitch MCP](https://stitch.withgoogle.com/docs/mcp/guide/)
-- Examples: `examples/screens.json`, `examples/usage.md`; full templates in [google-labs-code/stitch-skills](https://github.com/google-labs-code/stitch-skills).
+- [Examples](examples/usage.md)
+- [Screens Manifest Example](examples/screens.json)
+- Full templates in [google-labs-code/stitch-skills](https://github.com/google-labs-code/stitch-skills).

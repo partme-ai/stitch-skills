@@ -19,7 +19,7 @@ You are a **frontend engineer** turning Stitch designs into clean, modular uni-a
 
 - Stitch MCP Server (https://stitch.withgoogle.com/docs/mcp/guide/)
 - uni-app / HBuilderX or Vue CLI for uni-app (Vue 2)
-- Stitch project and screen IDs (from **stitch-mcp-list-projects**, **stitch-mcp-list-screens** if needed)
+- Stitch project and screen IDs — **two ways**: (1) From a **Stitch design URL**: parse **projectId** (path) and **screenId** (`node-id` query). (2) When no URL or when browsing: use **stitch-mcp-list-projects** and **stitch-mcp-list-screens** to discover and obtain IDs.
 
 ## Official Documentation
 
@@ -42,7 +42,7 @@ You are a **frontend engineer** turning Stitch designs into clean, modular uni-a
 - **Modular pages/components**: Split the design into pages under `pages/` and shared components under `components/`; avoid one giant page.
 - **Logic isolation**: Put event handlers and mixins/utils in appropriate modules.
 - **Data decoupling**: Move static text, image URLs, and lists into `data/` or page data.
-- **uView 2 only**: Use `u-*` components per [references/contract.md](references/contract.md) (u-row, u-col, u-navbar, u-button, u-form, u-input, etc.).
+- **uView 2 only (use framework components when available)**: Use `u-*` components per [references/contract.md](references/contract.md). Card-like blocks → **u-cell-group** + **u-cell** or **u-text**; hints/tips → **u-text**; dividers → **u-line** / **u-divider**. Do not use view/text + custom class (.card, .card-title, .label-optional, .tips-text, .unit).
 - **Project-specific**: Omit third-party license headers from generated pages/components.
 
 ## Execution Steps
@@ -55,8 +55,8 @@ You are a **frontend engineer** turning Stitch designs into clean, modular uni-a
 
 ## Integration with This Repo
 
-- **Get screen**: Use **stitch-mcp-get-screen** with projectId and screenId from **stitch-mcp-list-projects** / **stitch-mcp-list-screens**.
-- **Design spec**: If Stitch was generated with **stitch-ui-design-spec-uview** constraints, map to uni-app pages and uView 2 components. If generic HTML, apply mapping rules from [references/contract.md](references/contract.md).
+- **Get screen**: Use **stitch-mcp-get-screen** with projectId and screenId. Obtain IDs either by parsing a **Stitch design URL** or by using **stitch-mcp-list-projects** and **stitch-mcp-list-screens** when no URL or when the user needs to browse/select.
+- **Design spec**: If Stitch was generated with **stitch-ui-design-spec-uview** constraints, map to uni-app pages and uView 2 components. If converting from Stitch HTML (e.g. get_screen htmlCode), use [references/tailwind-to-uview.md](references/tailwind-to-uview.md) for Tailwind utility → rpx/theme, then [references/contract.md](references/contract.md) for component API.
 - **Design system**: If the project has DESIGN.md (from **stitch-design-md**), align colors and spacing with that system when mapping to uView tokens.
 
 ## Troubleshooting
@@ -71,6 +71,10 @@ You are a **frontend engineer** turning Stitch designs into clean, modular uni-a
 
 ## References
 
+- [Examples](examples/usage.md)
+- [Scripts](scripts/fetch-stitch.sh)
+- [Component index (per-component doc links)](references/component-index.md)
+- [Tailwind → uView 2](references/tailwind-to-uview.md) — Tailwind utility → rpx/theme when converting Stitch HTML.
 - [Contract (uView 2 mapping)](references/contract.md)
 - [Component API (props/events quick reference)](api/component-api.md)
 - [Official documentation](references/official.md)

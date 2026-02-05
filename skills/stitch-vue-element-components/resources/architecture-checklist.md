@@ -6,6 +6,7 @@
 - [ ] Static text, image URLs, lists in `src/data/mockData.js` (or .ts).
 
 ## Element Plus usage
+- [ ] **Use framework components when available**: Card → **el-card** (not div.card); tips/notices → **el-alert**. No custom .card, .card-header, .card-title, .tips-text. See [contract.md](../references/contract.md) and [component-index.md](../references/component-index.md).
 - [ ] Layout: Use `<el-row>`, `<el-col>`, `<el-container>`; no raw CSS grid when contract applies.
 - [ ] Buttons: Use `<el-button type="primary">` etc.; no `<button class="...">`.
 - [ ] Forms: Use `<el-form>`, `<el-form-item>`, `<el-input>`; labels present.

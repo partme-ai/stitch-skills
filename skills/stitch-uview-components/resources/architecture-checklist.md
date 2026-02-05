@@ -6,6 +6,7 @@
 - [ ] Static text, image URLs, lists in data or `data/mockData.js`.
 
 ## uView 2 usage
+- [ ] **Use framework components when available**: Card-like blocks → **u-cell-group** + **u-cell** or **u-text** for title; label hints/tips → **u-text**; divider → **u-line** / **u-divider**. No custom .card, .card-header, .card-title, .label-optional, .tips-text, .unit. See [contract.md](../references/contract.md) and [component-index.md](../references/component-index.md).
 - [ ] Layout: Use `<u-row>`, `<u-col>`, `<u-cell-group>`; no raw grid when contract applies.
 - [ ] Buttons: Use `<u-button type="primary">` etc.; no raw `<button>`.
 - [ ] Forms: Use `<u-form>`, `<u-input>`; labels present.

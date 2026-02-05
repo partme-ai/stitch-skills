@@ -35,3 +35,7 @@ A list of 3 distinct prompts.
 1.  "Desktop Dashboard... **Dark Mode**... Blue accents..."
 2.  "Desktop Dashboard... **Light Mode**... Clean white/grey..."
 3.  "Desktop Dashboard... **High Contrast**... Black and White..."
+
+## References
+
+- [Examples](examples/usage.md)

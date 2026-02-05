@@ -21,10 +21,14 @@ When converting Stitch-generated HTML to Vue 3 + Element Plus, map structure and
 
 ## 2. Component Mapping (Stitch HTML → Element Plus)
 
+**Rule: Use framework components when available; do not replace with generic div/span + custom class.** Use **el-card** for cards (shadow, #header slot), **el-alert** for tips/notices. No custom `.card`, `.card-header`, `.card-title`, `.label-optional`, `.tips-text` when el-* equivalents exist.
+
 ### Layout (24-column Grid)
 - **Row**: `<el-row :gutter="20">`
 - **Col**: `<el-col :span="12" :xs="24" :sm="12" :md="8">`
 - **Container**: `<el-container>`, `<el-header>`, `<el-aside>`, `<el-main>`, `<el-footer>`
+- **Card**: **el-card** with `shadow="hover"` and `#header` slot if needed; do not use `<div class="card">` + custom header.
+- **Tips / notice**: **el-alert** with `type="info"` or `type="warning"`; do not use raw div + .tips-text.
 
 ### Buttons
 - **Tag**: `<el-button>`
@@ -41,7 +45,7 @@ When converting Stitch-generated HTML to Vue 3 + Element Plus, map structure and
 
 ### Data Display
 - **Table**: `<el-table :data="tableData">` + `<el-table-column prop="..." label="..." />`
-- **Card**: `<el-card shadow="hover">` with `#header` slot if needed
+- **Card**: **el-card** `<el-card shadow="hover">` with `#header` slot if needed — use for all card/section blocks; do not use div.card.
 - **Tag**: `<el-tag type="success">...</el-tag>`
 - **Empty**: `<el-empty description="No Data" />`
 
@@ -63,7 +67,8 @@ When converting Stitch-generated HTML to Vue 3 + Element Plus, map structure and
 
 ## 5. Invariants
 
-- Do not use raw `<button class="...">` when `<el-button>` applies.
+- **Use framework components when available**: Card → **el-card**; tips/notices → **el-alert**. No custom .card, .card-header, .card-title, .tips-text when el-* components exist.
+- Do not use raw `<button class="...">` when `<el-button>` applies; do not use `<div class="card">` when `<el-card>` applies.
 - Use prop-driven configuration (e.g. `el-table :data`, `el-table-column`) over manual thead/tbody.
 - Ensure form items have labels; use tooltip for icon-only buttons.
 - Form validation: bind `:rules` on `el-form-item`, call `formRef.validate()` on submit.

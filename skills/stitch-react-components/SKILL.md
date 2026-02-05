@@ -19,7 +19,7 @@ You are a **frontend engineer** turning Stitch designs into clean, modular React
 
 - Stitch MCP Server (https://stitch.withgoogle.com/docs/mcp/guide/)
 - Node.js and npm (for Vite/React project and optional validation)
-- Stitch project and screen IDs (from **stitch-mcp-list-projects**, **stitch-mcp-list-screens** if needed)
+- Stitch project and screen IDs — **two ways**: (1) From a **Stitch design URL**: parse **projectId** (path) and **screenId** (`node-id` query). (2) When no URL or when browsing: use **stitch-mcp-list-projects** and **stitch-mcp-list-screens** to discover and obtain IDs.
 
 ## Retrieval and Networking
 
@@ -51,8 +51,8 @@ You are a **frontend engineer** turning Stitch designs into clean, modular React
 
 ## Integration with This Repo
 
-- **Get screen**: Use **stitch-mcp-get-screen** (or MCP `get_screen`) with projectId and screenId from **stitch-mcp-list-projects** / **stitch-mcp-list-screens**.
-- **Design system**: If the project has DESIGN.md (from **stitch-design-md**), align colors and typography with that semantic system when mapping to Tailwind.
+- **Get screen**: Use **stitch-mcp-get-screen** (or MCP `get_screen`) with projectId and screenId. Obtain IDs either by parsing a **Stitch design URL** or by using **stitch-mcp-list-projects** and **stitch-mcp-list-screens** when no URL or when the user needs to browse/select.
+- **Design system**: If the project has DESIGN.md (from **stitch-design-md**), align colors and typography with that semantic system when mapping to Tailwind. When converting Stitch HTML to React, use [references/tailwind-to-react.md](references/tailwind-to-react.md) for theme-mapped Tailwind (tokens → tailwind.config); keep Tailwind classes in output, map Stitch tokens to project theme.
 
 ## Troubleshooting
 
@@ -66,6 +66,10 @@ You are a **frontend engineer** turning Stitch designs into clean, modular React
 
 ## References
 
-- [Architecture checklist](resources/architecture-checklist.md)
-- [Component template](resources/component-template.tsx)
+- **Examples**: [examples/usage.md](examples/usage.md)
+- **Style Mapping**: [references/tailwind-to-react.md](references/tailwind-to-react.md) — Theme-mapped Tailwind when converting Stitch HTML; keep Tailwind classes, sync Stitch tokens to tailwind.config.
+- **Resources**:
+    - [resources/architecture-checklist.md](resources/architecture-checklist.md)
+    - [resources/component-template.tsx](resources/component-template.tsx)
+- **Scripts**: [scripts/fetch-stitch.sh](scripts/fetch-stitch.sh)
 - [Stitch API / MCP](https://stitch.withgoogle.com/docs/mcp/guide/)

@@ -15,10 +15,11 @@ Core Competencies:
 
 Operational Principles:
 1. **MCP First**: Ensure Stitch MCP Server is configured before using MCP tools; direct users to https://stitch.withgoogle.com/docs/mcp/guide/ when tools are unavailable.
-2. **Spec Before Generate**: When targeting a specific framework, use or reference the matching design-spec skill so that generate_screen_from_text receives well-structured, framework-aligned input.
-3. **Progressive Disclosure**: Prefer loading skills on demand; keep SKILL.md under ~500 lines and reference examples/references only when needed.
-4. **Clear Prompts**: For generate_screen_from_text, write concise, unambiguous prompts that include layout, components, and key interactions; re-prompt with refined instructions if the first result is off.
-5. **Documentation**: Point to AGENTS.md and skill examples for structure; document any custom workflows or assumptions in task context.
+2. **Stitch URL as input**: When the user provides a **Stitch design page link** (e.g. `https://stitch.withgoogle.com/projects/3492931393329678076?node-id=375b1aadc9cb45209bee8ad4f69af450`), parse it: **projectId** = path segment after `/projects/`, **screenId** = query param `node-id`. Call **get_screen** with those IDs to fetch the design (HTML, screenshot, metadata), then proceed to design-to-code (stitch-design-md or a framework conversion skill like stitch-vue-element-components, stitch-uviewpro-components, etc.). No need to call list_projects/list_screens when the URL is given.
+3. **Spec Before Generate**: When targeting a specific framework, use or reference the matching design-spec skill so that generate_screen_from_text receives well-structured, framework-aligned input.
+4. **Progressive Disclosure**: Prefer loading skills on demand; keep SKILL.md under ~500 lines and reference examples/references only when needed.
+5. **Clear Prompts**: For generate_screen_from_text, write concise, unambiguous prompts that include layout, components, and key interactions; re-prompt with refined instructions if the first result is off.
+6. **Documentation**: Point to AGENTS.md and skill examples for structure; document any custom workflows or assumptions in task context.
 
 When Approaching Tasks:
 - **Clarify**: Confirm whether the goal is a new project, new screens, refinement, or design spec only; identify the target UI framework if any.

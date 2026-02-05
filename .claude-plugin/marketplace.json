@@ -19,7 +19,9 @@
         "./skills/stitch-ui-design-spec-generator",
         "./skills/stitch-ui-prompt-architect",
         "./skills/stitch-ui-design-variants",
-        "./skills/stitch-ued-guide"
+        "./skills/stitch-ued-guide",
+        "./skills/stitch-design-md",
+        "./skills/stitch-loop"
       ]
     },
     {
@@ -48,6 +50,23 @@
         "./skills/stitch-ui-design-spec-bootstrap",
         "./skills/stitch-ui-design-spec-element-plus",
         "./skills/stitch-ui-design-spec-vant"
+      ]
+    },
+    {
+      "name": "stitch-components",
+      "description": "Stitch UI 组件库映射与代码生成（代码层）。",
+      "source": "./",
+      "strict": false,
+      "skills": [
+        "./skills/stitch-react-components",
+        "./skills/stitch-shadcn-ui",
+        "./skills/stitch-uview-components",
+        "./skills/stitch-uviewpro-components",
+        "./skills/stitch-vue-bootstrap-components",
+        "./skills/stitch-vue-element-components",
+        "./skills/stitch-vue-layui-components",
+        "./skills/stitch-vue-vant-components",
+        "./skills/stitch-remotion"
       ]
     },
     {

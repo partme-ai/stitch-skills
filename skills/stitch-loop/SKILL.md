@@ -156,3 +156,9 @@ The skill is orchestration-agnostic; focus on the baton pattern, not the trigger
 
 **English:** stitch-loop, baton, next-prompt, SITE.md, DESIGN.md, multi-page, iterative.  
 **中文关键词：** stitch-loop、接力、next-prompt、多页、迭代建站。
+
+## References
+
+- [Examples](examples/usage.md)
+- [SITE.md Template](examples/SITE.md)
+- [Next Prompt Template](examples/next-prompt.md)

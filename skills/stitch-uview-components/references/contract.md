@@ -19,7 +19,12 @@ When converting Stitch-generated HTML to uni-app + Vue 2 + uView 2.0, map struct
 
 ## 2. Component Mapping (Stitch HTML → uView 2)
 
+**Rule: Use framework components when available; do not replace with generic view/text + custom class.** uView 2 has no Card; use **u-cell-group** + **u-cell** for card-like blocks, **u-text** for titles and label hints, **u-line** / **u-divider** for dividers. No custom `.card`, `.card-header`, `.card-title`, `.label-optional`, `.tips-text`, `.unit`.
+
 ### Layout
+- **Card-like section**: **u-cell-group** with **u-cell** (title/value/label); or minimal wrapper with **u-text** for section title. Do not use `<view class="card">` + custom header/title.
+- **Label hints / tip text**: **u-text** (e.g. type/size per uView Text API) for optional/hint text; do not use `<text class="label-optional">` or `.tips-text` / `.unit`.
+- **Divider**: **u-line** or **u-divider**; do not use only view + border.
 - **Grid**: `<u-row justify="space-between" gutter="10">`, `<u-col span="6">`.
 - **Cell**: `<u-cell-group>`, `<u-cell title="Title" value="Content" />`.
 
@@ -48,6 +53,7 @@ When converting Stitch-generated HTML to uni-app + Vue 2 + uView 2.0, map struct
 
 ## 4. Invariants
 
+- **Use framework components when available**: Do not use generic `<view>` / `<text>` + custom class when a u-* component exists. Card-like blocks → **u-cell-group** + **u-cell** or wrapper + **u-text**. Hints/tips → **u-text**. Divider → **u-line** / **u-divider**. No `.card`, `.card-header`, `.card-title`, `.label-optional`, `.tips-text`, `.unit` in templates.
 - Use uView 2 component names (u-*); do not use raw HTML for buttons, forms, layout when a uView component exists.
 - Register pages in `pages.json`; use rpx for responsive layout where appropriate.
 - Keep section spacing consistent (e.g. 24 or 32) within a screen.

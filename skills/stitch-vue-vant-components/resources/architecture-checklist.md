@@ -6,6 +6,7 @@
 - [ ] Static text, image URLs, lists in `src/data/mockData.js` (or .ts).
 
 ## Vant 4 usage
+- [ ] **Use framework components when available**: Card-like blocks → **van-cell-group** (inset) + **van-cell**; form hints → **van-field** label. No custom .card, .card-header, .card-title, .tips-text. See [contract.md](../references/contract.md) and [component-index.md](../references/component-index.md).
 - [ ] Layout: Use `<van-row>`, `<van-col>`, `<van-cell-group>`; mobile-first viewport (375px).
 - [ ] Buttons: Use `<van-button type="primary">` etc.; no raw `<button>`.
 - [ ] Forms: Use `<van-form>`, `<van-field>`; labels and rules present.

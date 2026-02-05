@@ -18,10 +18,14 @@ When converting Stitch-generated HTML to Vue 3 + BootstrapVue (or BootstrapVueNe
 
 ## 2. Component Mapping (Stitch HTML → Bootstrap Vue)
 
+**Rule: Use framework components when available; do not replace with generic div/span + custom class.** Use **b-card** for cards (title, body), **b-alert** for tips/notices, **b-form-group** with label/description for form hints. No custom `.card`, `.card-header`, `.card-title`, `.label-optional`, `.tips-text` when b-* equivalents exist.
+
 ### Layout (Grid)
 - **Container**: `<b-container fluid>` or `<b-container>`
 - **Row**: `<b-row>`
 - **Column**: `<b-col cols="12" md="6" lg="4">`
+- **Card**: **b-card** with `title` or `#header` slot; **b-card-text** for body. Do not use `<div class="card">` + custom header/title.
+- **Alert / tips**: **b-alert** with `variant="info"` or `variant="warning"`; do not use raw div + .tips-text.
 - **Invariant**: Do not use raw CSS grid when `<b-row>`/`<b-col>` or `d-flex` utilities apply.
 
 ### Buttons
@@ -38,8 +42,7 @@ When converting Stitch-generated HTML to Vue 3 + BootstrapVue (or BootstrapVueNe
 - **Invariant**: Wrap inputs in `b-form-group` for spacing and labeling.
 
 ### Cards
-- **Tag**: `<b-card>`
-- **Structure**: `<b-card title="..." img-src="..." img-top>`, `<b-card-text>`, `<b-button href="#" variant="primary">`
+- **Tag**: `<b-card>` — use for all card/section blocks. **Structure**: `<b-card title="..." img-src="..." img-top>`, `<b-card-text>`, `<b-button href="#" variant="primary">`. Do not use `<div class="card">` or custom card markup.
 
 ### Tables
 - **Tag**: `<b-table striped hover :items="items" :fields="fields">` — fields: [{ key, label }, ...]; optional selectable, sortable, v-model:selected.
@@ -55,6 +58,7 @@ When converting Stitch-generated HTML to Vue 3 + BootstrapVue (or BootstrapVueNe
 
 ## 4. Layout Invariants
 
+- **Use framework components when available**: Card → **b-card**; tips/notices → **b-alert**; form hints → **b-form-group** description or label. No custom .card, .card-header, .card-title, .tips-text when b-* components exist.
 - **Responsive first**: Define mobile layout (`cols="12"`) then override for larger screens (`md="6"`).
 - **Accessibility**: All interactive elements must have aria-labels or visible text.
-- **No raw HTML for UI**: Use `<b-button>` not `<button class="btn">`; use `<b-table :items :fields>` not raw `<table>`.
+- **No raw HTML for UI**: Use `<b-button>` not `<button class="btn">`; use `<b-table :items :fields>` not raw `<table>`; use `<b-card>` not `<div class="card">`.
