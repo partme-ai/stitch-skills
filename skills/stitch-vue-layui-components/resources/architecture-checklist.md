@@ -6,9 +6,10 @@
 - [ ] Static text, image URLs, lists in `src/data/mockData.js` (or .ts).
 
 ## Layui-Vue usage
+- [ ] **Use framework components when available**: Card → **lay-card** (not div.card); divider → **lay-divider**. No custom .card, .card-header, .card-title, .tips-text. See [contract.md](../references/contract.md) and [component-index.md](../references/component-index.md).
 - [ ] Buttons: Use layui-btn style (height 38px, radius 2px) per contract.
 - [ ] Inputs: Use layui-input style (height 38px, border #e2e2e2).
-- [ ] Cards: Use lay-card style (white bg, header border #f6f6f6).
+- [ ] Cards: Use **lay-card** component (white bg, header border #f6f6f6).
 - [ ] Tables: Use layui-table style (header #f2f2f2, border #e2e2e2).
 - [ ] Other: Use lay-page-header, lay-result, lay-skeleton, lay-timeline, lay-space when applicable.
 

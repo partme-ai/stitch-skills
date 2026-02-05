@@ -19,12 +19,15 @@ When converting Stitch-generated HTML to Vue 3 + Layui-Vue, map structure and st
 
 ## 2. Component Mapping (Stitch HTML → Layui-Vue)
 
+**Rule: Use framework components when available; do not replace with generic div/span + custom class.** Use **lay-card** for card/section blocks, **lay-divider** for dividers. No custom `.card`, `.card-header`, `.card-title`, `.tips-text` when lay-* equivalents exist.
+
 ### Component tags and usage (Layui-Vue uses lay- prefix)
 - **Button**: `<lay-button type="primary" size="md">` — type: primary, normal, warm, danger; size: lg, md, sm, xs; props: disabled, loading, icon; event: @click.
 - **Input**: `<lay-input v-model="val" placeholder="..." />` — props: disabled, readonly, prefixIcon, suffixIcon; events: @input, @change, @blur, @focus.
 - **Table**: use columns, dataSource, pagination, sortable, checkbox; events: @change, @select.
 - **DatePicker**: `<lay-date-picker v-model="date" type="date" />` — type: date, datetime, year, month, daterange; event: @change.
-- **Card style**: Bg white, Header height 42px, border-bottom #f6f6f6, Body padding 10px 15px, Radius 2px (use lay-card or equivalent).
+- **Card**: **lay-card** for card/section blocks (bg white, header, body); do not use `<div class="card">` + custom header. See [component-index.md](component-index.md).
+- **Divider**: **lay-divider**; do not use only view + border.
 - **PageHeader**: `<lay-page-header content="Detail" @back="onBack" />`
 - **Result**: `<lay-result status="success" title="Success" describe="..." />`
 - **Skeleton**: `<lay-skeleton :rows="4" />`
@@ -41,6 +44,7 @@ When converting Stitch-generated HTML to Vue 3 + Layui-Vue, map structure and st
 
 ## 4. Invariants
 
+- **Use framework components when available**: Card → **lay-card**; divider → **lay-divider**. No custom .card, .card-header, .card-title, .tips-text when lay-* components exist.
 - **Radius**: Strictly 2px or 4px. No large rounded corners (8px+).
 - **Style**: Minimalist, flat, clean, "Classic Design".
-- **No raw HTML for UI**: Use `<lay-button>` not `<button class="layui-btn">`; use Layui-Vue table/input components per api.
+- **No raw HTML for UI**: Use `<lay-button>` not `<button class="layui-btn">`; use **lay-card** not `<div class="card">`; use Layui-Vue table/input components per api.

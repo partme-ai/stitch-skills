@@ -26,7 +26,19 @@ You are an expert **Design Systems Lead**. Your goal is to analyze Stitch projec
 
 ## Retrieval and Networking
 
-Use Stitch MCP (or skills `stitch-mcp-list-projects`, `stitch-mcp-get-project`, `stitch-mcp-list-screens`, `stitch-mcp-get-screen`) in this order:
+Use Stitch MCP (or skills `stitch-mcp-list-projects`, `stitch-mcp-get-project`, `stitch-mcp-list-screens`, `stitch-mcp-get-screen`) in this order.
+
+### When the user provides a Stitch design URL
+
+If the user pastes a **Stitch design page link** (e.g. `https://stitch.withgoogle.com/projects/3492931393329678076?node-id=375b1aadc9cb45209bee8ad4f69af450`):
+
+1. **Parse the URL**:
+   - **projectId** = segment after `/projects/` and before `?` (e.g. `3492931393329678076`)
+   - **screenId** = query parameter `node-id` (e.g. `375b1aadc9cb45209bee8ad4f69af450`)
+2. **Fetch the screen**: Call `[prefix]:get_screen` with the parsed `projectId` and `screenId` (no need to call list_projects or list_screens).
+3. **Continue** with step 5 below (asset download) and then Analysis & Synthesis.
+
+### When project/screen IDs are unknown
 
 1. **Namespace discovery**: Run `list_tools` to find the Stitch MCP prefix (e.g. `mcp_stitch__stitch:`). Use that prefix for all calls.
 
@@ -42,7 +54,7 @@ Use Stitch MCP (or skills `stitch-mcp-list-projects`, `stitch-mcp-get-project`, 
    - Call `[prefix]:get_screen` with `projectId` and `screenId` (numeric IDs)
    - Use returned `screenshot.downloadUrl`, `htmlCode.downloadUrl`, `width`, `height`, `deviceType`, and project `designTheme`
 
-5. **Asset download**:
+5. **Asset download** (also after URL-based get_screen):
    - Use `web_fetch` or equivalent to download HTML from `htmlCode.downloadUrl` and optionally screenshot from `screenshot.downloadUrl`
    - Parse HTML for Tailwind classes, custom CSS, and component patterns
 

@@ -6,6 +6,7 @@
 - [ ] Static text, image URLs, lists in `src/data/mockData.js` (or .ts).
 
 ## Bootstrap Vue usage
+- [ ] **Use framework components when available**: Card → **b-card** (not div.card); tips/notices → **b-alert**; form hints → **b-form-group** description. No custom .card, .card-header, .card-title, .tips-text. See [contract.md](../references/contract.md) and [component-index.md](../references/component-index.md).
 - [ ] Layout: Use `<b-container>`, `<b-row>`, `<b-col>`; no raw CSS grid when contract applies.
 - [ ] Buttons: Use `<b-button variant="primary">` etc.; no `<button class="btn">`.
 - [ ] Forms: Use `<b-form-group>`, `<b-form-input>`, `<b-form-select>`; wrap in b-form-group.

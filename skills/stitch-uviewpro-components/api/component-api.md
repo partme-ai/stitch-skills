@@ -38,7 +38,7 @@ Do not use raw `<button>`; use `<u-button>`.
 | Use | Syntax | Notes |
 |-----|--------|-------|
 | Form | `<u-form :model="form" ref="uForm">` | model binds data |
-| Item | `<u-form-item label="Name" prop="name" borderBottom>` | label, prop for model |
+| Item | `<u-form-item label="Name" prop="name" borderBottom>` | custom label: use #label or v-slot:label (Vue 3), not slot="label" |
 | Input | `<u-input v-model="form.name" border="none" placeholder="Please input">` | inside form-item |
 | Methods | `validate()`, `validateField()`, `resetFields()`, `clearValidate()` | validate / reset |
 | Event | `@validate` | validation event |
@@ -59,7 +59,9 @@ Do not use raw `<button>`; use `<u-button>`.
 | Gap | `<u-gap height="20" bgColor="#f3f4f6"></u-gap>` | vertical gap |
 | Divider | `<u-divider text="End"></u-divider>` | divider |
 | Navbar | `<u-navbar title="Home" @leftClick="leftClick" :autoBack="true">` | navbar |
-| Tabs | `<u-tabs :list="list1" @click="click"></u-tabs>` | tabs |
+| Tabs | `<u-tabs :list="list1" :current="current" @change="(i)=>current=i" active-color="#2979ff" inactive-color="#606266">` | list=[{name:'A'},...]; @change(index: number); do not use lineColor/activeStyle/itemStyle |
+| Picker (single) | `<u-picker v-model="show" mode="selector" :range="options" @confirm="onConfirm">` | v-model=show; :range=1D array; @confirm(e) per official doc |
+| Radio | `<u-radio-group v-model="val"><u-radio label="A" value="a"></u-radio></u-radio-group>` | value + label; no name/customStyle |
 | IndexList | `<u-index-list :indexList="indexList">...</u-index-list>` | index list |
 
 ## List and feedback

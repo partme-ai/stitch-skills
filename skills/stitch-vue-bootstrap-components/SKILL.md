@@ -19,7 +19,7 @@ You are a **frontend engineer** turning Stitch designs into clean, modular Vue 3
 
 - Stitch MCP Server (https://stitch.withgoogle.com/docs/mcp/guide/)
 - Node.js and npm (for Vite/Vue 3 project)
-- Stitch project and screen IDs (from **stitch-mcp-list-projects**, **stitch-mcp-list-screens** if needed)
+- Stitch project and screen IDs — **two ways**: (1) From a **Stitch design URL**: parse **projectId** (path) and **screenId** (`node-id` query). (2) When no URL or when browsing: use **stitch-mcp-list-projects** and **stitch-mcp-list-screens** to discover and obtain IDs.
 
 ## Official Documentation
 
@@ -42,7 +42,7 @@ You are a **frontend engineer** turning Stitch designs into clean, modular Vue 3
 - **Modular components**: Split the design into separate .vue files; avoid one giant SFC.
 - **Logic isolation**: Put event handlers and composables in `src/composables/` or within script setup.
 - **Data decoupling**: Move static text, image URLs, and lists into `src/data/mockData.js` (or .ts).
-- **Bootstrap components only**: Use `<b-container>`, `<b-row>`, `<b-col>`, `<b-button>`, `<b-card>`, etc. per [references/contract.md](references/contract.md); do not use raw `<button class="btn">` when `<b-button>` applies.
+- **Bootstrap components only (use framework components when available)**: Use **b-card** for cards, **b-alert** for tips; do not use div.card or custom .card-header/.tips-text. Use `<b-container>`, `<b-row>`, `<b-col>`, `<b-button>`, etc. per [references/contract.md](references/contract.md); do not use raw `<button class="btn">` or `<div class="card">` when b-* applies.
 - **Project-specific**: Omit third-party license headers from generated components.
 
 ## Execution Steps
@@ -55,8 +55,8 @@ You are a **frontend engineer** turning Stitch designs into clean, modular Vue 3
 
 ## Integration with This Repo
 
-- **Get screen**: Use **stitch-mcp-get-screen** with projectId and screenId from **stitch-mcp-list-projects** / **stitch-mcp-list-screens**.
-- **Design spec**: If Stitch was generated with **stitch-ui-design-spec-bootstrap** constraints, map to Vue SFC and Bootstrap Vue components. If generic HTML, apply mapping rules from [references/contract.md](references/contract.md).
+- **Get screen**: Use **stitch-mcp-get-screen** with projectId and screenId. Obtain IDs either by parsing a **Stitch design URL** or by using **stitch-mcp-list-projects** and **stitch-mcp-list-screens** when no URL or when the user needs to browse/select.
+- **Design spec**: If Stitch was generated with **stitch-ui-design-spec-bootstrap** constraints, map to Vue SFC and Bootstrap Vue components. If converting from Stitch HTML (e.g. get_screen htmlCode), use [references/tailwind-to-bootstrap.md](references/tailwind-to-bootstrap.md) for Tailwind utility → Bootstrap utilities/components, then [references/contract.md](references/contract.md) for component API.
 - **Design system**: If the project has DESIGN.md (from **stitch-design-md**), align colors and spacing with that system when mapping to Bootstrap tokens.
 
 ## Troubleshooting
@@ -71,6 +71,8 @@ You are a **frontend engineer** turning Stitch designs into clean, modular Vue 3
 
 ## References
 
+- [Component index (per-component doc links)](references/component-index.md)
+- [Tailwind → Bootstrap Vue](references/tailwind-to-bootstrap.md) — Tailwind utility → Bootstrap when converting Stitch HTML.
 - [Contract (Bootstrap mapping)](references/contract.md)
 - [Component API (props/events quick reference)](api/component-api.md)
 - [Official documentation](references/official.md)

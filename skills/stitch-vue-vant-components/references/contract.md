@@ -23,9 +23,12 @@ When converting Stitch-generated HTML to Vue 3 + Vant 4, map structure and style
 
 ## 2. Component Mapping (Stitch HTML → Vant 4)
 
+**Rule: Use framework components when available; do not replace with generic div/span + custom class.** Use **van-cell-group** (inset for card style) for section blocks, **van-cell** for rows with title/value/label, **van-field** label for form hints. No custom `.card`, `.card-header`, `.card-title`, `.tips-text` when van-* equivalents exist.
+
 ### Layout
 - **Container**: `<van-config-provider>` or `<div class="container">`.
 - **Grid**: `<van-row>`, `<van-col span="12">`.
+- **Card-like section**: **van-cell-group** with `inset` for card style; **van-cell** for rows. Do not use `<div class="card">` + custom header/title.
 - **Cell Group**: `<van-cell-group inset>` (card style) or `<van-cell-group>` (full width).
 
 ### Basic
@@ -61,9 +64,10 @@ When converting Stitch-generated HTML to Vue 3 + Vant 4, map structure and style
 
 ## 4. Invariants
 
+- **Use framework components when available**: Card-like blocks → **van-cell-group** (inset) + **van-cell**; form hints → **van-field** label/label slot. No custom .card, .card-header, .card-title, .tips-text when van-* components exist.
 - Page background: `#f7f8fa`.
 - Prefer `<van-cell-group inset>` for grouped lists.
 - Wrap block submit buttons in `<div style="margin: 16px;">` at form bottom.
 - NavBar at top (fixed if needed); Tabbar at bottom for main entry.
-- Do not use raw `<button>` when `<van-button>` applies.
+- Do not use raw `<button>` when `<van-button>` applies; do not use `<div class="card">` when `<van-cell-group>` applies.
 - Form: use `van-field` with `name` and `:rules`; submit via `<van-form @submit>`.

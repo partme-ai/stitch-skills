@@ -78,6 +78,22 @@ Use these terms to control the look and feel:
 *   **Glassmorphism**: Blurred transparency, frosted glass.
 *   **Brutalism**: Raw, bold, high contrast, large typography.
 
+## Color & Theme Prompts
+
+When describing **Context & Style**, use a clear color structure so Stitch produces consistent palettes. A strong pattern (inspired by [AI配色提示词-UI配色指南](https://mp.weixin.qq.com/s/1SDFd7ZOPkbhpvHsmTJQjQ)):
+
+**Structure**: `[App type]` + `[Background hex]` + `[Primary hex]` + `[Secondary hex]` + `[Accent hex]` + `[Design system]` + `[Mood]`. Optionally add **semantic colors**: success green, alert red, warning yellow.
+
+**Example — Dark productivity:**
+> Modern productivity app dark theme, charcoal grey background #1a1a1a, primary blue #4A90E2, secondary teal #26D0CE, neutral greys #2d2d2d to #f5f5f5, accent orange #FF6B35 for CTAs, Material Design 3 inspired, high contrast for readability, professional and focused atmosphere.
+
+**Example — Bright desktop tool:**
+> Project management app bright theme, clean white background #FFFFFF, primary royal blue #2563EB, secondary purple #7C3AED, soft grey cards #F9FAFB, green success #22C55E, red alerts #DC2626, yellow warnings #F59E0B, minimal design with subtle shadows, organized and efficient visual hierarchy.
+
+**Quick color checklist**: Background defined? Primary/secondary/accent with hex? Semantic colors (success/alert/warning) if needed? Design system (Material 3, Fluent) or style (glassmorphism, minimal) mentioned?
+
+More ready-to-use prompts: see [docs/color-prompt-guide.md](../../docs/color-prompt-guide.md) in this repo, or the [original article](https://mp.weixin.qq.com/s/1SDFd7ZOPkbhpvHsmTJQjQ) for 20 curated prompts.
+
 ## Device Guidelines
 
 *   **Mobile**: ~375px width. Focus on thumb-friendly bottom navigation. Vertical scrolling is expected.
