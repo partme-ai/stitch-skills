@@ -2,6 +2,8 @@
 
 本文档仅列出 **本仓库（stitch-skills）** 在「需求→部署」全链路中负责的阶段及对应技能。完整全链路阶段与多仓库技能映射见 [full-stack-skills/docs/pipeline-stage-to-skills.md](../full-stack-skills/docs/pipeline-stage-to-skills.md)（同 workspace 内）或 full-stack-skills 仓库的 `docs/pipeline-stage-to-skills.md`。
 
+**设计阶段定位**：本库承担**原型设计**——输入为 **Stitch 设计语言**（可由 [t2ui-skills](https://github.com/partme-ai/t2ui-skills) 需求转译从 PRD 产出），经 Stitch MCP 输出**原型图**。
+
 ---
 
 ## 本库负责的阶段与技能
@@ -30,5 +32,5 @@
 
 ## 上下游交接
 
-- **上游**：PRD 或结构化需求来自 full-stack-doc（PRD 模板）、speckit-specify 等；本库不撰写 PRD，只消费 PRD 做设计输入。PRD 驱动流程见 [prd-to-stitch-workflow.md](prd-to-stitch-workflow.md)。
+- **上游**：**Stitch 设计语言**可来自 [t2ui-skills](https://github.com/partme-ai/t2ui-skills)（需求转译：PRD 文档 → Stitch 设计语言）；或 PRD/结构化需求经本库 stitch-ui-design-spec-generator、stitch-ui-prompt-architect 生成。PRD 驱动流程见 [prd-to-stitch-workflow.md](prd-to-stitch-workflow.md)。
 - **下游**：Stitch 产出（HTML/URL）→ 高保真 .pen 设计由 [pencil-skills](https://github.com/partme-ai/pencil-skills) 的 **pencil-design-from-stitch-html** 负责；本库仅负责 PRD→Stitch 原型。
