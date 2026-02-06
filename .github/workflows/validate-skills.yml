@@ -25,3 +25,25 @@ jobs:
           done
           [ "$missing" -eq 0 ] || exit 1
           echo "All skill directories contain SKILL.md."
+
+      - name: Check first line after --- is description (Trae/simple-parser)
+        run: |
+          python3 << 'CHECK'
+          import re, sys
+          err = 0
+          from pathlib import Path
+          for path in Path("skills").rglob("SKILL.md"):
+              s = path.read_text(encoding="utf-8")
+              m = re.match(r"^---\s*\n.*?\n---\s*\n", s, re.DOTALL)
+              if not m:
+                  print(f"::error file={path}::no frontmatter --- block"); err = 1
+                  continue
+              rest = s[m.end():]
+              first = next((ln.strip() for ln in rest.split("\n") if ln.strip()), "")
+              if not first:
+                  print(f"::error file={path}::first line after --- is empty"); err = 1
+              elif first.startswith("#"):
+                  print(f"::error file={path}::first line after --- must be plain description, not heading"); err = 1
+          sys.exit(err)
+          CHECK
+          echo "All SKILL.md: first line after --- is a plain description."

@@ -1,7 +1,12 @@
 ---
 name: stitch-ui-design-spec-layui
-description: Layui-Vue design spec tool for Stitch: outputs hard-constraints prefix or selector JSON + assembled prompt.
+description: Layui-Vue design spec for Stitch. Outputs hard-constraints prefix or selector JSON and assembled prompt.
+allowed-tools:
+  - "stitch*:*"
+  - "Read"
+  - "Write"
 ---
+
 
 # Layui Design Spec (Layui-Vue / Vue 3.0)
 

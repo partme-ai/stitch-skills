@@ -1,7 +1,8 @@
 ---
 name: stitch-ui-design-spec-bootstrap
-description: Bootstrap-Vue design spec tool for Stitch (Bootstrap 5 / Vue): outputs hard-constraints prefix or selector JSON + assembled prompt.
+description: Bootstrap-Vue design spec for Stitch. Outputs hard-constraints prefix or selector JSON and assembled prompt.
 ---
+
 
 # Bootstrap Design Spec (Bootstrap 5 / Vue)
 

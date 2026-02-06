@@ -1,7 +1,12 @@
 ---
 name: stitch-ui-design-spec-uview
-description: uView 2.0 design spec tool for Stitch (uni-app / Vue2): outputs hard-constraints prefix or selector JSON + assembled prompt.
+description: uView 2 design spec for Stitch. Outputs hard-constraints prefix or selector JSON and assembled prompt.
+allowed-tools:
+  - "stitch*:*"
+  - "Read"
+  - "Write"
 ---
+
 
 # uView Design Spec (uView 2.0 / uni-app / Vue2)
 

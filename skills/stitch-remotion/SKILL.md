@@ -1,6 +1,6 @@
 ---
 name: stitch-remotion
-description: Generate walkthrough videos from Stitch projects using Remotion. Retrieves screens via Stitch MCP (list_projects, list_screens, get_screen), downloads screenshots, builds Remotion composition with transitions and text overlays. Use with stitch-mcp-* for project/screen discovery.
+description: Generate walkthrough videos from Stitch projects using Remotion. Retrieves screens via Stitch MCP list_projects list_screens get_screen downloads screenshots, builds Remotion composition with transitions and text overlays. Use with stitch-mcp-* for project/screen discovery.
 allowed-tools:
   - "stitch*:*"
   - "remotion*:*"
@@ -9,6 +9,7 @@ allowed-tools:
   - "Write"
   - "web_fetch"
 ---
+
 
 # Stitch to Remotion Walkthrough Videos
 

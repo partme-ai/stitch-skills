@@ -1,12 +1,13 @@
 ---
 name: stitch-design-md
-description: Analyze Stitch projects and synthesize a semantic design system into DESIGN.md. Uses Stitch MCP (list_projects, list_screens, get_screen, get_project) to retrieve screens and project metadata; outputs natural-language design tokens for consistent Stitch screen generation. Use with stitch-ui-prompt-architect and stitch-loop for multi-page consistency.
+description: Analyze Stitch projects and synthesize a semantic design system into DESIGN.md. Uses Stitch MCP list_projects list_screens get_screen get_project to retrieve screens and project metadata; outputs natural-language design tokens for consistent Stitch screen generation. Use with stitch-ui-prompt-architect and stitch-loop for multi-page consistency.
 allowed-tools:
   - "stitch*:*"
   - "Read"
   - "Write"
   - "web_fetch"
 ---
+
 
 # Stitch DESIGN.md
 

@@ -1,7 +1,11 @@
 ---
 name: stitch-ued-guide
 description: UED guidelines, visual vocabulary, and prompt structure for Stitch. Use when the user asks about layout/style terms, device constraints, or when structuring/improving Stitch prompts; combine with stitch-ui-prompt-architect for vague→concrete prompts.
+allowed-tools:
+  - "Read"
+  - "Write"
 ---
+
 
 # Stitch UED Guidelines
 

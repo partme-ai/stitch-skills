@@ -1,7 +1,12 @@
 ---
 name: stitch-ui-design-spec-generator
-description: Logic skill that translates vague user requirements into structured Design Specifications (Theme, Color, Typography).
+description: Translates user requirements into structured Design Specs for Theme, Color, and Typography.
+allowed-tools:
+  - "stitch*:*"
+  - "Read"
+  - "Write"
 ---
+
 
 # Design Spec Generator
 

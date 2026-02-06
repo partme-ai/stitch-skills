@@ -87,6 +87,7 @@ This repo **subsumes and strengthens** [google-labs-code/stitch-skills](https://
 - **stitch-skill-creator**: Factory for new scenario skills.
 - **stitch-ued-guide**: UED guidelines and visual vocabulary.
 - **Stitch → Framework Components**: Six conversion skills (Vue 3 + Element/Bootstrap/Layui/Vant, uni-app + uView/uView Pro) that turn Stitch screens into runnable projects.
+- **stitch-pencil**: Stitch HTML → Pencil .pen design. Decomposes Stitch page HTML into 100% precise batch_design operations (HTML→Pencil mapping, execution order, Tailwind→.pen styles: background, color, size, margin, padding, shadow).
 - **agents/stitch-ui-designer.md**: Dedicated agent for Stitch UI workflows.
 
 ### When to Use Which
@@ -172,6 +173,7 @@ stitch-skills/
 
 ### Loop, React, Video & UI Integration
 *   **`stitch-loop`**: Iterative multi-page site build: baton (`next-prompt.md`), Stitch MCP generate/get, integrate into site, update SITE.md and next baton. Use with stitch-design-md.
+*   **`stitch-pencil`**: Stitch HTML → Pencil .pen design. Maps HTML elements to Pencil nodes; strict execution order (phases 0–N, ≤25 ops per batch_design); Tailwind→.pen styles (background, color, size, margin, padding, shadow). See [skills/stitch-pencil](skills/stitch-pencil/) and [docs/stitch-html-to-pencil-batch.md](docs/stitch-html-to-pencil-batch.md).
 *   **`stitch-react-components`**: Convert Stitch screens to modular React (Vite/TS) with validation and design token consistency; high-reliability fetch script.
 *   **`stitch-remotion`**: Generate walkthrough videos from Stitch projects using Remotion (transitions, overlays); uses stitch-mcp-* for screens.
 *   **`stitch-shadcn-ui`**: Expert guidance for shadcn/ui: discovery, install, customize, blocks; use with stitch-react-components.

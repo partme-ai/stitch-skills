@@ -1,7 +1,12 @@
 ---
 name: stitch-mcp-list-projects
 description: Lists all Stitch projects accessible to the user.
+allowed-tools:
+  - "stitch*:*"
+  - "Read"
+  - "Write"
 ---
+
 
 # List Stitch Projects
 

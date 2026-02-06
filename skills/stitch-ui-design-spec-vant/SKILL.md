@@ -1,7 +1,12 @@
 ---
 name: stitch-ui-design-spec-vant
-description: Vant 4 design spec tool for Stitch (Vue 3 / Mobile): outputs hard-constraints prefix or selector JSON + assembled prompt.
+description: Vant 4 design spec for Stitch. Outputs hard-constraints prefix or selector JSON and assembled prompt.
+allowed-tools:
+  - "stitch*:*"
+  - "Read"
+  - "Write"
 ---
+
 
 # Vant Design Spec (Vant 4 / Vue 3)
 
