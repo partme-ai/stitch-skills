@@ -13,7 +13,7 @@ The canonical specification is at **[agentskills.io/specification](https://agent
 
 - **references/**: Deep-dive docs (contracts, official links, checklists). Load on demand to save context. (Upstream uses `resources/` for the same idea.)
 - **scripts/**: Executable enforcers (validation, fetch, codegen). Use shebang, `set -e` for shell scripts; document inputs/outputs.
-- **allowed-tools** (frontmatter): List of tool name patterns the agent may use when this skill is active (e.g. `"Read"`, `"Write"`, `"stitch*:*"`). **Include this block for consistent description recognition** in list/discovery UIs; use the same frontmatter structure as skills that are already recognized (e.g. `stitch-vue-element-components`). Omit only if you intentionally allow default tool access and do not rely on that UI.
+- **allowed-tools** (frontmatter): List of tool name patterns the agent may use when this skill is active (e.g. `"Read"`, `"Write"`, `"stitch*:*"`). **Include this block for consistent description recognition** in list/discovery UIs; use the same frontmatter structure as skills that are already recognized (e.g. `stitch-vue-element-components`). Omit only if you intentionally allow default tool access and do not rely on that UI. **Skills that call Stitch MCP** (e.g. stitch-design-md, stitch-ui-prompt-architect, stitch-mcp-*) must include the Stitch tool pattern in `allowed-tools` (e.g. `"stitch*:*"` or the client’s MCP prefix) so the agent is permitted to invoke those tools when the skill is active.
 - **LICENSE.txt**: License for the skill content.
 
 ## Progressive disclosure
