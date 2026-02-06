@@ -1,7 +1,12 @@
 ---
 name: stitch-ui-design-spec-generator
-description: Logic skill that translates vague user requirements into structured Design Specifications (Theme, Color, Typography).
+description: Translates user requirements into structured Design Specs for Theme, Color, and Typography.
+allowed-tools:
+  - "stitch*:*"
+  - "Read"
+  - "Write"
 ---
+
 
 # Design Spec Generator
 
@@ -10,7 +15,11 @@ description: Logic skill that translates vague user requirements into structured
 This skill acts as a **Creative Director**. It takes a high-level user request and outputs a structured **Design Specification**.
 
 ## Input
-*   **User Request**: e.g., "A cyberpunk login page" or "A clean medical dashboard".
+
+Input may be either:
+
+*   **User Request** (one-shot): e.g., "A cyberpunk login page" or "A clean medical dashboard".
+*   **PRD document or PRD summary**: When the user provides a PRD file path or pasted PRD content, first extract **function overview** and **page/screen list** (and any visual/theme preferences from non-functional requirements), then apply the Logic Rules below to produce the design spec. For the full PRD-driven workflow (spec-generator → framework spec → prompt-architect → MCP), see [docs/prd-to-stitch-workflow.md](../../docs/prd-to-stitch-workflow.md).
 
 ## Output Format (JSON)
 The skill must produce a JSON block like this:

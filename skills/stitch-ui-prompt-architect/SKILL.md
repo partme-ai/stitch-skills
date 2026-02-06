@@ -1,10 +1,11 @@
 ---
 name: stitch-ui-prompt-architect
-description: Constructs Stitch-ready prompts from two inputs: (1) Vague UI ideas → enhanced, structured prompts with design system and keywords; (2) Design Spec + User Request → sectioned [Context]/[Layout]/[Components] prompts. Supports DESIGN.md injection, framework contract prefix (uView, Element, Layui, etc.), and optional next-prompt.md for stitch-loop.
+description: Builds Stitch-ready prompts from vague UI ideas or from Design Spec and User Request. Outputs sectioned Context, Layout, and Components. Supports DESIGN.md and framework contract prefix.
 allowed-tools:
   - "Read"
   - "Write"
 ---
+
 
 # Stitch UI Prompt Architect
 

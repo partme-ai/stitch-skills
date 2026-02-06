@@ -2,7 +2,12 @@
 name: stitch-mcp-create-project
 description: Creates a new Stitch project container. Use this when starting a new design task, app idea, or fresh workspace.
 license: Complete terms in LICENSE.txt
+allowed-tools:
+  - "stitch*:*"
+  - "Read"
+  - "Write"
 ---
+
 
 ## When to use this skill
 

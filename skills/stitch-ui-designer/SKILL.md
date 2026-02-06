@@ -2,7 +2,13 @@
 name: stitch-ui-designer
 description: The Master Orchestrator. Handles the end-to-end flow of designing and generating UI screens. Use this for all "Design X" requests.
 license: Complete terms in LICENSE.txt
+allowed-tools:
+  - "stitch*:*"
+  - "Read"
+  - "Write"
+  - "web_fetch"
 ---
+
 
 # Stitch Designer (Master Skill)
 

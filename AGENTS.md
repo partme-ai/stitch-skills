@@ -8,7 +8,7 @@ For Stitch-based UI generation (text-to-UI, design specs, MCP workflows), use th
 
 ## Repository Overview
 
-A collection of Agent Skills for Stitch UI Generation. Skills are packaged instructions and scripts that extend Claude's capabilities. This repo **subsumes and strengthens** [google-labs-code/stitch-skills](https://github.com/google-labs-code/stitch-skills): every official skill (design-md, enhance-prompt, stitch-loop, react-components, remotion, shadcn-ui) has a local equivalent that is better or equal and integrated with stitch-mcp-* and framework design specs. See [docs/related-upstream.md](docs/related-upstream.md).
+A collection of Agent Skills for Stitch UI Generation. Skills are packaged instructions and scripts that extend Claude's capabilities. This repo **subsumes and strengthens** [google-labs-code/stitch-skills](https://github.com/google-labs-code/stitch-skills): every official skill (design-md, enhance-prompt, stitch-loop, react-components, remotion, shadcn-ui) has a local equivalent that is better or equal and integrated with stitch-mcp-* and framework design specs. See [docs/related-upstream.md](docs/related-upstream.md). 本仓库技能参与**「需求→部署」全链路**（PRD→原型与设计、设计规范、UI 说明、界面与交互）。本库阶段→技能一览见 [docs/pipeline-stage-to-stitch-skills.md](docs/pipeline-stage-to-stitch-skills.md)，完整全链路映射见 [full-stack-skills/docs/pipeline-stage-to-skills.md](../full-stack-skills/docs/pipeline-stage-to-skills.md)，技能生态见 [full-stack-skills/docs/skills-ecosystem.md](../full-stack-skills/docs/skills-ecosystem.md)（同 workspace 内）。
 
 ## Skill Structure
 

@@ -1,6 +1,6 @@
 ---
 name: stitch-vue-vant-components
-description: Convert Stitch designs into modular Vite/Vue 3 + Vant 4 (mobile) components. Uses Stitch MCP (get_screen) for retrieval; high-reliability fetch via scripts; enforces Vue SFC structure and Vant 4 component contracts (van-button, van-field, van-nav-bar, etc.).
+description: Convert Stitch designs into modular Vite/Vue 3 and Vant 4 mobile components. Uses Stitch MCP get_screen for retrieval; high-reliability fetch via scripts; enforces Vue SFC structure and Vant 4 component contracts van-button van-field van-nav-bar etc..
 allowed-tools:
   - "stitch*:*"
   - "Bash"
@@ -8,6 +8,7 @@ allowed-tools:
   - "Write"
   - "web_fetch"
 ---
+
 
 # Stitch to Vue 3 + Vant 4 Components
 

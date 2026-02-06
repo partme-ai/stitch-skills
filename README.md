@@ -142,6 +142,8 @@ stitch-skills/
 └── README.md                        # Documentation
 ```
 
+本库技能与**「需求→部署」全链路**的阶段对应关系见 [docs/pipeline-stage-to-stitch-skills.md](docs/pipeline-stage-to-stitch-skills.md)；完整全链路映射见 full-stack-skills 的 [docs/pipeline-stage-to-skills.md](https://github.com/partme-ai/full-stack-skills/blob/main/docs/pipeline-stage-to-skills.md)。技能表格式索引见 [docs/skills-index.md](docs/skills-index.md)。
+
 ## 📦 Available Skills
 
 ### Orchestrator (The Entry Point)
@@ -172,6 +174,7 @@ stitch-skills/
 
 ### Loop, React, Video & UI Integration
 *   **`stitch-loop`**: Iterative multi-page site build: baton (`next-prompt.md`), Stitch MCP generate/get, integrate into site, update SITE.md and next baton. Use with stitch-design-md.
+*   **原型→Pencil 设计稿**：由 [pencil-skills](https://github.com/partme-ai/pencil-skills) 的 **pencil-design-from-stitch-html** 技能负责（Stitch HTML/URL → .pen 设计）；本仓库仅负责 PRD→原型。
 *   **`stitch-react-components`**: Convert Stitch screens to modular React (Vite/TS) with validation and design token consistency; high-reliability fetch script.
 *   **`stitch-remotion`**: Generate walkthrough videos from Stitch projects using Remotion (transitions, overlays); uses stitch-mcp-* for screens.
 *   **`stitch-shadcn-ui`**: Expert guidance for shadcn/ui: discovery, install, customize, blocks; use with stitch-react-components.

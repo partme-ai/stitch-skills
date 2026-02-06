@@ -1,7 +1,8 @@
 ---
 name: stitch-ui-design-spec-element-plus
-description: Element Plus design spec tool for Stitch (Vue 3 / Desktop): outputs hard-constraints prefix or selector JSON + assembled prompt.
+description: Element Plus design spec for Stitch. Outputs hard-constraints prefix or selector JSON and assembled prompt.
 ---
+
 
 # Element Plus Design Spec (Element Plus / Vue 3)
 

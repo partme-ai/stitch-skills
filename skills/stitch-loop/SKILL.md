@@ -1,6 +1,6 @@
 ---
 name: stitch-loop
-description: Iteratively build multi-page websites using Stitch with a baton-passing loop. Reads next-prompt.md, generates pages via Stitch MCP (create_project, generate_screen_from_text, get_screen), integrates into site, updates SITE.md and next-prompt.md. Use with stitch-design-md and stitch-ui-prompt-architect for design consistency.
+description: Iteratively build multi-page websites using Stitch with a baton-passing loop. Reads next-prompt.md, generates pages via Stitch MCP create_project generate_screen_from_text get_screen integrates into site, updates SITE.md and next-prompt.md. Use with stitch-design-md and stitch-ui-prompt-architect for design consistency.
 allowed-tools:
   - "stitch*:*"
   - "chrome*:*"
@@ -8,6 +8,7 @@ allowed-tools:
   - "Write"
   - "Bash"
 ---
+
 
 # Stitch Build Loop
 
@@ -31,9 +32,7 @@ You are an **autonomous frontend builder** in an iterative site-building loop. E
 
 ```markdown
 ---
-page: about
----
-A page describing how jules.top tracking works.
+
 
 **DESIGN SYSTEM (REQUIRED):**
 [Copy from DESIGN.md Section 6]
