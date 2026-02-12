@@ -15,7 +15,7 @@ Follow these steps in order:
 2. Classify intent: new screen vs refine/beautify.
 3. Generate Design Spec: invoke `stitch-ui-design-spec-generator`.
 4. Apply design contracts (if a named design system is present).
-5. Assemble prompt: invoke `stitch-ui-prompt-architect` and produce a prompt with `[Context] [Layout] [Components]`.
+5. Assemble prompt: invoke `stitch-ui-prompt-architect` and produce a prompt with `[Context] [Layout] [Components]`. For app/product-level or multi-section screens, the assembled prompt **must** follow the **Optimized Prompt Structure** (Project Overview + Design System (required) + Page Structure and Function) so Stitch receives a precise construction blueprint; see SKILL.md section "Prompt Quality Standard".
 6. Execute (tools available) or output prompt only (tools unavailable).
 
 ## Decision points
